@@ -1,11 +1,4 @@
-@extends('layout/app')
 
-@section('css')
-  <link rel="stylesheet" href="{{ asset('assets/css/cart.css')}}">
-@endsection
-
-@section('content')
-<div id="box1">
   <div class="container">
     <div class="content">
       <div class="left-content">
@@ -74,6 +67,7 @@
                       <a href="{{ $cart->product->category->name != 'Software' ? url('cart/inc', $cart->id) : '' }}">
                         <button id='increase' {{ $cart->product->category->name == 'Software' ? 'disabled' : '' }} >+</button>
                       </a>
+    
                     </div>
                   </div>
                 </div>
@@ -121,7 +115,3 @@
   
     </div>
   </div>
-</div>
-<script src="{{ asset('assets/js/cart.js')}}"></script>
-
-@endsection

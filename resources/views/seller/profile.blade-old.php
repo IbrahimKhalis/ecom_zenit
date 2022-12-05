@@ -2,28 +2,28 @@
 
 @section('css')
   <link rel="stylesheet" href="{{ asset('assets/css/sidebar.css')}}">
-  <link rel="stylesheet" href="{{ asset('assets/css/profile-edit.css')}}">
+  <link rel="stylesheet" href="{{ asset('assets/css/profile.css')}}">
 @endsection
 
 @section('content')
 @include('components.sidebar')
   
+
 <div class="contents">
   <div class="sub-content">
-      <a href="{{ route('profileseller') }}">My Profile</a>
-      <a href="{{ route('profile-edit') }}">Edit Profile</a>
-  </div>
+    <a href="{{ url('profile-seller') }}">My Profile</a>
+    <a href="{{ route('profile-edit1') }}">Edit Profile</a>
+</div>
 
   <div class="row-1">
       <div class="left">
-          <img src="assets/ALM00016.JPG" alt="">
-          <button id="btn-prof">Edit Profile</button>
+          <img src="{{ Auth::check() ? auth()->user()->profile->gallery->first()->getUrl() : asset('assets/img/user.png') }}" alt="">
+          <button id="btn-prof">Change Image</button>
       </div>
       <div class="right">
-          <p>user 24124341</p>
-          <h1>Kiagus Ahmad Farhan Aziz</h1>
-          <textarea name="" id="" cols="90" rows="5">Gapapa jele yang penting sombong</textarea>
-          <p></p>
+          <p>#{{ Auth()->user()->id }}</p>
+          <h1>{{ Auth()->user()->name }}</h1>
+          <p>i'm {{ Auth()->user()->level }}</p>
       </div>
   </div>
 
@@ -31,31 +31,27 @@
       <table>
           <tr>
               <td>First Name</td>
-              <td><input type="text" value="Kiagus Ahmad"></td>
+              <td>{{ Auth()->user()->profile->firstname }}</td>
           </tr>
           <tr>
               <td>Last Name</td>
-              <td><input type="text" value="Farhan Aziz"></td>
+              <td>{{ Auth()->user()->profile->lastname }}</td>
           </tr>
           <tr>
               <td>Email</td>
-              <td><input type="email" value="kgs.FA@gmail.com"> </td>
+              <td>{{ Auth()->user()->email }}</td>
           </tr>
           <tr>
               <td>Phone Number</td>
-              <td><input type="number" value="6287887427813"></td>
+              <td>{{ Auth()->user()->profile->phoneNumber }}</td>
           </tr>
           <tr>
               <td>Address</td>
-              <td><textarea name="" id="" cols="65" rows="5">2972 Westheimer Rd. Santa Ana, Illinois 85486</textarea>  </td>
+              <td>{{ Auth()->user()->profile->Address }}</td>
           </tr>
       </table>
-      <div class="btn-submit">
-        <button>Save</button>
-      </div>
   </div>
 </div>
-
 <div id="myProfile" class="modalProfile">
     <div class="modalprofile-content">
         <div class="header">
@@ -63,9 +59,9 @@
         </div>
         <div class="profile-content">
             <div class="Profile-pict">
-                <p class="cust-prof">Profile Pict</p>
+                <p class="cust-prof">Profile Picture</p>
             <label id="largeFile" for="file">
-                <input type="file" id="file" />
+                <input type="file" id="file"/>
             </label>
             </div>
             <div class="btn-Profile">

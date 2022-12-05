@@ -15,10 +15,31 @@ class SController extends Controller
         $products = Product::with('category');
 
         $tags = [];
-        $favorites = [];
+        $favorites = [0];
+        
+        if($request->sort != null){
+            if($request->sort=="latest"){
+                $products->orderby('products.id','Desc');
+                array_push($tags, 'Latest');
+            }else if($request->sort=='cheapest'){
+                $products->orderby('products.price','Asc');
+                array_push($tags, 'Cheapest');
+            }else if($request->sort=='expensive'){
+                $products->orderby('products.price','Desc');
+                array_push($tags, 'Expensive');
+            }else if($request->sort=='name-A-Z'){
+                $products->orderby('products.name','Asc');
+                array_push($tags, 'A-Z');
+            }else if($request->sort=='name-Z-A'){
+                $products->orderby('products.name','Asc');
+                array_push($tags, 'Z-A');
+            }
+           }
 
-        foreach(Auth()->user()->favorites as $favorite){
-            array_push($favorites, $favorite->products_id);
+        if(Auth::check()){
+            foreach(Auth()->user()->favorites as $favorite){
+                array_push($favorites, $favorite->products_id);
+            }
         }
 
         if($request->BRF != null){

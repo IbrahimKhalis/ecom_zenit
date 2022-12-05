@@ -11,6 +11,7 @@ use App\Http\Controllers\ShopProfile;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\RatingController;
+use App\Http\Controllers\SellerdashboardController;
 use App\Http\Controllers\ReviewController;
 use Illuminate\Contracts\Auth\UserProvider;
 use Illuminate\Support\Facades\Auth;
@@ -67,11 +68,11 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::resource('profile', UserProfileController::class);
+Route::get('/profile/create', [UserProfileController::class, 'create']);
+Route::post('/profile', [UserProfileController::class, 'store']);
 
-Route::get('/profileC', function () {
-    return view('profilecust');
-})->name('profile.cust');
+Route::get('/profile/your-profile', [UserProfileController::class, 'show'])->name('profile.cust');
+Route::get('/profile/edityour', [UserProfileController::class, 'edit'])->name('editprofile.cust');
 
 Route::get('checkoutdetail', [OrderController::class, 'index'])->name('checkout-detail');
 Route::get('checkoutdetail/payment', [OrderController::class, 'payment'])->name('checkout-payment');
@@ -95,24 +96,35 @@ Route::group(['middleware' => ['auth','CheckLevel:admin,seller'],  'prefix' => '
 Route::post('profile/image',[UserProfileController::class, 'storeImage']);
 Route::post('shop-profile/image',[ShopController::class, 'storeImage']);
 
-
-Route::get('/profileseller', function () {
-    return view('seller.profile');
+//old profile seller
+Route::get('/profile-seller-old', function () {
+    return view('seller.profile-old');
 })->name('profileseller');
+Route::get('/profile-edit-old', function () {
+    return view('seller.profile-edit-old');
+})->name('profile-edit1');
 
-Route::get('/editprofile', function () {
-    return view('profileedit-cust');
-})->name('editprofile');
 
-Route::get('/profileedit', function () {
+
+
+
+Route::get('/createprofile', function () {
+    return view('create-profile');
+})->name('create-profile');
+
+Route::get('/seller/profile/edit', function () {
     return view('profile.profile-edit');
-})->name('profile-edit');
+})->name('seller.edit.profile');
 
+Route::get('/seller/profile', function(){
+    return view('profile.profile');
+})->name('seller.profile');
 
-Route::get('/productseller', function () {
-    return view('seller.product-seller');
-})->name('product-seller');
+// Route::get('/productseller', function () {
+//     return view('seller.product-seller');
+// })->name('product-seller');
 
+Route::get('/productseller',[SellerdashboardController::class, 'productshow']);
 
 Route::get('/upcoming', function () {
     return view('upcoming');
@@ -168,5 +180,4 @@ Route::get('/report-invoice', function () {
     return view('seller.report-invoice');
 })->name('report-invoice');
 
-Route::get('/product/detail/review/{product:slug?}', [ReviewController::class, 'show'])->name('product.review ');
-
+Route::get('/product/detail/review/{product:slug?}', [ReviewController::class, 'show'])->name('product.review');

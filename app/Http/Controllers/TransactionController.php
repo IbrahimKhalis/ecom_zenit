@@ -16,8 +16,6 @@ class TransactionController extends Controller
 {
     public function index($reference)
     {
-
-
         $tripay = new TripayController();
         $detail =  $tripay->detailTransaction($reference);
 

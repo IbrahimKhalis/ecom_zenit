@@ -147,10 +147,14 @@
           </div>
           <div class="filter-dropdown">
             <label for="filter"><img src="{{ asset('assets/img/setting.png') }}" alt=""></label>
-              <select name="sortby" id="filter" class="option-filter">
-                <option value="HTL">Higher to Lower</option>
-                <option value="LTH">Lower to Higher</option>  
-              </select>
+                <select name="sort" id='sort' class="option-filter" >
+                  <option id="1" value="" selected="">Sort-By</option>
+                  <option value="latest">Latest</option>
+                  <option value="cheapest">Cheapest</option>
+                  <option value="expensive">Most Expensive</option>
+                  <option value="name-A-Z">A-Z</option>
+                  <option value="name-Z-A">Z-A</option>
+                </select>
             </div>
           </div>
           <div class="filter-product">

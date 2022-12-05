@@ -96,7 +96,6 @@
           <div id="content">
             <div class="product-carousel">
               <div class="row-product">
-
               @foreach($products as $product)
                 <div class="card-product">
                   <div class="img-card">
@@ -116,15 +115,20 @@
                         <p>Rp {{ number_format($product->price,0,',','.') }}</p>
                       </div>
                       <div class="button-detail">
-                        <button><i class="fa-solid fa-cart-shopping"></i></button>
-                        <button>
-                          <i class="fa-regular fa-heart"></i>
+                        <button class="modal__button" id="open-modal" onClick="Open_click('{{ $product->gallery->first()->getUrl() }}', '{{ $product->major }}', '{{ $product->name }}', '{{ $product->price }}', '{{ url('/cart/modal', $product->id) }}')"><i class="fa-solid fa-cart-shopping"></i></button>
+                        <button class="modal__button" id="open-modal" onClick="Open_click('{{ $product->gallery->first()->getUrl() }}', '{{ $product->major }}', '{{ $product->name }}', '{{ $product->price }}', '{{ url('/favorite/add', $product->id) }}')">
+                        @if(in_array($product->id, $favorites))
+                        <i class="fa-solid fa-heart"></i>
+                        @else
+                        <i class="fa-regular fa-heart"></i>
+                        @endif
                         </button>
                       </div>
                     </div>
                   </div>
                 </div>
               @endforeach
+              
 
 
               </div>
@@ -150,6 +154,27 @@
       </a>
     </div>
   </div>
+</div>
+
+<div class="modal__container" id="modal-container">
+    <div class="modal__content">
+      <div class="header" id="textmodal">Add to Cart</div>
+      <div class="cart-content">
+        <div class="left-modal">
+          <div class="img-modal">
+            <img src="" alt=""  id="img-cart-modal">
+          </div>
+          <div class="desc-modal">
+            <p id="ctgry-cart-modal"></p>
+            <p id="name-cart-modal"></p>
+            <p id="">Software</p>
+          </div>
+        </div>
+        <div class="right-modal">
+          <p id="price-cart-modal"></p>
+        </div>
+      </div>
+    </div>
 </div>
 
 <footer>
@@ -228,6 +253,9 @@
   </div>
 </footer>
 
+
+
 <script src="{{ asset('assets/js/home.js')}}"></script>
+<script src="{{ asset('assets/js/cartmodal.js')}}"></script>
 
 @endsection

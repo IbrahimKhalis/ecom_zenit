@@ -2,7 +2,7 @@
     <div class="sidebar">
         <div class="sidebar-content">
                 <div class="menu-account">
-                    <a href="{{ route('profileseller') }}" class="account">
+                    <a href="{{ route('seller.profile') }}" class="account">
                         <div class="left">
                             <iconify-icon class="icon" icon="ic:baseline-account-circle"></iconify-icon>
                             <p>Account</p>
@@ -12,7 +12,7 @@
                 </div>
             
                 <div class="menu-product">
-                    <a href="{{ route('product-seller') }}" class="product">
+                    <a href="{{ url('productseller') }}" class="product">
                         <div class="left">
                             <iconify-icon class="icon" icon="ph:package-light"></iconify-icon>
                             <p>Product</p>

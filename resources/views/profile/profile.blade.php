@@ -11,19 +11,19 @@
 
 <div class="contents">
   <div class="sub-content">
-    <a href="{{ route('profile') }}">My Profile</a>
-    <a href="{{ route('profile-edit') }}">Edit Profile</a>
+    <a href="{{ route('seller.profile') }}">My Profile</a>
+    <a href="{{ route('seller.edit.profile') }}">Edit Profile</a>
 </div>
 
   <div class="row-1">
       <div class="left">
-          <img src="assets/ALM00016.JPG" alt="">
-          <button id="btn-prof">Edit Profile</button>
+          <img src="{{ Auth::check() ? auth()->user()->profile->gallery->first()->getUrl() : asset('assets/img/user.png') }}" alt="">
+          <button id="btn-prof">Change Profile</button> 
       </div>
       <div class="right">
-          <p>user 24124341</p>
-          <h1>Kiagus Ahmad Farhan Aziz</h1>
-          <p>Gapapa jele yang penting sombong</p>
+          <p>#{{ Auth()->user()->id }}</p>
+          <h1>{{ Auth()->user()->name }}</h1>
+          <p>{{ Auth()->user()->profile->desc }}</p>
       </div>
   </div>
 
@@ -31,23 +31,23 @@
       <table>
           <tr>
               <td>First Name</td>
-              <td>Kiagus Ahmad</td>
+              <td>{{ Auth()->user()->profile->firstname }}</td>
           </tr>
           <tr>
               <td>Last Name</td>
-              <td>Farhan Aziz</td>
+              <td>{{ Auth()->user()->profile->lastname }}</td>
           </tr>
           <tr>
               <td>Email</td>
-              <td>kgs.FA@gmail.com</td>
+              <td>{{ Auth()->user()->email }}</td>
           </tr>
           <tr>
               <td>Phone Number</td>
-              <td>+62 878 8742 7813</td>
+              <td>{{ Auth()->user()->profile->phoneNumber }}</td>
           </tr>
           <tr>
               <td>Address</td>
-              <td>2972 Westheimer Rd. Santa Ana, Illinois 85486 </td>
+              <td>{{ Auth()->user()->profile->Address }}</td>
           </tr>
       </table>
   </div>

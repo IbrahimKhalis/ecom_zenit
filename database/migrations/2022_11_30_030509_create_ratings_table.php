@@ -21,7 +21,6 @@ return new class extends Migration
             $table->string('name');
             $table->text('comment');
             $table->timestamps();
-
             $table->foreign('user_id')->references('id')->on('users')->onDelete('restrict');
             $table->foreign('product_id')->references('id')->on('products')->onDelete('restrict');
 

@@ -44,17 +44,17 @@
               <th>Type</th>
               <th colspan="2">Action</th>
           </tr>
-          <tr>
-              <td>12345</td>
+          @foreach ($data as $product)
+            <tr>
+              <td>{{ $product->id }}</td>
               <td>
-                  <img src="assets/web3.jpg" alt="">
+                  <img src="{{ $product->gallery->first()->getUrl() }}" alt="">
               </td>
-              <td style="text-align: start; font-size: 14px;">design web kece abies kak</td>
-              <td>1400</td>
-              <td>Rp.222222</td>
+              <td style="text-align: start; font-size: 14px;">{{ $product->name }}</td>
+              <td>{{ $product->quantity }}</td>
+              <td>Rp.{{ $product->price }}</td>
               <td>
-                  <p
-                      style="padding:5px; margin-left: 30px; width: 100px; background-color: #8DB2FF; color: white; border-radius: 5px;  font-size: 14px;">
+                  <p style="padding:5px; margin-left: 30px; width: 100px; background-color: #8DB2FF; color: white; border-radius: 5px;  font-size: 14px;">
                       Software</p>
               </td>
               <td>
@@ -68,32 +68,10 @@
                       Detail
                   </a>
               </td>
-          </tr>
-          <tr>
-              <td>12345</td>
-              <td>
-                  <img src="assets/web3.jpg" alt="">
-              </td>
-              <td style="text-align: start; font-size: 14px;">design web kece abies kak</td>
-              <td>1400</td>
-              <td>Rp.222222</td>
-              <td>
-                  <p
-                      style="padding:5px; margin-left: 30px; width: 100px; background-color: #5874AF; color: white; border-radius: 5px;  font-size: 14px;">
-                      Software</p>
-              </td>
-              <td>
-                  <label class="switch">
-                      <input type="checkbox">
-                      <span class="slider round"></span>
-                  </label>
-              </td>
-              <td>
-                  <a href="" style="font-weight: 600;">
-                      Detail
-                  </a>
-              </td>
-          </tr>
+          </tr> 
+          @endforeach
+          
+        
 
       </table>
   </div>

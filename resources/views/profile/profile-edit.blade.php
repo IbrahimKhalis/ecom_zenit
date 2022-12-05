@@ -11,19 +11,19 @@
   
 <div class="contents">
   <div class="sub-content">
-      <a href="{{ route('profileseller') }}">My Profile</a>
-      <a href="{{ route('profile-edit') }}">Edit Profile</a>
+      <a href="{{ route('seller.profile') }}">My Profile</a>
+      <a href="{{ route('seller.edit.profile') }}">Edit Profile</a>
   </div>
 
   <div class="row-1">
       <div class="left">
-          <img src="assets/ALM00016.JPG" alt="">
-          <button id="btn-prof">Edit Profile</button>
+          <img src="{{ Auth::check() ? auth()->user()->profile->gallery->first()->getUrl() : asset('assets/img/user.png') }}" alt="">
+          <button id="btn-prof">Change Profile</button>
       </div>
       <div class="right">
-          <p>user 24124341</p>
-          <h1>Kiagus Ahmad Farhan Aziz</h1>
-          <textarea name="" id="" cols="117" rows="4">Gapapa jele yang penting sombong</textarea>
+          <p>#{{ Auth()->user()->id }}</p>
+          <h1>{{ Auth()->user()->name }}</h1>
+          <textarea name="" id="" cols="117" rows="4">{{ Auth()->user()->profile->desc }}</textarea>
           <p></p>
       </div>
   </div>
@@ -36,11 +36,11 @@
         </div>
             <div class="email">
                 <h3>Email</h3>
-                <p>agusganteng@gmail.com</p>
+                <p>{{ Auth()->user()->email }}</p>
             </div>
             <div class="pw">
                 <h3>Password</h3>
-                <p>*******</p>
+                <p>********</p>
             </div>
             <div class="btn-profile">
                 <button id="btn-form-rev" onclick="On_klik(this.id)">Change</button>
@@ -50,20 +50,20 @@
         <div class="fullname">
             <div class="first-name">
                 <label for="first-name">First Name</label>
-                <input type="text" name="firstname" id="first-name" value="First Name">
+                <input type="text" name="firstname" id="first-name" value="{{ Auth()->user()->profile->firstname }}">
             </div>
             <div class="last-name">
                 <label for="last-name">last Name</label>
-                <input type="text" name="lastname" id="last-name" value="Last Name">
+                <input type="text" name="lastname" id="last-name" value="{{ Auth()->user()->profile->lastname }}">
             </div>
         </div>
         <div class="phone">
             <label for="phone">Phone Number</label>
-            <input type="number" name="phone" id="phone" value="0812912812">
+            <input type="number" name="phone" id="phone" value="{{ Auth()->user()->profile->phoneNumber }}">
         </div>
         <div class="address">
             <label for="alamat">Address</label>
-            <textarea name="" id="" cols="30" rows="5"></textarea>
+            <textarea name="" id="" cols="30" rows="5">{{ Auth()->user()->profile->Address }}</textarea>
         </div>
         <div class="btn-save">
             <button>Save</button>
@@ -72,6 +72,7 @@
   </div>
 </div>
 
+    
 <div id="myForm" class="modalform">
     <div class="modalform-content">
         <div class="header">
@@ -87,11 +88,15 @@
             </div>
             <div class="email-modal">
                 <label for="email">Email</label>
-                <input type="email" name="email" id="email" value="agusganten@gmail.com">
+                <input type="email" name="email" id="email" value="{{ Auth()->user()->email }}">
             </div>
             <div class="password-modal">
                 <label for="password">Password</label>
-                <input type="password" name="password" id="password" value="10101010">
+                <input type="password" name="password" id="password" value="{{ Auth()->user()->password }}">
+            </div>
+            <div class="confirm-password-modal">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" value="">
             </div>
             <div class="btn-confirm">
                 <button id="cancel">Cancel</button>

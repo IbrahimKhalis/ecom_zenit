@@ -28,6 +28,8 @@
         <input type="text" name="phoneNumber" id="phoneNumber">
         <label for="Address">Address</label>
         <textarea name="Address" id="Address" cols="30" rows="10"></textarea>
+        <label for="descript">Descript Seller</label>
+        <textarea name="descript" id="descript" cols="30" rows="10"></textarea>
 
         <div class="form-group">
             <label for="gallery">Gallery</label>

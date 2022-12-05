@@ -22,13 +22,13 @@ class FavoriteController extends Controller
 
     public function add($products_id){
 
-        $check = Favorite::where('users_id', Auth::id())->where('products_id', $products_id)->first();
+        $check = Favorite::where('users_id', auth()->id())->where('products_id', $products_id)->first();
 
         if($check){
             return 'Already Been Favorite!';
         }else{
             Favorite::insert([
-                'users_id' => Auth::check(),
+                'users_id' => auth()->id(),
                 'products_id' => $products_id
             ]);
             return 'Added to Favorite!';
