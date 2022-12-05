@@ -69,6 +69,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/profile/create', [UserProfileController::class, 'create']);
+Route::post('/profile', [UserProfileController::class, 'store']);
 
 Route::get('/profile/your-profile', [UserProfileController::class, 'show'])->name('profile.cust');
 Route::get('/profile/edityour', [UserProfileController::class, 'edit'])->name('editprofile');
@@ -104,18 +105,20 @@ Route::get('/profile-edit-old', function () {
 })->name('profile-edit1');
 
 
+
+
+
 Route::get('/createprofile', function () {
     return view('create-profile');
 })->name('create-profile');
-
-Route::get('/seller/profile', function(){
-    return view('profile.profile');
-})->name('seller.profile');
 
 Route::get('/seller/profile/edit', function () {
     return view('profile.profile-edit');
 })->name('seller.edit.profile');
 
+Route::get('/seller/profile', function(){
+    return view('profile.profile');
+})->name('seller.profile');
 
 // Route::get('/productseller', function () {
 //     return view('seller.product-seller');
