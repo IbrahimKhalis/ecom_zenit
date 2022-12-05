@@ -74,7 +74,6 @@
                       <a href="{{ $cart->product->category->name != 'Software' ? url('cart/inc', $cart->id) : '' }}">
                         <button id='increase' {{ $cart->product->category->name == 'Software' ? 'disabled' : '' }} >+</button>
                       </a>
-    
                     </div>
                   </div>
                 </div>
