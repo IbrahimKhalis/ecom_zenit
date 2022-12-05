@@ -103,7 +103,6 @@ Route::get('/profile-edit-old', function () {
 })->name('profile-edit1');
 
 
-
 Route::get('/editprofile', function () {
     return view('profileedit-cust');
 })->name('editprofile');
@@ -113,13 +112,14 @@ Route::get('/createprofile', function () {
     return view('create-profile');
 })->name('create-profile');
 
+Route::get('/seller/profile', function(){
+    return view('profile.profile');
+})->name('seller.profile');
+
 Route::get('/seller/profile/edit', function () {
     return view('profile.profile-edit');
 })->name('seller.edit.profile');
 
-Route::get('/seller/profile', function(){
-    return view('profile.profile');
-})->name('seller.profile');
 
 // Route::get('/productseller', function () {
 //     return view('seller.product-seller');
