@@ -12,7 +12,7 @@
         <div class="pict">
             <img src="{{ auth()->user()->profile->gallery->first()->getUrl() }}"alt="">
 
-            <a href="{{ Route('editprofile')}}">
+            <a href="{{ Route('editprofile.cust')}}">
                 <button>Edit Profile</button>
             </a>
         </div>

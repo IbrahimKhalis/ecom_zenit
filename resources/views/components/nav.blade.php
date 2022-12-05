@@ -37,6 +37,11 @@
                                 <li class="nav-item"> 
                                     <a class="nav-link" href="{{ url('/favorite') }}"><i class="fa fa-heart" aria-hidden="true"></i></a>
                                 </li>
+                                @if( Auth::check() && auth()->user()->level == 'seller' || 'admin')
+                                <li class="nav-item">
+                                    <a class="nav-link" href=""><i class="fa-solid fa-store"></i></a>
+                                </li>
+                                @endif
 
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"

@@ -23,7 +23,7 @@
                     </div>
                 </a>
 
-                <a href="{{ Route('editprofile') }}">
+                <a href="{{ route('editprofile.cust') }}">
                     <div class="edit-profile">
                         <div class="edit-profile-content">
                             <iconify-icon icon="bxs:edit" class="edit-profile-icon"></iconify-icon>

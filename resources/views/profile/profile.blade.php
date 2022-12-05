@@ -18,7 +18,7 @@
   <div class="row-1">
       <div class="left">
           <img src="{{ Auth::check() ? auth()->user()->profile->gallery->first()->getUrl() : asset('assets/img/user.png') }}" alt="">
-          <button id="btn-prof">Change Profile</button>
+          <button id="btn-prof">Change Profile</button> 
       </div>
       <div class="right">
           <p>#{{ Auth()->user()->id }}</p>

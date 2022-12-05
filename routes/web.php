@@ -72,7 +72,7 @@ Route::get('/profile/create', [UserProfileController::class, 'create']);
 Route::post('/profile', [UserProfileController::class, 'store']);
 
 Route::get('/profile/your-profile', [UserProfileController::class, 'show'])->name('profile.cust');
-Route::get('/profile/edityour', [UserProfileController::class, 'edit'])->name('editprofile');
+Route::get('/profile/edityour', [UserProfileController::class, 'edit'])->name('editprofile.cust');
 
 Route::get('checkoutdetail', [OrderController::class, 'index'])->name('checkout-detail');
 Route::get('checkoutdetail/payment', [OrderController::class, 'payment'])->name('checkout-payment');
