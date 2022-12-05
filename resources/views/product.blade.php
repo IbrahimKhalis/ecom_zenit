@@ -228,6 +228,9 @@
           </div>
           @endforeach
         </div>
+        <div class="btn-paginate">
+          {!! $products->links() !!}
+      </div>
       </div>
     </div>
   </div>

@@ -184,11 +184,12 @@ background: linear-gradient(180deg, rgba(89,117,176,0.1) 29%, rgba(10,11,66,0) 1
 
 .featured-product h1 {
   font-family: 'Poppins', sans-serif;
-  letter-spacing: 10px;
+  letter-spacing: 7px;
   text-align: center;
   font-size: 50px;
   color: #3F5788;
   margin: 0;
+  font-weight: 600;
 }
 
 .featured-product h2 {
@@ -224,26 +225,28 @@ background: linear-gradient(180deg, rgba(89,117,176,0.1) 29%, rgba(10,11,66,0) 1
 }
 
 .name-product h3{
-  font-size: 30px;
-  color: #243964;
-  font-family: 'Raleway', sans-serif;
+  font-size: 40px;
+  color: #000;
+  font-family: 'poppins', sans-serif;
+  font-weight: 600;
 }
 
 .price-featured p{
   font-size: 30px;
-  color: #243964;
-  font-family: 'Poppins', sans-serif;
+  color: #000;
+  font-family: sans-serif;
+  font-weight: 600;
 }
 
 .description{
   width: 200px;
-  height: 200px;
+  min-height: 200px;
 }
 
 .description p{
-  font-size: 19px;
+  font-size: 17px;
   color: #333333;
-  font-family: 'Poppins', sans-serif;
+  font-family: sans-serif;
 }
 
 a {
@@ -255,11 +258,11 @@ a {
 }
 
 .btn-buy {
-  width: 160px;
-  height: 55px;
+  width: 140px;
+  height: 45px;
   background: #1C3879;
   border: none;
-  border-radius: 11px;
+  border-radius: 8px;
   color: white;
   cursor: pointer;
   font-size: 18px;
@@ -269,12 +272,12 @@ a {
   align-items: center;
   justify-content: center;
   gap: 15px;
-  margin-right: 50px;
+  margin-right: 30px;
 }
 
 .btn-cart {
-  width: 160px;
-  height: 55px;
+  width: 140px;
+  height: 45px;
   background: transparent;
   border: 1px solid black;
   border-radius: 1vh;
@@ -286,7 +289,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 15px;
+  gap: 7px;
 
 }
 

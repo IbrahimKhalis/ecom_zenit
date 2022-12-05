@@ -635,3 +635,10 @@ input:checked {
 .footer-simple {
     display: none;
 }
+
+.btn-paginate{
+    width: fit-content;
+    border: none;
+    background-color: transparent;
+    margin: 0px auto;
+}
