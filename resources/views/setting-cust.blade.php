@@ -13,7 +13,7 @@
         <div class="account">
             <p class="account-title">Account</p>
             <div class="account-content">
-                <a href="{{ url('profileC') }}">
+                <a href="{{ route('profile.cust') }}">
                     <div class="profile">
                         <div class="profile-content">
                             <iconify-icon icon="ic:baseline-account-circle" class="profile-icon"></iconify-icon>
