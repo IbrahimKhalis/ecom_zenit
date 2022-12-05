@@ -68,9 +68,10 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::resource('profile', UserProfileController::class);
+Route::get('/profile/create', [UserProfileController::class, 'create']);
 
 Route::get('/profile/your-profile', [UserProfileController::class, 'show'])->name('profile.cust');
+Route::get('/profile/edityour', [UserProfileController::class, 'edit'])->name('editprofile');
 
 Route::get('checkoutdetail', [OrderController::class, 'index'])->name('checkout-detail');
 Route::get('checkoutdetail/payment', [OrderController::class, 'payment'])->name('checkout-payment');
@@ -101,11 +102,6 @@ Route::get('/profile-seller-old', function () {
 Route::get('/profile-edit-old', function () {
     return view('seller.profile-edit-old');
 })->name('profile-edit1');
-
-
-Route::get('/editprofile', function () {
-    return view('profileedit-cust');
-})->name('editprofile');
 
 
 Route::get('/createprofile', function () {
