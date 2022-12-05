@@ -201,10 +201,21 @@ class CartController extends Controller
 
         $check->delete();
 
-        return redirect()->back()->with([
-            'message' => 'Delete successfully!',
-            'type' =>  'danger'
-        ]);
+        $carts = Cart::where('users_id', Auth()->id())->latest()->get();
+
+        $prices = [];
+
+        foreach($carts as $cart){
+            $price = $cart->product->price;
+
+            $subtotal = $price * $cart->quantity;
+
+            array_push($prices, $subtotal);
+        };
+
+        $total = array_sum($prices);
+
+        return view('components.tableCarts', compact('carts', 'total'));
     }
 
 

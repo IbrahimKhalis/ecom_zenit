@@ -70,10 +70,8 @@ class UserProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        $profile = User::find(auth()->id())->profile;
-
         return view('profilecust');
     }
 
@@ -83,9 +81,11 @@ class UserProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit()
     {
-        //
+        $profile = User::find(auth()->id())->profile;
+
+        return view('profileedit-cust', compact('profile'));
     }
 
     /**

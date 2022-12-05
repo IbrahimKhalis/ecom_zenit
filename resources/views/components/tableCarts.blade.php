@@ -1,11 +1,4 @@
-@extends('layout/app')
 
-@section('css')
-  <link rel="stylesheet" href="{{ asset('assets/css/cart.css')}}">
-@endsection
-
-@section('content')
-<div id="box1">
   <div class="container">
     <div class="content">
       <div class="left-content">
@@ -122,7 +115,3 @@
   
     </div>
   </div>
-</div>
-<script src="{{ asset('assets/js/cart.js')}}"></script>
-
-@endsection

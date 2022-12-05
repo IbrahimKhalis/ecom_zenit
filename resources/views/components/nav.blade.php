@@ -49,7 +49,7 @@
                                                     class="fa-solid fa-right-from-bracket"></i></a></li>
                                         <li>
                                         @else
-                                        <li><a class="dropdown-item user-setting" href="{{ url('profileC') }}">{{ Auth()->user()->name }}<i
+                                        <li><a class="dropdown-item user-setting" href="{{ url('profile/your-profile') }}">{{ Auth()->user()->name }}<i
                                                     class="fa-solid fa-user"></i></a>
                                         </li>
                                         <li>
