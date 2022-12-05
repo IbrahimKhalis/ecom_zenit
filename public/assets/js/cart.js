@@ -48,3 +48,20 @@ else{
   document.getElementById("btn-con").style = "background-color: #3333; color: black; cursor: no-drop;";
   document.getElementById("total").style = "display: none;";
 }});
+
+
+
+
+function trash(url){ 
+
+  let y = document.getElementById('box1')
+
+  $.ajax({
+    type: 'GET',
+    url: url,
+    success: function (response) {
+      y.innerHTML = response
+    }
+  });
+}
+
