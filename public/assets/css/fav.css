@@ -15,7 +15,7 @@ margin-bottom: 20px;
 
 .heart{
 font-size: 30px;
-color: red;
+color: rgb(254, 57, 57);
 }
 .your-fav p{
 font-size: 25px;
@@ -122,7 +122,8 @@ color: white;
 border: none;
 }
 .trash{
-font-size: 25px
+font-size: 25px;
+color:rgb(255, 45, 45);
 }
 
 .page{

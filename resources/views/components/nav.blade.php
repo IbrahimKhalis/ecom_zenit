@@ -37,9 +37,9 @@
                                 <li class="nav-item"> 
                                     <a class="nav-link" href="{{ url('/favorite') }}"><i class="fa fa-heart" aria-hidden="true"></i></a>
                                 </li>
-                                @if( Auth::check() && auth()->user()->level == 'seller' || 'admin')
+                                @if( Auth::check() && auth()->user()->level != 'customer')
                                 <li class="nav-item">
-                                    <a class="nav-link" href=""><i class="fa-solid fa-store"></i></a>
+                                    <a class="nav-link" href="{{ route('setting-info') }}"><i class="fa-solid fa-store"></i></a>
                                 </li>
                                 @endif
 
