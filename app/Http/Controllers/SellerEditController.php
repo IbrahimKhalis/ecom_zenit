@@ -2,14 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Traits\ImageUploadingTrait;
-use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class UserProfileController extends Controller
+class SellerEditController extends Controller
 {
-    use ImageUploadingTrait;
     /**
      * Display a listing of the resource.
      *
@@ -17,9 +14,7 @@ class UserProfileController extends Controller
      */
     public function index()
     {
-        $profile = Profile::all();
-
-        return $profile;
+        //
     }
 
     /**
@@ -29,7 +24,7 @@ class UserProfileController extends Controller
      */
     public function create()
     {
-        return view('create-profile');
+        //
     }
 
     /**
@@ -40,28 +35,7 @@ class UserProfileController extends Controller
      */
     public function store(Request $request)
     {
-
-        $validated = $request->validate([
-            'firstname' => 'bail|required|max:255',
-            'lastname' => 'required|max:255',
-            'phoneNumber' => 'required|numeric',
-            'Address' => 'required'
-        ]);
-
-        $profile = Profile::create([
-            'user_id' => Auth()->id(),
-            'firstname' => $request->firstname,
-            'lastname' => $request->lastname,
-            'phoneNumber' => $request->phoneNumber,
-            'Address' => $request->Address
-        ]);
-
-        foreach ($request->input('gallery', []) as $file) {
-            $profile->addMedia(storage_path('tmp/uploads/' . $file))->toMediaCollection('gallery');
-        }
-
-        return redirect('/');
-
+        //
     }
 
     /**
@@ -70,9 +44,9 @@ class UserProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show($id)
     {
-        return view('profilecust');
+        //
     }
 
     /**
@@ -81,11 +55,9 @@ class UserProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit($id)
     {
-        $profile = User::find(auth()->id())->profile;
-
-        return view('profileedit-cust', compact('profile'));
+        
     }
 
     /**
@@ -97,7 +69,27 @@ class UserProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
-       
+        $request->validate([
+            'username' => 'required',
+            'firstname' => 'required',
+            'lastname' => 'required',
+            'phoneNumber' => 'required | numeric',
+            'Address' => 'required'
+        ]);
+
+        $user = User::find($id);
+        $user->name = $request->username;
+        $user->update(); 
+
+        $profile = $user->profile;
+        $profile->firstname = $request->firstname;
+        $profile->lastname = $request->lastname;
+        $profile->phoneNumber = $request->phoneNumber;
+        $profile->Address = $request->Address;
+
+        $profile->update();
+
+        return redirect('seller/profile/edit');
     }
 
     /**

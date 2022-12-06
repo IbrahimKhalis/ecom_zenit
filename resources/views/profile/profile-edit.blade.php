@@ -20,10 +20,14 @@
           <img src="{{ Auth::check() ? auth()->user()->profile->gallery->first()->getUrl() : asset('assets/img/user.png') }}" alt="">
           <button id="btn-prof">Change Profile</button>
       </div>
+    <form action="{{ url('/seller/profile/save', auth()->id()) }}" method="POST">
+        @csrf
+        @method('PUT')
+        
       <div class="right">
           <p>#{{ Auth()->user()->id }}</p>
-          <h1>{{ Auth()->user()->name }}</h1>
-          <textarea name="" id="" cols="117" rows="4">{{ Auth()->user()->profile->desc }}</textarea>
+          <input type="text" maxlength="15" class="username" name="username" value="{{ Auth()->user()->name }}" required>
+          <textarea name="" id="" cols="117" rows="4">{{ Auth()->user()->profile->desk }}</textarea>
           <p></p>
       </div>
   </div>
@@ -50,29 +54,30 @@
         <div class="fullname">
             <div class="first-name">
                 <label for="first-name">First Name</label>
-                <input type="text" name="firstname" id="first-name" value="{{ Auth()->user()->profile->firstname }}">
+                <input type="text" maxlength="25" name="firstname" id="first-name" value="{{ Auth()->user()->profile->firstname }}" required>
             </div>
             <div class="last-name">
                 <label for="last-name">last Name</label>
-                <input type="text" name="lastname" id="last-name" value="{{ Auth()->user()->profile->lastname }}">
+                <input type="text" maxlength="25" name="lastname" id="last-name" value="{{ Auth()->user()->profile->lastname }}" required>
             </div>
         </div>
         <div class="phone">
             <label for="phone">Phone Number</label>
-            <input type="number" name="phone" id="phone" value="{{ Auth()->user()->profile->phoneNumber }}">
+            <input type="text" maxlength="13" name="phoneNumber" id="phone" value="{{ Auth()->user()->profile->phoneNumber }}" required>
         </div>
         <div class="address">
             <label for="alamat">Address</label>
-            <textarea name="" id="" cols="30" rows="5">{{ Auth()->user()->profile->Address }}</textarea>
+            <textarea name="Address" id="" maxlength="150" cols="30" rows="5" required>{{ Auth()->user()->profile->Address }}</textarea>
         </div>
         <div class="btn-save">
-            <button>Save</button>
+            <button type="submit">Save</button>
         </div>
     </div>
   </div>
 </div>
+</form>
 
-    
+
 <div id="myForm" class="modalform">
     <div class="modalform-content">
         <div class="header">
