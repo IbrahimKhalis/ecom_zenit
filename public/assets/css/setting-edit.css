@@ -1,0 +1,31 @@
+.menu-setting {
+  background-color: #ECF3FE;
+}
+
+.contents{
+    margin-left: 350px;
+}
+.sub-content {
+    display: flex;
+    gap: 25px;
+    width: 950px;
+    border-bottom: 1px solid black;
+    margin: 20px 30px;
+    padding: 10px;
+}
+
+.sub-content a {
+  text-decoration: none;
+  color: #000;
+  font-weight: 600;
+}
+
+.sub-content a:nth-child(2){
+  color: #5874af;
+}
+
+.card-store {
+  width: 100%;
+  height: 100px;
+  border: 1px solid #eee;
+}

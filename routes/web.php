@@ -181,3 +181,7 @@ Route::get('/report-invoice', function () {
 })->name('report-invoice');
 
 Route::get('/product/detail/review/{product:slug?}', [ReviewController::class, 'show'])->name('product.review');
+
+Route::get('/seller/editstore', function () {
+    return view('seller.setting-store');
+})->name('edit-info');
