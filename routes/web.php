@@ -193,3 +193,7 @@ Route::get('/product/detail/review/{product:slug?}', [ReviewController::class, '
 Route::get('/seller/editstore', function () {
     return view('seller.setting-store');
 })->name('edit-info');
+
+Route::get('/notif', function () {
+    return view('notif');
+})->name('notif');
