@@ -70,6 +70,7 @@ Auth::routes();
 
 Route::get('/profile/create', [UserProfileController::class, 'create']);
 Route::post('/profile', [UserProfileController::class, 'store']);
+Route::put('/profile', [UserProfileController::class, 'update'])->name('update.profile');
 
 Route::get('/profile/your-profile', [UserProfileController::class, 'show'])->name('profile.cust');
 Route::get('/profile/edityour', [UserProfileController::class, 'edit'])->name('editprofile.cust');
