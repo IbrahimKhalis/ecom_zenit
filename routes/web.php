@@ -73,6 +73,7 @@ Auth::routes();
 
 Route::get('/profile/create', [UserProfileController::class, 'create']);
 Route::post('/profile', [UserProfileController::class, 'store']);
+Route::put('/profile', [UserProfileController::class, 'update'])->name('update.profile');
 
 Route::get('/profile/your-profile', [UserProfileController::class, 'show'])->name('profile.cust');
 Route::get('/profile/edityour', [UserProfileController::class, 'edit'])->name('editprofile.cust');
@@ -188,3 +189,7 @@ Route::get('/report-invoice', function () {
 Route::put('/user/edit/{id}', [UserProfileController::class, 'update']);
 
 Route::get('/product/detail/review/{product:slug?}', [ReviewController::class, 'show'])->name('product.review');
+
+Route::get('/seller/editstore', function () {
+    return view('seller.setting-store');
+})->name('edit-info');

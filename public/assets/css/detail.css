@@ -389,8 +389,8 @@
 }
 
 .card-product {
-  width: 170px;
-  height: 260px;
+  width: 185px;
+  min-height: 260px;
   background-color: #fff;
   box-shadow: 1px 1px 5px rgba(151, 151, 151, 0.477);
   box-sizing: border-box;
@@ -398,8 +398,8 @@
 }
 
 .card-product img{
-  width: 150px;
-  height: 150px;
+  width: 165px;
+  height: 165px;
   object-fit: cover;
   background-size: contain;
   border-radius: 7px;

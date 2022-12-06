@@ -106,7 +106,7 @@ class SController extends Controller
             }
         }
 
-        $products = $products->paginate();
+        $products = $products->paginate(4);
 
         return view('product',compact('products', 'tags', 'favorites'));
 
@@ -189,7 +189,7 @@ class SController extends Controller
             }
         }
 
-        $products = $products->paginate();
+        $products = $products->paginate(4);
 
         return view('product',compact('products', 'tags'));
 
@@ -243,7 +243,7 @@ class SController extends Controller
                 'slug' => $slug,
             ]);
         })
-        ->paginate();
+        ->paginate(4);
 
         return view('product', compact('products','slug', 'tags'));
     }

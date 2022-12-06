@@ -47,7 +47,9 @@
 
     </div>
   </div>
-  {{ $favor->links() }}
+  <div class="btn-paginate">
+    {{ $favor->links() }}
+</div>
 
 </div>
 

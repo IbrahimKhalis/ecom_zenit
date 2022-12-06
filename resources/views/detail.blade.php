@@ -154,7 +154,9 @@
     </div>
     <div class="other-comment">
       <div class="btn-see-more">
+        @if ($ratings->count() >= 1)
         <button id="btn-review" onClick="Open_click(this.id)">See More...</button>
+        @endif
       </div>
       <div class="btn-more"></div>
       @foreach ($ratings->take(5) as $rating)
@@ -213,7 +215,7 @@
           </div>
           <div class="row-price">
             <div class="price">
-              <p>Rp. {{ $related_product->price }}</p>
+              <p>Rp {{ number_format($related_product->price,0,',','.') }}</p>
             </div>
             <div class="other-btn">
               <div class="btn-detail">
