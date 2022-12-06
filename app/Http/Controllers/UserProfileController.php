@@ -45,7 +45,8 @@ class UserProfileController extends Controller
             'firstname' => 'bail|required|max:255',
             'lastname' => 'required|max:255',
             'phoneNumber' => 'required|numeric',
-            'Address' => 'required'
+            'Address' => 'required',
+            'gallery'=>'required',
         ]);
 
         $profile = Profile::create([
@@ -83,6 +84,7 @@ class UserProfileController extends Controller
      */
     public function edit()
     {
+
         $profile = User::find(auth()->id())->profile;
 
         return view('profileedit-cust', compact('profile'));
@@ -95,9 +97,38 @@ class UserProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'firstname' => 'bail|required|max:255',
+            'lastname' => 'required|max:255',
+            'phoneNumber' => 'required|numeric',
+            'Address' => 'required',
+            'gallery'=>'required',
+        ]);
+        
+        
+        $profile = Profile::where('user_id', auth()->id())->first();
+
+        $profile->update($request->all());
+
+        if (count($profile->gallery) > 0) {
+            foreach ($profile->gallery as $media) {
+                if (!in_array($media->file_name, $request->input('gallery', []))) {
+                    $media->delete();
+                }
+            }
+        }
+
+        $media = $profile->gallery->pluck('file_name')->toArray();
+
+        foreach ($request->input('gallery', []) as $file) {
+            if (count($media) === 0 || !in_array($file, $media)) {
+                $profile->addMedia(storage_path('tmp/uploads/' . $file))->toMediaCollection('gallery');
+            }
+        }
+
+        return redirect('/');
     }
 
     /**

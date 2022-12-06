@@ -22,9 +22,13 @@
                 <p>Complete this step, to complete your profile account, which will make it easier to make orders later
                 </p>
             </div>
-            <div class="warning-alert">
+            <div class="warning-alert" style="">
                 <iconify-icon icon="material-symbols:info-rounded"></iconify-icon>
+                @if ($errors->any())
+                <p style="color:red;">{{ $errors->first() }}</p>
+                @else
                 <p>Silahkan isi data diri anda untuk melanjutkan</p>
+                @endif
             </div>
         </div>
     </div>
@@ -42,8 +46,8 @@
                     <p>1. Set Your full name</p>
                 </div>
                 <div class="input-name">
-                    <input type="text" name="firstname" id="firstname" placeholder="First Name" required>
-                    <input type="text" name="lastname" id="lastname" placeholder="Last Name" required>
+                    <input type="text" name="firstname" id="firstname" placeholder="First Name" required value="{{ old('firstname') }}">
+                    <input type="text" name="lastname" id="lastname" placeholder="Last Name" required value="{{ old('lastname') }}">
                 </div>
             </div>
             <div class="phone-number">
@@ -51,7 +55,7 @@
                     <p>1. Set Your phone number</p>
                 </div>
                 <div class="input-number">
-                    <input type="text" name="phoneNumber" id="phoneNumber" placeholder="Phone Number" maxlength="15" required>
+                    <input type="text" name="phoneNumber" id="phoneNumber" placeholder="Phone Number" maxlength="15" required value="{{ old('phoneNumber') }}">
                 </div>
             </div>
             <div class="address">
@@ -59,7 +63,7 @@
                     <p>3. Set your Address for delivery purpose</p>
                 </div>
                 <div class="input-address">
-                    <textarea name="Address" id="Address" cols="77" rows="9" placeholder="Address" required></textarea>
+                    <textarea name="Address" id="Address" cols="77" rows="9" placeholder="Address" required>{{ old('Address') }}</textarea>
                 </div>
             </div>
             <div class="profile">
