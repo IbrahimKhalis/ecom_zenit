@@ -23,7 +23,7 @@
       <div class="right">
           <p>#{{ Auth()->user()->id }}</p>
           <h1>{{ Auth()->user()->name }}</h1>
-          <p>{{ Auth()->user()->profile->desc }}</p>
+          <p>{{ Auth()->user()->profile->desk }}</p>
       </div>
   </div>
 

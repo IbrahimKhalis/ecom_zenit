@@ -67,6 +67,12 @@
 .row-1 p:first-child {
     font-size: 20px;
 }
+.row-1 .username{
+    font-size: 40px;
+    font-weight: 800;
+    font-family:'quicksand' ;
+    margin-bottom: 15px;
+}
 
 .form-profile{
   display: flex;
@@ -81,6 +87,9 @@
   box-shadow: 1px 1px 7px rgba(63, 63, 63, 0.36);
   border-radius: 5px;
 }
+textarea {
+    resize: none;
+  }
 
 .warning-alert {
   width: 100%;

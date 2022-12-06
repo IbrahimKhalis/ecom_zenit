@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\HControllerr;
@@ -13,6 +14,8 @@ use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\RatingController;
 use App\Http\Controllers\SellerdashboardController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\SellerController;
+use App\Http\Controllers\SellerEditController;
 use Illuminate\Contracts\Auth\UserProvider;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -117,6 +120,8 @@ Route::get('/seller/profile/edit', function () {
     return view('profile.profile-edit');
 })->name('seller.edit.profile');
 
+Route::put('/seller/profile/save/{id}', [SellerEditController::class, 'update']);
+
 Route::get('/seller/profile', function(){
     return view('profile.profile');
 })->name('seller.profile');
@@ -180,6 +185,8 @@ Route::get('/setting-scedhule', function () {
 Route::get('/report-invoice', function () {
     return view('seller.report-invoice');
 })->name('report-invoice');
+
+Route::put('/user/edit/{id}', [UserProfileController::class, 'update']);
 
 Route::get('/product/detail/review/{product:slug?}', [ReviewController::class, 'show'])->name('product.review');
 
