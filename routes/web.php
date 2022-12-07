@@ -197,3 +197,11 @@ Route::get('/seller/editstore', function () {
 Route::get('/notif', function () {
     return view('notif');
 })->name('notif');
+
+Route::get('/otpverification', function () {
+    return view('otp-verif');
+})->name('otp');
+
+Route::get('/customer/order', function () {
+    return view('myorder');
+})->name('order');

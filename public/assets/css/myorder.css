@@ -1,0 +1,247 @@
+.content-order {
+    margin: 130px 70px;
+}
+
+.content-order h1 {
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.menus {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0px;
+}
+
+.head {
+    display: flex;
+    justify-content: space-between;
+}
+
+.left-row ul {
+    display: flex;
+    list-style: none;
+}
+
+.left-row li {
+    border: 1px solid black;
+    padding: 3px 17px;
+}
+
+.left-row li:first-child {
+    border-start-start-radius: 10px;
+    border-end-start-radius: 10px;
+    background-color: #233874;
+}
+
+.left-row li a {
+    text-decoration: none;
+    color: #000000;
+    font-weight: 700;
+}
+
+.left-row li a:first-child {
+    color: black;
+}
+
+.left-row li:last-child {
+    border-end-end-radius: 10px;
+    border-start-end-radius: 10px;
+}
+
+.filter-dropdown select {
+    width: 130px;
+}
+
+.filter-dropdown,
+.filter-dropdown * {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.filter-dropdown {
+    position: relative;
+    background-color: #e6e6e6c7;
+    border-radius: 4px;
+    height: 33px;
+}
+
+.filter-dropdown select {
+    font-size: 1rem;
+    font-weight: normal;
+    max-width: 100%;
+    padding: 5px;
+    border: none;
+    background-color: transparent;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.filter-dropdown select>* {
+    background-color: #e6e6e6c7;
+    outline: none;
+    border: none;
+}
+
+.filter-dropdown select:active,
+.filter-dropdown select:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.filter-dropdown:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    width: 0;
+    height: 0;
+    margin-top: -2px;
+    border-top: 5px solid #aaa;
+    border-right: 5px solid transparent;
+    border-left: 5px solid transparent;
+}
+
+table {
+    margin: auto;
+}
+
+table th {
+    text-align: center;
+    border-top: #233874 solid 25px;
+    border-top-right-radius: 10px;
+}
+
+table tr {
+    height: 50px;
+}
+
+table td {
+    width: 200px;
+    text-align: center;
+    border-top: 0.5px solid black;
+}
+
+.status {
+    display: flex;
+    justify-content: center;
+}
+
+.status-verif {
+    background-color: rgba(249, 187, 2, 0.555);
+    width: 110px;
+    padding: 2px 15px;
+    display: flex;
+    justify-content: center;
+    border-radius: 8px;
+    align-items: center;
+    margin: 5px;
+    gap: 5px;
+}
+
+.status-proses {
+    background-color: #3f7eca8e;
+    width: fit-content;
+    padding: 4px 5px;
+    font-size: 14px;
+    width: 110px;
+    display: flex;
+    justify-content: center;
+    border-radius: 8px;
+    color: black;
+    align-items: center;
+    margin: 5px;
+    gap: 5px;
+}
+
+.status-shipped {
+    background-color: rgba(168, 232, 168, 0.434);
+    width: fit-content;
+    padding: 3px 5px;
+    width: 110px;
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    border-radius: 8px;
+    color: black;
+    align-items: center;
+    margin: 10px;
+    gap: 8px;
+}
+
+.status-delivered {
+    background-color: rgba(14, 104, 14, 0.434);
+    width: fit-content;
+    padding: 3px 5px;
+    width: 110px;
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    border-radius: 8px;
+    color: black;
+    align-items: center;
+    margin: 10px;
+    gap: 8px;
+}
+
+.status-done {
+    background-color: white;
+    border: 0.4px solid rgba(0, 0, 0, 0.462);
+    width: fit-content;
+    padding: 3px 5px;
+    width: 110px;
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    border-radius: 8px;
+    color: rgba(0, 0, 0, 0.716);
+    align-items: center;
+    margin: 10px;
+    gap: 5px;
+}
+
+.status-canceled {
+    background-color: rgba(195, 43, 43, 0.914);
+    width: fit-content;
+    padding: 3px 5px;
+    width: 110px;
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    border-radius: 8px;
+    color: white;
+    align-items: center;
+    margin: 10px;
+    gap: 5px;
+}
+
+.status-refund {
+    background-color: #F3F4F8;
+    width: fit-content;
+    padding: 3px 5px;
+    width: 110px;
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    border-radius: 8px;
+    color: #838C98;
+    align-items: center;
+    margin: 10px;
+    gap: 5px;
+}
+
+
+
+
+td a {
+    text-decoration: none;
+    color: white;
+    background-color: #233874;
+    padding: 5px 18px;
+    font-size: 14px;
+    border-radius: 5px;
+}
