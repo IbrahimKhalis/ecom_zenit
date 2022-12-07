@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\FavoriteController;
@@ -206,3 +207,5 @@ Route::get('/otpverification', function () {
 Route::get('/customer/order', function () {
     return view('myorder');
 })->name('order');
+
+Route::get('export/sale/data', [PController::class, 'export']);

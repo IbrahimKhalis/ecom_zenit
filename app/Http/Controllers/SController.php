@@ -14,7 +14,6 @@ class SController extends Controller
 
         $products = Product::with('category');
 
-        $products->where('isActive', 1);
 
         $tags = [];
         $favorites = [0];
@@ -108,7 +107,9 @@ class SController extends Controller
             }
         }
 
-        $products = $products->paginate(4);
+        $products->where('isActive', 1);
+
+        $products = $products->paginate();
 
         return view('product',compact('products', 'tags', 'favorites'));
 
@@ -119,7 +120,6 @@ class SController extends Controller
 
         $products = Product::with('category');
 
-        $products->where('isActive', 1);
 
         $tags = [];
 
@@ -193,6 +193,8 @@ class SController extends Controller
             }
         }
 
+        $products->where('isActive', 1);
+
         $products = $products->paginate(4);
 
         return view('product',compact('products', 'tags'));
@@ -203,7 +205,6 @@ class SController extends Controller
     {
         $products = Product::with('tags');
 
-        $products->where('isActive', 1);
 
         $tags = [];
 
@@ -249,7 +250,9 @@ class SController extends Controller
                 'slug' => $slug,
             ]);
         })
+        ->where('isActive', 1)
         ->paginate(4);
+
 
         return view('product', compact('products','slug', 'tags'));
     }
