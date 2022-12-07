@@ -100,10 +100,11 @@ nav {
 }
 
 .title img {
-  max-width: 10vw;
-  max-height: 9.5vh;
+  margin-top: -10%;
+  max-width: 9.765625vw;
+  max-height: 17.03800786369594vh;
   width: 150px;
-  height: 70px;
+  height: 130px;
 }
 
 .search-web {
