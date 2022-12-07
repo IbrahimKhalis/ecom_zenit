@@ -114,6 +114,7 @@
                       <div class="price">
                         <p>Rp {{ number_format($product->price,0,',','.') }}</p>
                       </div>
+                      @if(Auth::check())
                       <div class="button-detail">
                         <button class="modal__button" id="open-modal" onClick="Open_click('{{ $product->gallery->first()->getUrl() }}', '{{ $product->major }}', '{{ $product->name }}', '{{ $product->price }}', '{{ url('/cart/modal', $product->id) }}')"><i class="fa-solid fa-cart-shopping"></i></button>
                         <button class="modal__button" id="open-modal" onClick="Open_click('{{ $product->gallery->first()->getUrl() }}', '{{ $product->major }}', '{{ $product->name }}', '{{ $product->price }}', '{{ url('/favorite/add', $product->id) }}')">
@@ -124,6 +125,7 @@
                         @endif
                         </button>
                       </div>
+                      @endif
                     </div>
                   </div>
                 </div>
