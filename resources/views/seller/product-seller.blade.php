@@ -28,7 +28,7 @@
             </div>
         </div>
         <div class="add-product">
-            <a href="">
+            <a href="{{ url('/addproduct') }}">
                 <button>Add Product</button>
             </a>
         </div>
@@ -37,7 +37,7 @@
     <div class="product-tabs">
         <table border="1px">
             <tr>
-                <th>Id</th>
+                <th>Prod Id</th>
                 <th>Image</th>
                 <th>Name</th>
                 <th>Stock</th>
