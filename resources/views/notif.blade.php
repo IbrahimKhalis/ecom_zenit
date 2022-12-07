@@ -44,7 +44,7 @@
               <p class="desc">
                   Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident eos id voluptas nemo? Reprehenderit, numquam laudantium. Recusandae assumenda debitis, qui cum est molestiae.
               </p>
-              <button class="more-info">More Information</button>
+              <button class="more-info" onclick="On_klik(this.id)">More Information</button>
 
           </div>
       </div>
@@ -72,7 +72,7 @@
               <p class="desc">
                   Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident eos id voluptas nemo? Reprehenderit, numquam laudantium. Recusandae assumenda debitis, qui cum est molestiae.
               </p>
-              <button class="more-info">More Information</button>
+              <button class="more-info" onclick="On_klik(this.id)">More Information</button>
 
           </div>
       </div>
@@ -100,9 +100,47 @@
               <p class="desc">
                   Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident eos id voluptas nemo? Reprehenderit, numquam laudantium. Recusandae assumenda debitis, qui cum est molestiae.
               </p>
-              <button class="more-info">More Information</button>
+              <button class="more-info" onclick="On_klik(this.id)">More Information</button>
 
           </div>
       </div>
 </div>
+<div id="myNotif" class="modalnotif">
+    <div class="modal-mid">
+        <div class="modalnotif-content">
+            <div class="header">
+                <span class="close close-notif">&times;</span>
+            </div>
+            <div class="content">
+                <div class="modal-profile">
+                    <div class="modal-img-prof">
+                        <img src="{{ asset('assets/img/user.png') }}" alt="">
+                    </div>
+                    <div class="info-notif">
+                        <p>Laporan Kalo barang ini utiwi</p>
+                        <p>
+                            <span>
+                                <iconify-icon icon="mdi:user-outline"></iconify-icon>
+                                From Agus Mart
+                            </span>
+                            <span>
+                                <iconify-icon icon="mdi:clock-time-four-outline"></iconify-icon>
+                                1 Hours Ago
+                            </span>
+                        </p>
+                    </div>
+                </div>
+                <div class="massage-notif">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, magnam? Ipsum iste voluptas cum corrupti incidunt repellat? Dolorem esse repudiandae quae saepe sequi beatae natus magni consequatur, officia deserunt ipsam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod ipsam delectus nostrum est aut asperiores possimus aperiam molestiae alias. Quam saepe, voluptatibus debitis recusandae quos fugiat neque voluptatem quod suscipit.
+                    </p>
+                </div>
+                <div class="btn-read">
+                    <button>Mark As Read</button>
+                </div>
+            </div>
+        </div>
+    
+    </div>
+</div>
+<script src="{{ asset('assets/js/notif.js') }}"></script>
 @endsection
