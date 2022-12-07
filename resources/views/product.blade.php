@@ -2,6 +2,7 @@
 
 @section('css')
   <link rel="stylesheet" href="{{ asset('assets/css/product.css')}}">
+  <link rel="stylesheet" href="{{ asset('assets/css/product-not-found.css')}}">
 @endsection
 
 @section('content')
@@ -193,6 +194,9 @@
       </div> --}}
       <div class="product">
         <div class="row-top-product">
+          @if ($products->count() == 0)
+            @include('components.product-not-found')
+          @else
           @foreach($products as $product)
           <div class="card-product">
             <div class="img-card">
@@ -231,6 +235,7 @@
             </div>
           </div>
           @endforeach
+          @endif
         </div>
         <div class="btn-paginate">
           {!! $products->links() !!}

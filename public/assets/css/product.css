@@ -318,7 +318,7 @@ input:checked {
 }
 .filter-dropdown:after {
   content: "";
-  position: absolute;
+  position: absolute;   
   top: 50%;
   right: 8px;
   width: 0;
