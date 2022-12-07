@@ -14,6 +14,8 @@ class SController extends Controller
 
         $products = Product::with('category');
 
+        $products->where('isActive', 1);
+
         $tags = [];
         $favorites = [0];
         
@@ -117,6 +119,8 @@ class SController extends Controller
 
         $products = Product::with('category');
 
+        $products->where('isActive', 1);
+
         $tags = [];
 
         if($request->search != null){
@@ -198,6 +202,8 @@ class SController extends Controller
     public function tag(Request $request, $slug)
     {
         $products = Product::with('tags');
+
+        $products->where('isActive', 1);
 
         $tags = [];
 

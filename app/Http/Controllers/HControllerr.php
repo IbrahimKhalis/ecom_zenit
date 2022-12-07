@@ -11,7 +11,7 @@ class HControllerr extends Controller
 {
     public function index(){
 
-        $products = Product::with('category')->get();
+        $products = Product::with('category')->where('isActive', 1)->get();
         $favorites = [0];
 
         if(Auth::check()){
@@ -25,6 +25,7 @@ class HControllerr extends Controller
 
     public function getProducts(){
         $products = Product::with('category')->get();
+        $products->where('isActive', true);
 
         return response()->json([
             'status' => 200,
