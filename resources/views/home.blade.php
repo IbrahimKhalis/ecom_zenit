@@ -64,7 +64,7 @@
       </a>
     </div>
   </div>
-  <div class="featured-product" data-aos="fade-up">
+  <div class="featured-product" data-aos="zoom-in-up">
     <h1>Featured Product</h1>
     <h2>This Week</h2>
     <div class="product">
@@ -89,7 +89,7 @@
       </div>
     </div>
   </div>
-  <div class="our-product" data-aos="fade-up">
+  <div class="our-product" data-aos="zoom-in-up">
     <h1>Our Product</h1>
       <div id="wrapper">
         <div id="carousel">

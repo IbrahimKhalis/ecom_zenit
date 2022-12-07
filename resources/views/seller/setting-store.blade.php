@@ -28,7 +28,7 @@
             </div>
             <div class="desc">
               <label for="desc">Description</label>
-              <textarea name="" id="" cols="30" rows="6"></textarea>
+              <textarea name="" id="" cols="30" rows="5"></textarea>
             </div>    
           </div>
           <div class="col2">
@@ -47,18 +47,24 @@
                 <input type="text" name="ig" id="ig">
               </div>  
               <div class="gmail">
-                <label for="gmail"><img src="{{ asset('assets/img/gmail.png') }}" alt=""> Gmail</label>
-                <input type="text" name="ig" id="ig">
+                <label for="gmail"><iconify-icon icon="simple-icons:gmail"></iconify-icon> Gmail</label>
+                <input type="text" name="gmail" id="gmail">
               </div>  
             </div>
             <div class="col2">
               <div class="linkedin">
-                <label for="ig"><img src="{{ asset('assets/img/linkedin.png') }}" alt=""> linkedin</label>
-                <input type="text" name="ig" id="ig">
+                <label for="link"><iconify-icon icon="mdi:linkedin"></iconify-icon> linkedin</label>
+                <input type="text" name="link" id="link">
+              </div>  
+              <div class="cv">
+                <label for="cv"><iconify-icon icon="ic:baseline-insert-drive-file"></iconify-icon> portofolio/cv</label>
+                <input type="text" name="cv" id="link">
               </div>  
             </div>
-  
           </div>
+        </div>
+        <div class="btn-save">
+          <button>Save</button>
         </div>
       </div>
     </div>
