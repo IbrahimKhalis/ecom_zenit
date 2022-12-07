@@ -26,9 +26,8 @@
         
       <div class="right">
           <p>#{{ Auth()->user()->id }}</p>
-          <input type="text" maxlength="15" class="username" name="username" value="{{ Auth()->user()->name }}" required>
-          <textarea name="" id="" cols="117" rows="4">{{ Auth()->user()->profile->desk }}</textarea>
-          <p></p>
+          <input type="text" maxlength="15" class="username" name="username" value="{{ Auth()->user()->name }}" required> <br>
+          <textarea name="desk" id="" cols="117" rows="4">{{ Auth()->user()->profile->desk }}</textarea>
       </div>
   </div>
 

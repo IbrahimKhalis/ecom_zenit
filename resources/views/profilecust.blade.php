@@ -12,7 +12,7 @@
         <div class="pict">
             <img src="{{ auth()->user()->profile->gallery->first()->getUrl() }}"alt="">
 
-            <a href="{{ Route('editprofile.cust')}}">
+            <a href="{{ route('editprofile.cust')}}">
                 <button>Edit Profile</button>
             </a>
         </div>
@@ -59,7 +59,11 @@
         <div class="row1">
             <div class="store">
                 <iconify-icon id="logo" icon="ic:round-store-mall-directory"></iconify-icon>
-                <p>Aldo Mart</p>
+                <p>
+                    @foreach($order->orderItem as $item)
+                    {{ $item->products->users->shop->name }}
+                    @endforeach
+                </p>
             </div>
             <p class="total">Total</p>
         </div>
@@ -68,22 +72,16 @@
             <div class="produknya">
                 <img src="assets/web4.jpg" alt="">
             </div>
+            
             <div class="detail-produk">
+            @foreach($order->orderItem as $item)
                 <div class="nama-status">
-                    <p>{{ auth()->user()->order }}</p>
-                    <div class="statusnya">Confirmed</div>
-
+                    <p>{{ $item->products->name }}</p>
+                    <div class="statusnya">{{ $item->product_qty }}</div>
                 </div>
-                <div class="tanggal">
-                    <p>22-22-2222</p>
-                </div>
-                <div class="jumlah-harga">
-                    <p>1x Rp.2000000000</p>
-                </div>
-                <div class="status">
-                    <p>Stuff Received</p>
-                </div>
+            @endforeach
             </div>
+    
             <div class="row-kanan">
                     <div class="harga-total">
             <p>Rp.50.000,00</p>
