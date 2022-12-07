@@ -247,7 +247,8 @@ form.sign-in-form {
   width: 170px;
 }
 .input-field input{
-  width: 350px;
+  width: 320px;
+  border-radius: 30px;
   padding-left: 20px;
   padding-right: 20px;
 }

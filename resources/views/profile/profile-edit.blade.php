@@ -26,9 +26,8 @@
         
       <div class="right">
           <p>#{{ Auth()->user()->id }}</p>
-          <input type="text" maxlength="15" class="username" name="username" value="{{ Auth()->user()->name }}" required>
-          <textarea name="" id="" cols="117" rows="4">{{ Auth()->user()->profile->desk }}</textarea>
-          <p></p>
+          <input type="text" maxlength="15" class="username" name="username" value="{{ Auth()->user()->name }}" required> <br>
+          <textarea name="desk" id="" cols="117" rows="4">{{ Auth()->user()->profile->desk }}</textarea>
       </div>
   </div>
 
@@ -39,15 +38,22 @@
             <p>This Action needed confirmation to your email, please after you completed this action check your email to confirm</p>
         </div>
             <div class="email">
-                <h3>Email</h3>
-                <p>{{ Auth()->user()->email }}</p>
+                <div class="content-email">
+                    <h3>Email</h3>
+                    <p>{{ Auth()->user()->email }}</p>    
+                </div>
+                <div class="btn-profile">
+                    <label id="btn-form-rev" onclick="On_klik(this.id)">Change</label>
+                </div>
             </div>
             <div class="pw">
-                <h3>Password</h3>
-                <p>********</p>
-            </div>
-            <div class="btn-profile">
-                <button id="btn-form-rev" onclick="On_klik(this.id)">Change</button>
+                <div class="content-pw">
+                    <h3>Password</h3>
+                    <p>********</p>    
+                </div>
+                <div class="btn-profile">
+                    <label id="btn-form-rev" onclick="On_klick(this.id)">Change</label>
+                </div>
             </div>
     </div>
     <div class="right-form">
@@ -78,22 +84,18 @@
 </form>
 
 
-<div id="myForm" class="modalform">
-    <div class="modalform-content">
+<div id="myEmail" class="modalemail">
+    <div class="modalemail-content">
         <div class="header">
-            <span class="close close-form">&times;</span>
+            <span class="close close-email">&times;</span>
         </div>
         <div class="content">
             <div class="title-header">
-                <p>Change Email And Password</p>
+                <p>Change Email</p>
             </div>
             <div class="warning-alert">
                 <iconify-icon icon="material-symbols:info-rounded"></iconify-icon>
                 <p>This Action needed confirmation to your email, please after you completed this action check your email to confirm</p>
-            </div>
-            <div class="email-modal">
-                <label for="email">Email</label>
-                <input type="email" name="email" id="email" value="{{ Auth()->user()->email }}">
             </div>
             <div class="password-modal">
                 <label for="password">Password</label>
@@ -110,7 +112,32 @@
         </div>
     </div>
 </div>
-<script src="{{ asset('assets/js/form-review.js')}}"></script>
+
+<div id="myPw" class="modalpw">
+    <div class="modalpw-content">
+        <div class="header">
+            <span class="close close-pw">&times;</span>
+        </div>
+        <div class="content">
+            <div class="title-header">
+                <p>Change pw</p>
+            </div>
+            <div class="warning-alert">
+                <iconify-icon icon="material-symbols:info-rounded"></iconify-icon>
+                <p>This Action needed confirmation to your pw, please after you completed this action check your pw to confirm</p>
+            </div>
+            <div class="email-modal mb-4">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" value="">
+            </div>
+            <div class="btn-confirm">
+                <button id="cancel">Cancel</button>
+                <button id="confirm">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="{{ asset('assets/js/change-info.js')}}"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>

@@ -86,10 +86,38 @@ class SellerEditController extends Controller
         $profile->lastname = $request->lastname;
         $profile->phoneNumber = $request->phoneNumber;
         $profile->Address = $request->Address;
+        $profile->desk = $request->desk;
 
         $profile->update();
 
-        return redirect('seller/profile/edit');
+        return redirect('seller/profile');
+    }
+
+    public function updateIMG(Request $request, $id){
+        $request->validate([
+            'gallery' => 'required'
+        ]);
+
+        $profile = User::find($id)->profile;
+
+        if (count($profile->gallery) > 0) {
+            foreach ($profile->gallery as $media) {
+                if (!in_array($media->file_name, $request->input('gallery', []))) {
+                    $media->delete();
+                }
+            }
+        }
+
+        $media = $profile->gallery->pluck('file_name')->toArray();
+
+        foreach ($request->input('gallery', []) as $file) {
+            if (count($media) === 0 || !in_array($file, $media)) {
+                $profile->addMedia(storage_path('tmp/uploads/' . $file))->toMediaCollection('gallery');
+            }
+        }
+
+        return redirect()->back();
+
     }
 
     /**

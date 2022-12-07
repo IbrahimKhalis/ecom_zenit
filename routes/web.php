@@ -14,8 +14,8 @@ use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\RatingController;
 use App\Http\Controllers\SellerdashboardController;
 use App\Http\Controllers\ReviewController;
-use App\Http\Controllers\SellerController;
 use App\Http\Controllers\SellerEditController;
+use App\Http\Controllers\SellerProductController;
 use Illuminate\Contracts\Auth\UserProvider;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -43,7 +43,9 @@ use Illuminate\Support\Facades\Route;
     Route::get('/detail', function () {
         return view('detail');
     })->name('detail');
-    
+
+
+    //CART
     Route::group(['middleware' => 'auth',  'prefix' => 'cart',  'as' => 'cart.'],function(){
         Route::get('/', [CartController::class, 'CartPage'])->name('cart');
         Route::get('/{product:id?}', [CartController::class, 'store'])->name('cart.store');
@@ -71,17 +73,20 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/profile/create', [UserProfileController::class, 'create']);
-Route::post('/profile', [UserProfileController::class, 'store']);
-Route::put('/profile', [UserProfileController::class, 'update'])->name('update.profile');
-
-Route::get('/profile/your-profile', [UserProfileController::class, 'show'])->name('profile.cust');
-Route::get('/profile/edityour', [UserProfileController::class, 'edit'])->name('editprofile.cust');
-
-Route::get('checkoutdetail', [OrderController::class, 'index'])->name('checkout-detail');
-Route::get('checkoutdetail/payment', [OrderController::class, 'payment'])->name('checkout-payment');
-Route::post('place/order', [OrderController::class, 'storeOrder'])->name('place-order');
-Route::get('checkoutdetail/payment/success', [OrderController::class, 'complete'])->name('checkout-complete');
+//PROFILES AND CHECKOUT
+Route::group(['middleware' => 'auth'], function(){
+    Route::get('/profile/create', [UserProfileController::class, 'create']);
+    Route::post('/profile', [UserProfileController::class, 'store']);
+    Route::put('/profile', [UserProfileController::class, 'update'])->name('update.profile');
+    
+    Route::get('/profile/your-profile', [UserProfileController::class, 'show'])->name('profile.cust');
+    Route::get('/profile/edityour', [UserProfileController::class, 'edit'])->name('editprofile.cust');
+    
+    Route::get('checkoutdetail', [OrderController::class, 'index'])->name('checkout-detail');
+    Route::get('checkoutdetail/payment', [OrderController::class, 'payment'])->name('checkout-payment');
+    Route::post('place/order', [OrderController::class, 'storeOrder'])->name('place-order');
+    Route::get('checkoutdetail/payment/success', [OrderController::class, 'complete'])->name('checkout-complete');
+});
 
 
 // Route::get('/seller', function () {
@@ -94,43 +99,39 @@ Route::get('checkoutdetail/payment/success', [OrderController::class, 'complete'
 
 Route::group(['middleware' => ['auth','CheckLevel:admin,seller'],  'prefix' => 'seller',  'as' => 'seller.'],function(){
     Route::resource('shop-profile', ShopController::class);
+
+    Route::get('/profile/edit', function () {
+        return view('profile.profile-edit');
+    })->name('edit.profile');
+    
+    Route::put('/profile/save/{id}', [SellerEditController::class, 'update']);
+    Route::patch('/profile/{id}', [SellerEditController::class, 'updateIMG']);
+    
+    Route::get('/profile', function(){
+        return view('profile.profile');
+    })->name('profile');
+
+    Route::get('/products',[SellerProductController::class, 'show'])->name('products');
+    Route::post('/product/change/{id}',[SellerProductController::class, 'changeStatus'])->name('products.changeStatus');
 });
 
 //Store-IMG
 Route::post('profile/image',[UserProfileController::class, 'storeImage']);
 Route::post('shop-profile/image',[ShopController::class, 'storeImage']);
 
-//old profile seller
-Route::get('/profile-seller-old', function () {
-    return view('seller.profile-old');
-})->name('profileseller');
-Route::get('/profile-edit-old', function () {
-    return view('seller.profile-edit-old');
-})->name('profile-edit1');
+// //old profile seller
+// Route::get('/profile-seller-old', function () {
+//     return view('seller.profile-old');
+// })->name('profileseller');
+// Route::get('/profile-edit-old', function () {
+//     return view('seller.profile-edit-old');
+// })->name('profile-edit1');
 
-
-
-
-
-Route::get('/createprofile', function () {
-    return view('create-profile');
-})->name('create-profile');
-
-Route::get('/seller/profile/edit', function () {
-    return view('profile.profile-edit');
-})->name('seller.edit.profile');
-
-Route::put('/seller/profile/save/{id}', [SellerEditController::class, 'update']);
-
-Route::get('/seller/profile', function(){
-    return view('profile.profile');
-})->name('seller.profile');
 
 // Route::get('/productseller', function () {
 //     return view('seller.product-seller');
 // })->name('product-seller');
 
-Route::get('/productseller',[SellerdashboardController::class, 'productshow']);
 
 Route::get('/upcoming', function () {
     return view('upcoming');
@@ -193,3 +194,15 @@ Route::get('/product/detail/review/{product:slug?}', [ReviewController::class, '
 Route::get('/seller/editstore', function () {
     return view('seller.setting-store');
 })->name('edit-info');
+
+Route::get('/notif', function () {
+    return view('notif');
+})->name('notif');
+
+Route::get('/otpverification', function () {
+    return view('otp-verif');
+})->name('otp');
+
+Route::get('/customer/order', function () {
+    return view('myorder');
+})->name('order');
