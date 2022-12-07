@@ -206,3 +206,7 @@ Route::get('/otpverification', function () {
 Route::get('/customer/order', function () {
     return view('myorder');
 })->name('order');
+
+Route::get('/setup/profile', function () {
+    return view('setup');
+})->name('setup');
