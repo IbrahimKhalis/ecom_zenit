@@ -6,7 +6,9 @@
         <h4>Product Not Found</h4>
         <p>Try Change your keyword, or check product recommendation below</p>
       </div>
-      <button>Change Keyword</button>
+      <label for="search-web">
+        <button>Change Keyword</button>
+      </label>
     </div>
   </div>
 </div>
