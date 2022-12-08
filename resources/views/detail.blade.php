@@ -241,14 +241,20 @@
             <div class="price">
               <p>Rp {{ number_format($related_product->price,0,',','.') }}</p>
             </div>
-            <div class="other-btn">
-              <div class="btn-detail">
-                <button><i class="fa-solid fa-cart-shopping"></i></button>
-                <button>
-                  <iconify-icon class="heart" icon="akar-icons:heart"></iconify-icon>
-                </button>
-              </div>
-            </div>
+            @if(Auth::check())
+                  <div class="other-btn">
+                    <div class="btn-detail">
+                      <button class="modal__button" id="open-modal" onClick="Open_click('{{ $product->gallery->first()->getUrl() }}', '{{ $product->major }}', '{{ $product->name }}', '{{ $product->price }}', '{{ url('/cart/modal', $product->id) }}')"><i class="fa-solid fa-cart-shopping"></i></button>
+                      <button class="modal__button" id="open-modal" onClick="Open_click('{{ $product->gallery->first()->getUrl() }}', '{{ $product->major }}', '{{ $product->name }}', '{{ $product->price }}', '{{ url('/favorite/add', $product->id) }}')">
+                        @if(in_array($product->id, $favorites))
+                        <i class="fa-solid fa-heart"></i>
+                        @else
+                        <i class="fa-regular fa-heart"></i>
+                    @endif
+                      </button>
+                    </div>
+                  </div>
+                @endif
           </div>
         </div>
       </div>
