@@ -194,7 +194,7 @@
       </div> --}}
       <div class="product">
         <div class="row-top-product">
-          @if ($products->count() == 0)
+          @if ($products->count() <= 0)
             @include('components.product-not-found')
           @else
           @foreach($products as $product)
@@ -238,7 +238,7 @@
           @endif
         </div>
         <div class="btn-paginate">
-          {!! $products->links() !!}
+          {{ $products->links() }}
       </div>
       </div>
     </div>
