@@ -47,4 +47,8 @@ class SellerdashboardController extends Controller
         // ]);
     }
 
+    public function upcomingOrders(){
+        return view('seller.upcoming');
+    }
+
 }

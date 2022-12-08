@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\DatasaleExport;
 use App\Models\Rating;
 use App\Models\ShopProfile;
 use App\Models\User;
@@ -14,6 +16,8 @@ class PController extends Controller
     public function show(Product $product){
 
         $seller = User::find($product->users_id)->shop;
+
+        
 
         // $seller = ShopProfile::where('users_id', $product->users_id)->first();
 
@@ -36,14 +40,24 @@ class PController extends Controller
         $avg = 0.0;
         $avgsell = 0;
 
+        
+
         if($ratings->count() != 0){
             $avg = round((1*$star1+2*$star2+3*$star3+4*$star4+5*$star5)/($star1+$star2+$star3+$star4+$star5),1);
             $avgsell = round((1*$star1+2*$star2+3*$star3+4*$star4+5*$star5)/($star1+$star2+$star3+$star4+$star5),0);
         }
 
         // dd($avg);
+        $favorites = [0];
+        if(Auth::check()){
+            foreach(Auth()->user()->favorites as $favorite){
+                array_push($favorites, $favorite->products_id);
+            }
+        }
 
-
-        return view('detail', compact('product',  'related_products', 'seller', 'ratings', 'star1', 'star2', 'star3', 'star4', 'star5', 'avg', 'avgsell'));
+        return view('detail', compact('product',  'related_products', 'seller', 'ratings', 'star1', 'star2', 'star3', 'star4', 'star5', 'avg', 'avgsell','favorites'));
+    }
+    public function export(){
+        return Excel::download(new DatasaleExport, 'datasale.xlsx');
     }
 }

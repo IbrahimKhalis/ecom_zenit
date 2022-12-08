@@ -23,7 +23,7 @@
 
           <img src="https://i.pinimg.com/originals/4b/94/68/4b94680222487b212836a9e2e5e3a541.jpg" alt="">
           <div class="details">
-              <p>Agus Gaming</p>
+              <p>{{ Auth()->user()->profile->firstname }}</p>
               <div class="desc">
 
                   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente adipisci dignissimos

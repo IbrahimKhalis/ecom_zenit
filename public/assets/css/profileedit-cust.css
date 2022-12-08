@@ -1,103 +1,79 @@
-body {
-  overflow-x: hidden;
-}
-
-.content{
-  margin-top: 120px;
-
-}
 .pict{
-  width: 250px;
-  margin: auto;
+  width: 350px;
+  margin: -100px auto 0px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: start;
   gap: 20px;
 }
-.pict img{
-  width: 350px;
-}
-.pict label{
-  padding: 7px;
-  width: 200px; 
-  border-radius: 10px;
-  background-color: #5874AF;
-  color: white;
-  border-color: transparent ;
-  font-weight: 700;
-  text-align: center;
-  cursor: pointer;
-}
 
-/* details */
-.details{
-  width: 80%;
-  position: relative;
-  left: 230px;
-  top: 50px;
-  margin: auto;
 
-}
-.details table {
+
+.edit-profile-content{
+  margin: 150px auto 0px;
   width: 90%;
-}
-.details td{
-  font-size: 18px;
-}
-.details input {
-  padding: 10px;
-  display: flex;
-  margin-top: 15px;
-}
-.details .id{
-  background-color: transparent;
-  border: none;
-}
-.details textarea{
-  margin-top: 15px;
-  padding: 10px;
-}
-.details .alamat{
-  position: relative;
-  top: -60px;
-}
-.details button{
-  border-radius: 10px;
-  background-color: transparent;
-  color: #5874AF;
-  border-color: transparent ;
-  font-weight: 700;
-  letter-spacing: 2px;
-  font-size: 20px;
-  margin-left: 680px;
-  margin-top: 20px;
-  margin-bottom: 30px;
-  padding: 5px 10px;
-}
-.details button:hover{
+  height: 550px;
   background-color: white;
-}
-.details .pass{
+  box-shadow: .1vh .1vh .5vh #5874af77;
+  padding: 40px;
   display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.left-row{
+  display: flex;
+  flex-direction: column;
   align-items: center;
   gap: 10px;
-  margin-top: 15px;
 }
-.pass input {
-  background-color: transparent;
+
+.buat-gambar{
+  height: 350px;
+  width: 350px;
+  object-fit: cover;
+  border-radius: 5px;
+  background-color: #000000;
+}
+.first-name,.last-name,.email,.phone,.address{
+  display: flex;
+}
+.first-name p{
+  margin-right: 100px;
+}
+.last-name p{
+  margin-right: 101.5px;
+}
+.email p{
+  margin-right: 138px;
+}
+.phone p{
+  margin-right: 68.5px;
+}
+.address p{
+  margin-right: 120px;
+}
+.right-row{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.right-row input{
+  width: 620px;
+  padding: 10px;
+  border: 0.5px solid black;
+}
+.right-row button{
+  width: 180px;
+  margin-left: 615px;
+  border-radius: 5px;
+  background-color: #77A4FF;
+  padding: 10px;
+  font-weight: 600;
+  color: white;
   border: none;
-  width: fit-content;
-  margin-top: -15px;
-  margin-left: 180px;
-  margin-right: -110px;
 }
-.change-pass{
-  font-size: 14px;
-  color: #76a1ff;
-  font-weight: 700;
+textarea{
+  padding: 10px;
 }
-
-#photo {
-  display: none;
-}
-

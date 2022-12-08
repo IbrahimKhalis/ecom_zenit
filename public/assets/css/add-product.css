@@ -33,6 +33,10 @@
   margin-right: 62px;
   font-weight: 500;
 }
+input[type=radio]{
+  width: 15px;
+  height: 15px;
+}
 .price label{
   margin-right: 118.5px;
   font-weight: 500;

@@ -4,7 +4,7 @@
     <div class="right-context">
       <div class="top">
         <h4>Product Not Found</h4>
-        <p>Try Change your keyword, or check product recommendation below</p>
+        <p>Try Change your keyword</p>
       </div>
       <label for="search-web">
         <button>Change Keyword</button>
