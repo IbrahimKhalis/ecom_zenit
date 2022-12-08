@@ -17,6 +17,8 @@ use App\Http\Controllers\SellerdashboardController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\SellerEditController;
 use App\Http\Controllers\SellerProductController;
+use App\Http\Controllers\SettingController;
+use App\Http\Controllers\SellerReportController;
 use Illuminate\Contracts\Auth\UserProvider;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -118,12 +120,17 @@ Route::group(['middleware' => ['auth','CheckLevel:admin,seller'],  'prefix' => '
     Route::post('/product/add', [SellerProductController::class, 'addProduct'])->name('product.store');
     Route::get('/product/edit/{id?}', [SellerProductController::class, 'editProduct'])->name('product.edit');
     Route::put('/product/{id?}', [SellerProductController::class, 'updateProduct'])->name('product.update');
+
+    Route::get('/setting-scedhule', function () {
+        return view('seller.setting-scedhule');
+    })->name('setting-scedhule');
 });
 
 //Store-IMG
 Route::post('profile/image',[UserProfileController::class, 'storeImage']);
 Route::post('shop-profile/image',[ShopController::class, 'storeImage']);
 Route::post('product/image',[SellerProductController::class, 'storeImage']);
+
 
 // //old profile seller
 // Route::get('/profile-seller-old', function () {
@@ -159,9 +166,7 @@ Route::get('/canceled', function () {
     return view('seller.canceled-order');
 })->name('canceled');
 
-Route::get('/report', function () {
-    return view('seller.report');
-})->name('report');
+Route::get('/seller/report',[SellerReportController::class, 'show'])->name('report');
 
 Route::get('/monthlyreport', function () {
     return view('seller.monthly-report');
@@ -178,13 +183,12 @@ Route::get('/setting', function () {
     return view('setting-cust');
 })->name('settingCust');
 
-Route::get('/setting-info', function () {
-    return view('seller.setting-info');
-})->name('setting-info');
+// Route::get('/setting-info', function () {
+//     return view('seller.setting-info');
+// })->name('setting-info');
 
-Route::get('/setting-scedhule', function () {
-    return view('seller.setting-scedhule');
-})->name('setting-scedhule');
+Route::get('/setting-info', [SettingController::class, 'show'])->name('setting-info');
+
 
 Route::get('/report-invoice', function () {
     return view('seller.report-invoice');
@@ -194,9 +198,12 @@ Route::put('/user/edit/{id}', [UserProfileController::class, 'update']);
 
 Route::get('/product/detail/review/{product:slug?}', [ReviewController::class, 'show'])->name('product.review');
 
-Route::get('/seller/editstore', function () {
-    return view('seller.setting-store');
-})->name('edit-info');
+// Route::get('/seller/editstore', function () {
+//     return view('seller.setting-store');
+// })->name('edit-info');
+
+Route::get('/seller/editstore', [SettingController::class, 'create'])->name('edit-info');
+Route::put('/seller/update/profile', [SettingController::class, 'update'])->name('update/profile/shop');
 
 Route::get('/notif', function () {
     return view('notif');
