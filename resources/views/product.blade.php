@@ -238,7 +238,7 @@
           @endif
         </div>
         <div class="btn-paginate">
-          {!! $products->links() !!}
+          {{ $products->links() }}
       </div>
       </div>
     </div>

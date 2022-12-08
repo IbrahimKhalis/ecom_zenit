@@ -28,7 +28,7 @@
             </div>
         </div>
         <div class="add-product">
-            <a href="{{ url('/addproduct') }}">
+            <a href="{{ route('seller.product.add') }}">
                 <button>Add Product</button>
             </a>
         </div>
@@ -67,7 +67,7 @@
                     </label>
                 </td>
                 <td>
-                    <a href="" style="font-weight: 600;">
+                    <a href="{{ route('product.show', $product->slug) }}" style="font-weight: 600;">
                         Detail
                     </a>
                 </td>

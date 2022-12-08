@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Traits\ImageUploadingTrait;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Redirect;
 
 class CartController extends Controller
 {
@@ -89,39 +90,47 @@ class CartController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $products_id)
+    public function store($products_id)
     {
 
-        $check = Cart::where('products_id', $products_id)->where('users_id', Auth()->id())->first();
-
-        if ($check){
-            $prod = $check->product;
-
-            if($prod->category->name != 'Software'){
-
-                $check->quantity += 1;
-                $check->update();
-
+        $dataProd = Product::find($products_id);
+        if($dataProd->users_id != auth()->id()){
+            $check = Cart::where('products_id', $products_id)->where('users_id', Auth()->id())->first();
+    
+            if ($check){
+                $prod = $check->product;
+    
+                if($prod->category->name != 'Software'){
+    
+                    $check->quantity += 1;
+                    $check->update();
+    
+                    return Redirect()->back()->with([
+                        'message' => 'Added More To Cart !',
+                        'type' => 'warning'
+                    ]);
+                }
                 return Redirect()->back()->with([
-                    'message' => 'Added More To Cart !',
+                    'message' => 'Has Been Added To Cart !',
                     'type' => 'warning'
                 ]);
+            }else{
+                Cart::insert([
+                    'products_id' => $products_id,
+                    'quantity' => 1,
+                    'users_id' => Auth()->id(),
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now(),
+                ]);
+                return Redirect()->back()->with([
+                    'message' => 'Add Cart Success !',
+                    'type' => 'info'
+                ]);
             }
-            return Redirect()->back()->with([
-                'message' => 'Has Been Added To Cart !',
-                'type' => 'warning'
-            ]);
         }else{
-            Cart::insert([
-                'products_id' => $products_id,
-                'quantity' => 1,
-                'users_id' => Auth()->id(),
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-            ]);
             return Redirect()->back()->with([
-                'message' => 'Add Cart Success !',
-                'type' => 'info'
+                'massage'=> 'Cannot add Your Own Item',
+                'type'=>'info'
             ]);
         }
     }
@@ -129,29 +138,34 @@ class CartController extends Controller
     public function storemodal(Request $request, $products_id)
     {
 
-        $check = Cart::where('products_id', $products_id)->where('users_id', Auth()->id())->first();
-
-        if ($check){
-            $prod = $check->product;
-
-            if($prod->category->name != 'Software'){
-
-                $check->quantity += 1;
-                $check->update();
-
-                return 'Added More To Cart !';
+        $dataProd = Product::find($products_id);
+        if($dataProd->users_id != auth()->id()){
+            $check = Cart::where('products_id', $products_id)->where('users_id', Auth()->id())->first();
+    
+            if ($check){
+                $prod = $check->product;
+    
+                if($prod->category->name != 'Software'){
+    
+                    $check->quantity += 1;
+                    $check->update();
+    
+                    return 'Added More To Cart !';
+                }
+                return 'Has Been Added To Cart !';
+            }else{
+                Cart::insert([
+                    'products_id' => $products_id,
+                    'quantity' => 1,
+                    'users_id' => Auth()->id(),
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now(),
+                ]);
+    
+                return 'Add Cart Success !';
             }
-            return 'Has Been Added To Cart !';
         }else{
-            Cart::insert([
-                'products_id' => $products_id,
-                'quantity' => 1,
-                'users_id' => Auth()->id(),
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-            ]);
-
-            return 'Add Cart Success !';
+            return 'Nggak Bisa Lah TOLOL';
         }
     }
 

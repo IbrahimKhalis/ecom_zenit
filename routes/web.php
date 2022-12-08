@@ -113,11 +113,16 @@ Route::group(['middleware' => ['auth','CheckLevel:admin,seller'],  'prefix' => '
 
     Route::get('/products',[SellerProductController::class, 'show'])->name('products');
     Route::post('/product/change/{id}',[SellerProductController::class, 'changeStatus'])->name('products.changeStatus');
+    Route::get('/product/add', [SellerProductController::class, 'createProduct'])->name('product.add');
+    Route::post('/product/add', [SellerProductController::class, 'addProduct'])->name('product.store');
+    Route::get('/product/edit/{id?}', [SellerProductController::class, 'editProduct'])->name('product.edit');
+    Route::put('/product/{id?}', [SellerProductController::class, 'updateProduct'])->name('product.update');
 });
 
 //Store-IMG
 Route::post('profile/image',[UserProfileController::class, 'storeImage']);
 Route::post('shop-profile/image',[ShopController::class, 'storeImage']);
+Route::post('product/image',[SellerProductController::class, 'storeImage']);
 
 // //old profile seller
 // Route::get('/profile-seller-old', function () {
@@ -161,13 +166,10 @@ Route::get('/monthlyreport', function () {
     return view('seller.monthly-report');
 })->name('monthly-report');
 
-Route::get('/addproduct', function () {
-    return view('seller.add-product');
-})->name('add-product');
+// Route::get('/addproduct', function () {
+//     return view('seller.add-product');
+// })->name('add-product');
 
-Route::get('/editproduct', function () {
-    return view('seller.edit-product');
-})->name('edit-product');
 
 Route::get('add-rating', [RatingController::class, 'add']);
 
