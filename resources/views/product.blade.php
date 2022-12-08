@@ -191,53 +191,54 @@
 </div>
 </div> --}}
 <div class="product">
-    <div class="row-top-product">
-        @if ($products->count() == 0)
-        @include('components.product-not-found')
-        @else
-        @foreach($products as $product)
-        <div class="card-product">
+        <div class="row-top-product">
+          @if ($products->count() <= 0)
+            @include('components.product-not-found')
+          @else
+          @foreach($products as $product)
+          <div class="card-product">
             <div class="img-card">
-                <a href="{{ route('product.show', $product->slug) }}">
-                    <img src="{{ $product->gallery->first()->getUrl() }}" alt="" id="img-prod">
-                </a>
+              <a href="{{ route('product.show', $product->slug) }}">
+                <img src="{{ $product->gallery->first()->getUrl() }}" alt="" id="img-prod">
+              </a>
             </div>
             <div class="desc-product">
-                <div class="category-product">
-                    <p id="ctgry">{{ $product->major }}</p>
+              <div class="category-product">
+                <p id="ctgry">{{ $product->major }}</p>
+              </div>
+              <div class="name-product">
+                <a href="{{ route('product.show', $product->slug) }}">
+                  <p id="name-prod">{{ $product->name }}</p>
+                </a>
+              </div>
+              <div class="row-price">
+                <div class="price">
+                  <p id="prc-prod">Rp {{ number_format($product->price,0,',','.') }}</p>
                 </div>
-                    </div>
-                    @if(Auth::check())
-                    <div class="other-btn">
-                        <div class="btn-detail">
-                            <button type="button" class="modal__button" id="open-modal"
-                                onClick="Open_click('{{ $product->gallery->first()->getUrl() }}', '{{ $product->major }}', '{{ $product->name }}', '{{ $product->price }}', '{{ url('/cart/modal', $product->id) }}')"><i
-                                    class="fa-solid fa-cart-shopping"></i></button>
-                            <button type="button" class="modal__button" id="open-modal"
-                                onClick="Open_click('{{ $product->gallery->first()->getUrl() }}', '{{ $product->major }}', '{{ $product->name }}', '{{ $product->price }}', '{{ url('/favorite/add', $product->id) }}')">
-                                @if(in_array($product->id, $favorites))
-                                <i class="fa-solid fa-heart"></i>
-                                @else
-                                <i class="fa-regular fa-heart"></i>
-                                @endif
-                            </button>
-                        </div>
-                    </div>
+                @if(Auth::check())
+                  <div class="other-btn">
+                    <div class="btn-detail">
+                      <button class="modal__button" type='button' id="open-modal" onClick="Open_click('{{ $product->gallery->first()->getUrl() }}', '{{ $product->major }}', '{{ $product->name }}', '{{ $product->price }}', '{{ url('/cart/modal', $product->id) }}')"><i class="fa-solid fa-cart-shopping"></i></button>
+                      <button class="modal__button" id="open-modal" onClick="Open_click('{{ $product->gallery->first()->getUrl() }}', '{{ $product->major }}', '{{ $product->name }}', '{{ $product->price }}', '{{ url('/favorite/add', $product->id) }}')">
+                        @if(in_array($product->id, $favorites))
+                        <i class="fa-solid fa-heart"></i>
+                        @else
+                        <i class="fa-regular fa-heart"></i>
                     @endif
-                </div>
+                      </button>
+                    </div>
+                  </div>
+                @endif
+              </div>
             </div>
+          </div>
+          @endforeach
+          @endif
         </div>
-        @endforeach
-        @endif
-    </div>
         <div class="btn-paginate">
           {!! $products->withQueryString()->links() !!}
       </div>
       </div>
-    </div>
-</div>
-</div>
-</div>
 </div>
 </div>
 <div class="modal__container" id="modal-container">
