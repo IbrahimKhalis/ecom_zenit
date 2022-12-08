@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Favorite;
+use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -22,17 +23,23 @@ class FavoriteController extends Controller
 
     public function add($products_id){
 
-        $check = Favorite::where('users_id', auth()->id())->where('products_id', $products_id)->first();
-
-        if($check){
-            return 'Already Been Favorite!';
+        $dataProd = Product::find($products_id);
+        if($dataProd->users_id != auth()->id()){
+            $check = Favorite::where('users_id', auth()->id())->where('products_id', $products_id)->first();
+    
+            if($check){
+                return 'Already Been Favorite!';
+            }else{
+                Favorite::insert([
+                    'users_id' => auth()->id(),
+                    'products_id' => $products_id
+                ]);
+                return 'Added to Favorite!';
+            }
         }else{
-            Favorite::insert([
-                'users_id' => auth()->id(),
-                'products_id' => $products_id
-            ]);
-            return 'Added to Favorite!';
+            return 'Cannot Add To Favorite!';
         }
+
 
     }
 
