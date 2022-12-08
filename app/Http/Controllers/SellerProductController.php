@@ -5,11 +5,16 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Traits\ImageUploadingTrait;
 use App\Models\Category;
 use App\Models\Product;
+
+use App\Http\Requests\Admin\ProductRequest;
+
 use App\Models\Tag;
+
 use Illuminate\Http\Request;
 
 class SellerProductController extends Controller
 {
+
 
     use ImageUploadingTrait;
 
@@ -62,6 +67,7 @@ class SellerProductController extends Controller
             'users_id' => auth()->id(),
             'desc' => $request->desc,
             'major' => $request->major,
+
             'price' => $request->price,
             'quantity' => $request->quantity,
             'category_id' => $request->category_id
@@ -71,6 +77,7 @@ class SellerProductController extends Controller
         foreach ($request->input('gallery', []) as $file) {
             $product->addMedia(storage_path('tmp/uploads/' . $file))->toMediaCollection('gallery');
         }
+
 
         return redirect()->route('seller.products')->with([
             'message' => 'Success Created !',
@@ -138,5 +145,6 @@ class SellerProductController extends Controller
             'message' => 'Success Updated !',
             'type' => 'info'
         ]);
+
     }
 }

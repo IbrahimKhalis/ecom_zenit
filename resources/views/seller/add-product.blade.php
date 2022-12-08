@@ -74,7 +74,6 @@
                         <button class="upload" type="submit">Upload Product</button>
                     </div>
                 </div>
-
             </div>
         </div>
     </form>
@@ -138,3 +137,4 @@
                      }
 </script>
 @endsection
+

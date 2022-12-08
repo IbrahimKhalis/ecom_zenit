@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\DatasaleExport;
+
 
 class Product extends Model implements HasMedia
 {
@@ -63,4 +66,5 @@ class Product extends Model implements HasMedia
     public function ratings(){
         return $this->hasMany(Rating::class, 'product_id');
     }
+    
 }

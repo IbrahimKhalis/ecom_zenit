@@ -51,10 +51,12 @@
 
     <div class="export">
         <p>Export Overall Report</p>
+        <a href="{{ url('export/sale/data') }}">
         <button>
             <iconify-icon icon="gridicons:pages"></iconify-icon>
             Export to Excel
         </button>
+    </a>
     </div>
 
     <table>

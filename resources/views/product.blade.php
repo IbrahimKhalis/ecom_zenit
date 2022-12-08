@@ -218,18 +218,18 @@
                   <p id="prc-prod">Rp {{ number_format($product->price,0,',','.') }}</p>
                 </div>
                 @if(Auth::check())
-                <div class="other-btn">
-                  <div class="btn-detail">
-                    <button class="modal__button" id="open-modal" onClick="Open_click('{{ $product->gallery->first()->getUrl() }}', '{{ $product->major }}', '{{ $product->name }}', '{{ $product->price }}', '{{ url('/cart/modal', $product->id) }}')"><i class="fa-solid fa-cart-shopping"></i></button>
-                    <button class="modal__button" id="open-modal" onClick="Open_click('{{ $product->gallery->first()->getUrl() }}', '{{ $product->major }}', '{{ $product->name }}', '{{ $product->price }}', '{{ url('/favorite/add', $product->id) }}')">
-                      @if(in_array($product->id, $favorites))
-                      <i class="fa-solid fa-heart"></i>
-                      @else
-                      <i class="fa-regular fa-heart"></i>
-                      @endif
-                    </button>
+                  <div class="other-btn">
+                    <div class="btn-detail">
+                      <button class="modal__button" id="open-modal" onClick="Open_click('{{ $product->gallery->first()->getUrl() }}', '{{ $product->major }}', '{{ $product->name }}', '{{ $product->price }}', '{{ url('/cart/modal', $product->id) }}')"><i class="fa-solid fa-cart-shopping"></i></button>
+                      <button class="modal__button" id="open-modal" onClick="Open_click('{{ $product->gallery->first()->getUrl() }}', '{{ $product->major }}', '{{ $product->name }}', '{{ $product->price }}', '{{ url('/favorite/add', $product->id) }}')">
+                        @if(in_array($product->id, $favorites))
+                        <i class="fa-solid fa-heart"></i>
+                        @else
+                        <i class="fa-regular fa-heart"></i>
+                    @endif
+                      </button>
+                    </div>
                   </div>
-                </div>
                 @endif
               </div>
             </div>

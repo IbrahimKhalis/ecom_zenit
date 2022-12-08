@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\DatasaleExport;
 use App\Models\Rating;
 use App\Models\ShopProfile;
 use App\Models\User;
@@ -45,5 +47,8 @@ class PController extends Controller
 
 
         return view('detail', compact('product',  'related_products', 'seller', 'ratings', 'star1', 'star2', 'star3', 'star4', 'star5', 'avg', 'avgsell'));
+    }
+    public function export(){
+        return Excel::download(new DatasaleExport, 'datasale.xlsx');
     }
 }
