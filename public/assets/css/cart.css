@@ -221,16 +221,17 @@ font-size: 18px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 15px;
 }
 .card-summary .summary{
   font-size: 20px;
   font-weight: 700;
   margin-left: -69%;
-
 }
 .card-summary .product{
-  line-height: 10px;
+  line-height: 15px;
   border-bottom: 0.5px solid rgba(0, 0, 0, 0.503);
+  width: 95%;
 }
 .card-summary .product button{
   font-size: 50px;
@@ -244,18 +245,17 @@ font-size: 18px;
 
 .card-summary .row1{
   display: flex;
-  justify-content: center;
-  gap: 150px
+  justify-content: space-between;
+  padding: 0px 20px;
 }
 .card-summary .row1 .price{
   display: flex;
   gap: 10px;
-  width: 100px;
 }
 .card-summary .row-2{
   display: flex;
-  justify-content: center;
-  gap: 170px
+  justify-content: space-between;
+  margin: 0px 20px;
 }
 .card-summary .row-2 .subtotal{
   display: flex;
@@ -272,7 +272,9 @@ font-size: 18px;
 }
 .total{
   display: flex;
-  gap: 250px;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0px 35px;
 }
 .total p{
   font-weight: 700;
