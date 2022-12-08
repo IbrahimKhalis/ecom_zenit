@@ -43,6 +43,17 @@
       <div class="info-product">
         <p>{{ $product->desc }}</p>
       </div>
+      @if(Auth::check())
+      @if(auth()->user()->id == $product->users_id)
+      <div class="btn-product">
+        <div>
+          <a class="btn-cart" href="{{ route('seller.product.edit', $product->id) }}"><i class="fa-solid fa-pen"></i>Edit</a>
+          @if(session()->has('message'))
+          <p>{{ session()->get('message') }}</p>
+          @endif
+        </div>
+      </div>
+      @else
       <div class="btn-product">
         <a href="checkout-delivery.html"><button class="btn-buy"><i class="fa-solid fa-bag-shopping"></i>Buy
             Now</button></a>
@@ -53,6 +64,19 @@
           @endif
         </div>
       </div>
+      @endif
+      @else
+      <div class="btn-product">
+        <a href="checkout-delivery.html"><button class="btn-buy"><i class="fa-solid fa-bag-shopping"></i>Buy
+            Now</button></a>
+        <div>
+          <a class="btn-cart" href="{{ url('cart', $product->id) }}"><i class="fa-solid fa-cart-shopping"></i>Add to cart</a>
+          @if(session()->has('message'))
+          <p>{{ session()->get('message') }}</p>
+          @endif
+        </div>
+      </div>
+      @endif
       <div class="profile">
         <div class="left-profile">
           <div class="profile-img">

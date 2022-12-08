@@ -162,7 +162,7 @@ class SController extends Controller
             $products->where('price', '<=', $request->max);
             array_push($tags, 'MAX : '.$request->max);
         }
-
+        
         if(!is_null($slug)){
             $category = Tb_productcate::whereSlug($slug)->firstOrFail();
 

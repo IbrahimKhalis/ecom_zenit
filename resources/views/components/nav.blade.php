@@ -10,7 +10,7 @@
                 </svg>
                 <div class="title">
                     <a href="{{ url('/') }}">
-                        <img src="{{ asset('assets/img/logo.png')}}" alt="">
+                        <img src="{{ asset('assets/img/logo-zenit.png')}}" alt="">
                     </a>
                 </div>
             </div>

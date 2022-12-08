@@ -13,20 +13,26 @@
         </div>
         <p class="breadcrumbs">Setting > My Order</p>
     </div>
-    <div class="form-outline">
-        <input type="search" id="form1" class="form-control"
-            placeholder="Search for ID code, name, package ID........" aria-label="Search" />
-    </div>
+    <div class="search">
+        <input type="text" class="search__input" placeholder="Search...">
+        <div class="search__icon">
+          <ion-icon name="search"></ion-icon>
+        </div>
+      </div>
     <div class="menus">
         <p style="font-size: 20px; font-weight: 600;">Total : 3 Orders</p>
         <div class="left-row">
-            <ul>
-                <li><a href="" style="color: white;">View All</a></li>
-                <li><a href="">My Order</a></li>
-                <li><a href="">Completed</a></li>
-                <li><a href="">Canceled</a></li>
-            </ul>
-
+            <div class="tabs">
+                <input type="radio" id="radio-1" name="tabs" checked />
+                <label class="tab" for="radio-1">View All</label>
+                <input type="radio" id="radio-2" name="tabs" />
+                <label class="tab" for="radio-2">My Order</label>
+                <input type="radio" id="radio-3" name="tabs" />
+                <label class="tab" for="radio-3">Completed</label>
+                <input type="radio" id="radio-4" name="tabs" />
+                <label class="tab" for="radio-4">Canceled</label>
+                <span class="glider"></span>
+              </div>
         </div>
         <div class="filter-dropdown">
             <select name="sort" id='sort' class="option-filter" >
