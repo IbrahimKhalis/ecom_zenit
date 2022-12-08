@@ -238,7 +238,7 @@
           @endif
         </div>
         <div class="btn-paginate">
-          {!! $products->links() !!}
+          {!! $products->withQueryString()->links() !!}
       </div>
       </div>
     </div>

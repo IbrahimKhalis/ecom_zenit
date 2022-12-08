@@ -6,6 +6,7 @@
 
 @section('content')
 
+
 <div class="content">
   <div class="card-profile">
     <div class="img-profile">

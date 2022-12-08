@@ -14,7 +14,6 @@ class SController extends Controller
 
         $products = Product::with('category');
 
-
         $tags = [];
         $favorites = [0];
         
@@ -109,7 +108,7 @@ class SController extends Controller
 
         $products->where('isActive', 1);
 
-        $products = $products->paginate();
+        $products = $products->paginate(4);
 
         return view('product',compact('products', 'tags', 'favorites'));
 

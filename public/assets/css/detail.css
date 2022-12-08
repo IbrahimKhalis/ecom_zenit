@@ -453,9 +453,11 @@
 .btn-detail {
   display: flex;
   gap: 7px;
+  margin-left: -50px;
+  margin-bottom: 5px;
 }
 
-.other-btn button{
+.other-btn button {
   width: fit-content;
   height: fit-content;
   border: none;
@@ -466,10 +468,12 @@
   color: #0d6ec3;
 }
 
-.heart{
-  font-size: 20px;
-  margin: 1px 1px 0px;
-  color: red;
+.other-btn button:last-child {
+  color: rgb(255, 53, 53);
+}
+
+.name-product a {
+  color: #000
 }
 
 /* modal */
