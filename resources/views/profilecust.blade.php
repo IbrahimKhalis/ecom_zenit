@@ -18,7 +18,6 @@
                 </div>
             </div>
             <div class="right">
-                <p>Setting > My Profile</p>
                 <a href="{{ route('editprofile.cust')}}">Edit Profile</a>
             </div>
         </div>
