@@ -151,3 +151,9 @@ font-weight: 600;
 }
 
 
+.btn-paginate{
+  width: fit-content;
+  border: none;
+  background-color: transparent;
+  margin: 0px auto;
+}

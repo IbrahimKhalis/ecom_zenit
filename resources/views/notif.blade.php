@@ -9,18 +9,6 @@
   <h1 class="notif-title">
       Notification Feeds
   </h1>
-  <div class="row-1">
-      <div class="filter-dropdown">
-          <select name="filter" id="filter" class="option-filter">
-            <option value="popular">All</option>
-          </select>
-        </div>
-        <div class="mark-read">
-          <iconify-icon icon="ph:book-open" style="font-size: 30px; margin-top: -13px;"></iconify-icon>
-          <p>Mark all as read</p>
-        </div>
-      </div>
-     
       <div class="notif">
           <div class="notif-row-1">
               <div class="right">
@@ -133,9 +121,6 @@
                 <div class="massage-notif">
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, magnam? Ipsum iste voluptas cum corrupti incidunt repellat? Dolorem esse repudiandae quae saepe sequi beatae natus magni consequatur, officia deserunt ipsam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod ipsam delectus nostrum est aut asperiores possimus aperiam molestiae alias. Quam saepe, voluptatibus debitis recusandae quos fugiat neque voluptatem quod suscipit.
                     </p>
-                </div>
-                <div class="btn-read">
-                    <button>Mark As Read</button>
                 </div>
             </div>
         </div>

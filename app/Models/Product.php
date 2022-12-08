@@ -63,4 +63,8 @@ class Product extends Model implements HasMedia
     public function ratings(){
         return $this->hasMany(Rating::class, 'product_id');
     }
+
+    public function orderItem(){
+        return $this->hasMany(OrderItem::class, 'products_id');
+    }
 }
