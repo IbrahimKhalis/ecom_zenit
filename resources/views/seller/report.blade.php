@@ -17,7 +17,7 @@
             <iconify-icon icon="ph:package" style="font-size: 70px; margin-left: 5px;"></iconify-icon>
             <div class="text">
                 <p>Product Total</p>
-                <h5 style="margin-top: -10px;">40</h5>
+                <h5 style="margin-top: -10px;">{{ $products->count() }}</h5>
             </div>
         </div>
         <div class="selled-product">
@@ -25,7 +25,7 @@
                 style="color: #f24e1e; font-size: 60px; margin-left: 5px;"></iconify-icon>
             <div class="text">
                 <p>Selled Product</p>
-                <h5 style="margin-top: -10px;">40</h5>
+                <h5 style="margin-top: -10px;">{{ $countTerjualProd }}</h5>
             </div>
         </div>
         <div class="profit">

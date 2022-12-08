@@ -10,12 +10,14 @@
 <form action="{{ url('/profile') }}" method='POST'>
     @csrf
     @method('PUT')
-    <div class="content">
+    
+<div class="edit-profile-content">
+    <div class="left-row">
         <div class="pict">
-            <!-- <img src="{{ Auth::check() ? auth()->user()->profile->gallery->first()->getUrl() : asset('assets/img/user.png') }}" alt=""> -->
-            <div class="needsclick dropzone" id="gallery-dropzone" style="margin-top: 30px; height: 200px; width: 200px" ></div>
-            <label for="photo">Change Photo</label>
+            <img src="{{ Auth::check() ? auth()->user()->profile->gallery->first()->getUrl() : asset('assets/img/user.png') }}" alt=""> 
+            <div class="needsclick dropzone" id="gallery-dropzone" style=" height: 300px; width: 300px; padding:65px;" ></div>
         </div>
+
     </div>
     <div class="details">
     <table>
@@ -52,8 +54,9 @@
     </table>
     <button type="submit">Save Changes</button>
     </div>
-    </div>
+   </div>
 </form>
+
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 

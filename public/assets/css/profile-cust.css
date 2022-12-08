@@ -1,201 +1,94 @@
 
-  .content {
-    width: 80%;
-    display: flex;
-    padding-top: 12vh;
-    justify-content: center;
-    margin-top: 50px;
+  .profile-content{
+    margin-top: 150px;
+    width: 100%;
+    height: fit-content;
+    padding: 0px 50px;
   }
-  
-  .pict {
-    width: 25vw;
-    height: 55vh;
-    margin-left: 100px;
-    align-items: center;
-    justify-content: start;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  .pict img{
-    width: 350px;
-    height: 350px;
-    object-fit: cover;
-    border-radius: 50%;
-  }
-  .pict button {
-    margin-bottom: 20px;
-    padding: 5px 45px;
-    border-radius: 14px;
-    background-color: transparent;
-  }
-  .details{
-    margin-left: 30px;
-    margin-top: 7px;
-    height: 100%;
-  }
-  .id, .first-name, .last-name, .email, .phone-number, .address{
-    display: flex;
-    margin-top: 10px;
-    font-size: 18px;
-  }
-  .id p:nth-child(2){
-    margin-left: 98px;
-  }
-  .first-name p:nth-child(2){
-    margin-left: 113px;
-  }
-  .last-name p:nth-child(2){
-    margin-left: 113px;
-  }
-  .email p:nth-child(2){
-    margin-left: 160px;
-  }
-  .phone-number p:nth-child(2){
-    margin-left: 75px;
-  }
-  .address p:nth-child(2){
-    margin-left: 134px;
-    width: 600px;
-  }
-  
-  .pesanan {
-    display: flex;
-    justify-content: left;
-    width: 1300px;
-    font-size: 20px;
-    margin: 20px auto;
-  
-  }
-  
-  .myorder button {
-    padding: 3px 0px;
-    width: 200px;
-    border-radius: 10px;
-  
-  }
-  .complete button {
-    padding: 3px 0px;
-    width: 200px;
-    border-radius: 10px;
-    background-color: transparent;
-  }
-  .canceled button {
-    padding: 3px 0px;
-    width: 200px;
-    border-radius: 10px;
-    background-color: transparent;
-  }
-  .all button {
-    padding: 3px 0px;
-    width: 200px;
-    border-radius: 10px;
-    background-color: transparent;
-  }
-  
-  
-  .orderan-gue{
-    width: 1300px;
-    height: 200px;
-    background-color: #ffffff;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    margin: auto;
-    margin-bottom: 100px;
-    margin-top: 40px;
-  }
-  
-  .row1{
+  .row-1{
     display: flex;
     justify-content: space-between;
+    padding: 0px 50px;
     align-items: center;
-    position: relative;
-    top: 10px;
-    margin: 15px;
   }
-  .row1 p{
-    font-size: 20px;
-    margin-top: 3px;
+  .row-1 img{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
   }
-  .row1 .total{
-    position: relative;
-    left: -50px;
-  }
-  .row1 .store{
+  .left{
     display: flex;
-    gap: 5px;
+    align-items: center;
+    gap: 30px;
   }
-  .row1 .store #logo{
-    font-size: 40px;
+  .right{
+    line-height: 30px;
+    font-weight: 600;
+    margin-top: -40px;
   }
-  .produknya img{
-    width: 120px;
-    margin-left: 20px;
+  .right p{
+    font-size: 18px;
+  }
+  .right a{
+    padding: 5px 30px;
+    background-color: #77A4FF;
+    color: white;
     border-radius: 5px;
   }
-  
-  .kontencuy{
+  .row-2{
     display: flex;
-  }
-  .detail-produk{
-    margin-left: 20px;
-    line-height: 15px;
-  }
-  
-  .row-kanan{
-margin-left: 800px;
-  }
-  .row-kanan button{
-    padding: 3px 5px;
-    width: 120px;
-    border-radius: 10px;
-  }
-  .harga-total{
-    font-size: 20px;
-  }
-  .btn-pesanan {
-    display: flex;
-    margin-left: -150px;
-    gap: 20px;
-    margin-top: 25px;
-  }
-  
-  .btn-pesanan button:nth-child(1){
-    background-color: #5874AF;
-    color: white;
-    border-color: transparent;
-  }
-  .btn-pesanan button:nth-child(2){
-    background-color: transparent;
-    border: solid 1px black;
-  }
-  .nama-status{
-    display: flex;
-    gap: 10px;
-  }
-  .statusnya{
-    height: 25px;
-    width: 70px;
-    margin-top: -5px;
-    background-color: #5874AF;
-    border-radius: 20px;
-    font-size: 10px;
-    color: white;
-    display: flex;
+    align-items: center;
     justify-content: center;
-    align-items: center;
+    gap: 20px;
   }
-
-
-  .btn-editprof button {
-    width: 150px;
-    height: 30px;
-    border: 1px solid black;
-    background-color: transparent;
-    padding: 0;
-    border-radius: 7px;
+  
+  .row-2 img{
+    width: 300px;
   }
-
-  select {
+  .datas{
+    width: 800px;
+    height: 320px;
+    background-color: white;
+    box-shadow: .1vh .1vh .5vh #5874af77;
+    padding: 20px;
+    line-height: 35px;
     border-radius: 5px;
-    font-size: 15px;
   }
+  .datas p:first-child{
+    font-weight: 500;
+  }
+  .first-name, .last-name,.email,.phone,.address{
+    display: flex;
+    font-size: 18px;
+  }
+  .first-name p:first-child{
+    margin-right: 100px;
+
+  }
+  .last-name p:first-child{
+    margin-right: 102px;
+  }
+  .email p:first-child{
+    margin-right: 143px;
+  }
+  .phone p:first-child{
+    margin-right: 63px;
+  }
+  .address p:first-child{
+    margin-right: 122px;
+  }
+  
+  footer {
+    display: flex;
+    justify-content: end;
+    padding-right: 50px;
+    align-items: center;
+    background-color: #1C3879;
+    height: 50px;
+    color: rgba(255, 255, 255, 0.508);
+    position: relative;
+    bottom: 0;
+  }
+  
+  
