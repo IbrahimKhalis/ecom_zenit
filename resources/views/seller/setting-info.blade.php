@@ -21,16 +21,16 @@
       </div>
       <div class="content-about">
 
-          <img src="https://i.pinimg.com/originals/4b/94/68/4b94680222487b212836a9e2e5e3a541.jpg" alt="">
+          <img src="{{ $shop->gallery->first()->getUrl() }}" alt="">
           <div class="details">
-              <p>{{ Auth()->user()->profile->firstname }}</p>
+              <p>{{ $shop->name }}</p>
               <div class="desc">
 
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente adipisci dignissimos
-                      veniam quidem assumenda officia cum ullam eligendi? Excepturi commodi veritatis suscipit
-                      doloremque voluptate alias quos. Praesentium deserunt maxime totam!</p>
+                  <p>{{ $shop->desc }}</p>
               </div>
+              <a href="{{ route('edit-info') }}">
                   <button>Edit</button>
+            </a>
           </div>
 
       </div>

@@ -17,6 +17,7 @@ use App\Http\Controllers\SellerdashboardController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\SellerEditController;
 use App\Http\Controllers\SellerProductController;
+use App\Http\Controllers\SettingController;
 use Illuminate\Contracts\Auth\UserProvider;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -125,6 +126,7 @@ Route::post('profile/image',[UserProfileController::class, 'storeImage']);
 Route::post('shop-profile/image',[ShopController::class, 'storeImage']);
 Route::post('product/image',[SellerProductController::class, 'storeImage']);
 
+
 // //old profile seller
 // Route::get('/profile-seller-old', function () {
 //     return view('seller.profile-old');
@@ -178,9 +180,11 @@ Route::get('/setting', function () {
     return view('setting-cust');
 })->name('settingCust');
 
-Route::get('/setting-info', function () {
-    return view('seller.setting-info');
-})->name('setting-info');
+// Route::get('/setting-info', function () {
+//     return view('seller.setting-info');
+// })->name('setting-info');
+
+Route::get('/setting-info', [SettingController::class, 'show'])->name('setting-info');
 
 Route::get('/setting-scedhule', function () {
     return view('seller.setting-scedhule');
@@ -194,9 +198,12 @@ Route::put('/user/edit/{id}', [UserProfileController::class, 'update']);
 
 Route::get('/product/detail/review/{product:slug?}', [ReviewController::class, 'show'])->name('product.review');
 
-Route::get('/seller/editstore', function () {
-    return view('seller.setting-store');
-})->name('edit-info');
+// Route::get('/seller/editstore', function () {
+//     return view('seller.setting-store');
+// })->name('edit-info');
+
+Route::get('/seller/editstore', [SettingController::class, 'create'])->name('edit-info');
+Route::put('/seller/update/profile', [SettingController::class, 'update'])->name('update/profile/shop');
 
 Route::get('/notif', function () {
     return view('notif');

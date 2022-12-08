@@ -19,7 +19,11 @@ class ShopProfile extends Model implements HasMedia
         'name',
         'major',
         'users_id',
-        'desc'
+        'desc',
+        'instagram',
+        'gmail',
+        'linkedIn',
+        'portofolio'
     ];
 
     public function sluggable(): array

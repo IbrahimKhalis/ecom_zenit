@@ -30,21 +30,21 @@
       <div class="sosmed">
         <div class="email">
           <iconify-icon icon="ic:outline-email" style="font-size: 25px;"></iconify-icon>
-          <p>agusgaming@gmail.com</p>
+          <p>{{ $shop->gmail }}</p>
         </div>
         <div class="row-2">
           <div class="instagram">
             <iconify-icon icon="mdi:instagram"style="font-size: 25px;"></iconify-icon>
-            <p>@agusgaming</p>
+            <p>{{ $shop->instagram }}</p>
           </div>
           <div class="linkedin">
             <iconify-icon icon="uil:linkedin"style="font-size: 25px;"></iconify-icon>
-            <p>@agusgaming</p>
+            <p>{{ $shop->linkedIn }}</p>
           </div>
         </div>
         <button class="portfol">
           <iconify-icon icon="gridicons:pages"></iconify-icon>
-          Download Portofolio / CV PDF
+          {{ $shop->portofolio }}
         </button>
       </div>
     </div>

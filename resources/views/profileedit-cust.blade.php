@@ -16,7 +16,7 @@
             <div class="needsclick dropzone" id="gallery-dropzone" style="margin-top: 30px; height: 200px; width: 200px" ></div>
             <label for="photo">Change Photo</label>
         </div>
-    
+    </div>
     <div class="details">
     <table>
         <tr>
