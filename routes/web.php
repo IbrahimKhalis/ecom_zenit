@@ -119,6 +119,10 @@ Route::group(['middleware' => ['auth','CheckLevel:admin,seller'],  'prefix' => '
     Route::post('/product/add', [SellerProductController::class, 'addProduct'])->name('product.store');
     Route::get('/product/edit/{id?}', [SellerProductController::class, 'editProduct'])->name('product.edit');
     Route::put('/product/{id?}', [SellerProductController::class, 'updateProduct'])->name('product.update');
+
+    Route::get('/setting-scedhule', function () {
+        return view('seller.setting-scedhule');
+    })->name('setting-scedhule');
 });
 
 //Store-IMG
@@ -181,9 +185,6 @@ Route::get('/setting-info', function () {
     return view('seller.setting-info');
 })->name('setting-info');
 
-Route::get('/setting-scedhule', function () {
-    return view('seller.setting-scedhule');
-})->name('setting-scedhule');
 
 Route::get('/report-invoice', function () {
     return view('seller.report-invoice');
