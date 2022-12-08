@@ -244,9 +244,9 @@
             @if(Auth::check())
                   <div class="other-btn">
                     <div class="btn-detail">
-                      <button class="modal__button" id="open-modal" onClick="Open_click('{{ $product->gallery->first()->getUrl() }}', '{{ $product->major }}', '{{ $product->name }}', '{{ $product->price }}', '{{ url('/cart/modal', $product->id) }}')"><i class="fa-solid fa-cart-shopping"></i></button>
-                      <button class="modal__button" id="open-modal" onClick="Open_click('{{ $product->gallery->first()->getUrl() }}', '{{ $product->major }}', '{{ $product->name }}', '{{ $product->price }}', '{{ url('/favorite/add', $product->id) }}')">
-                        @if(in_array($product->id, $favorites))
+                      <button class="modal__button" id="open-modal" onClick="Open_click('{{ $related_product->gallery->first()->getUrl() }}', '{{ $related_product->major }}', '{{ $related_product->name }}', '{{ $related_product->price }}', '{{ url('/cart/modal', $related_product->id) }}')"><i class="fa-solid fa-cart-shopping"></i></button>
+                      <button class="modal__button" id="open-modal" onClick="Open_click('{{ $related_product->gallery->first()->getUrl() }}', '{{ $related_product->major }}', '{{ $related_product->name }}', '{{ $related_product->price }}', '{{ url('/favorite/add', $related_product->id) }}')">
+                        @if(in_array($related_product->id, $favorites))
                         <i class="fa-solid fa-heart"></i>
                         @else
                         <i class="fa-regular fa-heart"></i>
@@ -266,10 +266,10 @@
 <!-- end content -->
 
 <!-- modal -->
-<div id="myModal" class="modal">
+<div id="myModal" class="modal" style="display: none;">
 
   <!-- Modal content -->
-  <div class="modal-content">
+  <div class="modal-content" >
     <div class="header">
       <span class="close">&times;</span>
       <p>{{ $product->name }}</p>
@@ -333,6 +333,30 @@
     </div>
   </div>
 </div>
+
+<div class="modal__container" id="modal-container">
+  <div class="modal__content">
+    <div class="header" id="textmodal">Add to Cart</div>
+    <div class="cart-content">
+      <div class="left-modal">
+        <div class="img-modal">
+          <img src="" alt=""  id="img-cart-modal">
+        </div>
+        <div class="desc-modal">
+          <p id="ctgry-cart-modal"></p>
+          <p id="name-cart-modal"></p>
+          <p id="">Software</p>
+        </div>
+      </div>
+      <div class="right-modal">
+        <p id="price-cart-modal"></p>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script src="{{ asset('assets/js/detail.js')}}"></script>
+<script src="{{ asset('assets/js/cartmodal.js')}}"></script>
+
 
 @endsection

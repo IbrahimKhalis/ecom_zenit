@@ -206,14 +206,6 @@
                 <div class="category-product">
                     <p id="ctgry">{{ $product->major }}</p>
                 </div>
-                <div class="name-product">
-                    <a href="{{ route('product.show', $product->slug) }}">
-                        <p id="name-prod">{{ $product->name }}</p>
-                    </a>
-                </div>
-                <div class="row-price">
-                    <div class="price">
-                        <p id="prc-prod">Rp {{ number_format($product->price,0,',','.') }}</p>
                     </div>
                     @if(Auth::check())
                     <div class="other-btn">

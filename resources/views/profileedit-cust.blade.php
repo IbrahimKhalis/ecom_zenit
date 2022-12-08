@@ -17,29 +17,42 @@
             <img src="{{ Auth::check() ? auth()->user()->profile->gallery->first()->getUrl() : asset('assets/img/user.png') }}" alt=""> 
             <div class="needsclick dropzone" id="gallery-dropzone" style=" height: 300px; width: 300px; padding:65px;" ></div>
         </div>
+
     </div>
-    <div class="right-row">
-        <div class="first-name">
-            <p>First Name</p>
-            <input type="text" value="{{ Auth()->user()->profile->firstname }}" name="firstname">
-        </div>
-        <div class="last-name">
-            <p>Last Name</p>
-            <input type="text" value="{{ Auth()->user()->profile->lastname }}" name="lastname">
-        </div>
-        <div class="email">
-            <p>Email</p>
-            <input type="email" value="{{ Auth()->user()->email }}" name="email">
-        </div>
-        <div class="phone">
-            <p>Phone Number</p>
-            <input type="number" value="{{ Auth()->user()->profile->phoneNumber }}" name="phoneNumber">
-        </div>
-        <div class="address">
-            <p>Address</p>
-            <textarea  name="Address" id="" cols="79" rows="5">{{ Auth()->user()->profile->Address }}</textarea>
-        </div>
-        <button type="submit">Save Changes</button>
+    <div class="details">
+    <table>
+        <tr>
+            <td>Customer Id</td>
+            <td>
+                <input type="text" value="#{{ Auth()->user()->profile->user_id }}" disabled class="id">
+            </td>
+        </tr>
+        <tr>
+            <td>First Name</td>
+            <td>
+                <input type="text" value="{{ Auth()->user()->profile->firstname }}" name="firstname">
+            </td>
+        </tr>
+        <tr>
+            <td>Last Name</td>
+            <td>
+                <input type="text" value="{{ Auth()->user()->profile->lastname }}" name="lastname">
+            </td>
+        </tr>
+        <tr>
+            <td>Phone Number</td>
+            <td>
+                <input type="number" value="{{ Auth()->user()->profile->phoneNumber }}" name="phoneNumber">
+            </td>
+        </tr>
+        <tr>
+            <td class="alamat">Address</td>
+            <td>
+                <textarea  name="Address" id="" cols="65" rows="5">{{ Auth()->user()->profile->Address }}</textarea>
+            </td>
+        </tr>
+    </table>
+    <button type="submit">Save Changes</button>
     </div>
    </div>
 </form>

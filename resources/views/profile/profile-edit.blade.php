@@ -23,7 +23,6 @@
     <form action="{{ url('/seller/profile/save', auth()->id()) }}" method="POST">
         @csrf
         @method('PUT')
-        
       <div class="right">
           <p>#{{ Auth()->user()->id }}</p>
           <input type="text" maxlength="15" class="username" name="username" value="{{ Auth()->user()->name }}" required> <br>
