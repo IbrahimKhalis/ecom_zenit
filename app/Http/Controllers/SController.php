@@ -109,7 +109,7 @@ class SController extends Controller
 
         $products->where('isActive', 1);
 
-        $products = $products->paginate();
+        $products = $products->paginate(4);
 
         return view('product',compact('products', 'tags', 'favorites'));
 

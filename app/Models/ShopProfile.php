@@ -42,4 +42,7 @@ class ShopProfile extends Model implements HasMedia
         return $this->belongsTo(User::class);
     }
 
+    public function schedule(){
+        return $this->hasOne(Schedule::class, 'shops_id');
+    }
 }
