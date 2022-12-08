@@ -17,6 +17,7 @@ use App\Http\Controllers\SellerdashboardController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\SellerEditController;
 use App\Http\Controllers\SellerProductController;
+use App\Http\Controllers\SellerReportController;
 use Illuminate\Contracts\Auth\UserProvider;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -163,9 +164,7 @@ Route::get('/canceled', function () {
     return view('seller.canceled-order');
 })->name('canceled');
 
-Route::get('/report', function () {
-    return view('seller.report');
-})->name('report');
+Route::get('/seller/report',[SellerReportController::class, 'show'])->name('report');
 
 Route::get('/monthlyreport', function () {
     return view('seller.monthly-report');

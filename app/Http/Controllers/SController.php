@@ -14,7 +14,6 @@ class SController extends Controller
 
         $products = Product::with('category');
 
-
         $tags = [];
         $favorites = [0];
         

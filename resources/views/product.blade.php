@@ -238,8 +238,10 @@
         @endforeach
         @endif
     </div>
-    <div class="btn-paginate">
-        {{ $products->withQueryString()->links() }}
+        <div class="btn-paginate">
+          {!! $products->withQueryString()->links() !!}
+      </div>
+      </div>
     </div>
 </div>
 </div>

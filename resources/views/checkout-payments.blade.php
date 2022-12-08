@@ -231,10 +231,10 @@
                         <input type="hidden" name="total" value="{{ $total }}">
 
                         <div class="card-footer text-right">
-                            <button class="btn btn-primary mr-1" type="submit">Continue</button>
+                            <button type="submit">Continue</button>
                         </div>
 
-                        <button>Cancel</button>
+                        <button class="cancle">Cancel</button>
 
 
                     </div>

@@ -1,4 +1,4 @@
-{{-- @if ($paginator->hasPages())
+@if ($paginator->hasPages())
     <nav>
         <ul class="pagination">
             <!-- Previous Page Link -->
@@ -43,8 +43,8 @@
             @endif
         </ul>
     </nav>
-@endif --}}
-
+@endif
+{{-- 
 <style>
     .pagination{
   padding: 30px 0;
@@ -120,4 +120,4 @@ a{
         @endif
     </ul>
 </div>
-@endif
+@endif --}}
