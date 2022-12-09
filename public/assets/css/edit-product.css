@@ -26,7 +26,7 @@
   font-weight: 500;
 }
 .product-category label{
-  margin-right: 29px;
+  margin-right: 50px;
   font-weight: 500;
 }
 .product-tipe label {
@@ -60,11 +60,16 @@
   border: rgba(0, 0, 0, 0.548) solid 1px;
   border-radius: 3px;
 }
+
 .related-tags{
   display: flex;
 }
 .stock input{
   height: 26px;
+
+}
+input, textarea{
+    padding: 0px 8px;
 }
 .tags{
   width: 300px;
@@ -90,6 +95,9 @@
   background-color: #b10404b1;
   color: white;
   border: none;
+}
+.cancle a{
+  color: white;
 }
 .btn .upload{
   background-color: #5874AF;
