@@ -42,10 +42,13 @@
             <p>{{ $shop->linkedIn }}</p>
           </div>
         </div>
+        <a href="{{ asset($shop->portofolio) }}" target="_blank">
         <button class="portfol">
-          <iconify-icon icon="gridicons:pages"></iconify-icon>
-          {{ $shop->portofolio }}
+          <iconify-icon icon="gridicons:pages">
+            
+          </iconify-icon>Portofolio/cv
         </button>
+      </a> 
       </div>
     </div>
     <div class="seller-since">
