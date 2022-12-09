@@ -53,6 +53,9 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     @yield('css')
 
+    {{-- web icon --}}
+    <link rel="shortcut icon" href="{{ asset('assets/img/logo-web.png') }}" type="image/x-icon">
+
     <title>ZenIT</title>
 </head>
     <style>

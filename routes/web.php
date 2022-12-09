@@ -166,7 +166,7 @@ Route::get('/canceled', function () {
     return view('seller.canceled-order');
 })->name('canceled');
 
-Route::get('/seller/report',[SellerReportController::class, 'show'])->name('report');
+Route::get('/seller/report/',[SellerReportController::class, 'show'])->name('report');
 
 Route::get('/monthlyreport', function () {
     return view('seller.monthly-report');
