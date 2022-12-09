@@ -19,6 +19,7 @@ use App\Http\Controllers\SellerEditController;
 use App\Http\Controllers\SellerProductController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\SellerReportController;
+use App\Http\Controllers\SellerScheduleController;
 use Illuminate\Contracts\Auth\UserProvider;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -121,9 +122,8 @@ Route::group(['middleware' => ['auth','CheckLevel:admin,seller'],  'prefix' => '
     Route::get('/product/edit/{id?}', [SellerProductController::class, 'editProduct'])->name('product.edit');
     Route::put('/product/{id?}', [SellerProductController::class, 'updateProduct'])->name('product.update');
 
-    Route::get('/setting-scedhule', function () {
-        return view('seller.setting-scedhule');
-    })->name('setting-scedhule');
+    Route::get('/setting/scedhule', [SellerScheduleController::class, 'show'])->name('setting-scedhule');
+    Route::post('/setting/scedhule/push', [SellerScheduleController::class, 'createUpdate'])->name('setting.sche.push');
 });
 
 //Store-IMG

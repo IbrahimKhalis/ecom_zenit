@@ -13,7 +13,7 @@
     <div class="sub-content">
         <a href="{{ route('setting-info') }}">Information</a>
         <a href="{{ route('edit-info') }}">Edit Information</a>
-        <a href="{{ route('setting-scedhule') }}">Scedhule</a>
+        <a href="{{ route('seller.setting-scedhule') }}">Scedhule</a>
     </div>
     
     <div class="card-store">
@@ -59,7 +59,7 @@
             <div class="col2">
               <div class="linkedin">
                 <label for="link"><iconify-icon icon="mdi:linkedin"></iconify-icon> linkedIn</label>
-                <input type="text" name="linkedIn" id="link" value="{{ $shop->linkedIn }}">
+                <input type="text" name="linkedIn" id="link" value="{{ $shop->linkedin }}">
               </div>  
               <div class="cv">
                 <label for="cv"><iconify-icon icon="ic:baseline-insert-drive-file"></iconify-icon> portofolio/cv</label>

@@ -26,7 +26,7 @@
         <p>Total Product</p>
         <p>{{ $products->count() }}</p>
       </div>
-     
+    
       <div class="sosmed">
         <div class="email">
           <iconify-icon icon="ic:outline-email" style="font-size: 25px;"></iconify-icon>
@@ -49,7 +49,12 @@
       </div>
     </div>
     <div class="seller-since">
-      <p>Seller since {{ $shop->created_at }}</p>
+      @if(isset($buka) && isset($tutup))
+      <p>Open At {{ $buka }}</p>
+      <p>Closed At {{ $tutup }}</p>
+      @else
+      <p>They're in a Vacation!</p>
+      @endif
     </div>
   </div>
   <div class="content-product">
