@@ -13,7 +13,7 @@
     <div class="sub-content">
         <a href="{{ route('setting-info') }}">Information</a>
         <a href="{{ route('edit-info') }}">Edit Information</a>
-        <a href="{{ route('setting-scedhule') }}">Scedhule</a>
+        <a href="{{ route('seller.setting-scedhule') }}">Scedhule</a>
     </div>
     
     <div class="card-store">
@@ -21,7 +21,7 @@
         <i class="fa-solid fa-store"></i>
         <p>Store Information</p>
       </div>
-    <form action="{{ route('update/profile/shop'), auth()->id() }}" method="POST">
+    <form action="{{ route('update/profile/shop'), auth()->id() }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
       <div class="card-content">
@@ -61,10 +61,11 @@
                 <label for="link"><iconify-icon icon="mdi:linkedin"></iconify-icon> linkedIn</label>
                 <input type="text" name="linkedIn" id="link" value="{{ $shop->linkedIn }}">
               </div>  
+              
               <div class="cv">
                 <label for="cv"><iconify-icon icon="ic:baseline-insert-drive-file"></iconify-icon> portofolio/cv</label>
-                <input type="text" name="portofolio" id="link" value="{{ $shop->portofolio }}">
-              </div>  
+                <input type="file" accept="application/pdf" name="portofolio" id="link" value="{{ asset($shop->portofolio) }}" class="form-control">
+              </div>
             </div>
           </div>
         </div>

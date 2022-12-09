@@ -11,7 +11,7 @@
     <div class="sub-content">
         <a href="{{ route('setting-info') }}">Information</a>
         <a href="{{ route('edit-info') }}">Edit Information</a>
-        <a href="{{ route('setting-scedhule') }}">Scedhule</a>
+        <a href="{{ route('seller.setting-scedhule') }}">Scedhule</a>
     </div>
     
     <div class="storeops-header">

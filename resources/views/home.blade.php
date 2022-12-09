@@ -9,7 +9,7 @@
   <div class="header-content">
     <div class="left-row">
       <div class="bg-tio">
-        <img src="{{ asset('assets/img/TIO REVISI TKJ-02.png')}}" alt="Tio">
+        <img src="{{ asset('assets/img/TIO REVISI TKJ-02.png')}}" alt="Tio" >
       </div>
     </div>
     <div class="middle-row">
@@ -49,7 +49,7 @@
       </a>
       <a href="{{ url('/product?PPLG=on') }}">
         <div class="rpl">
-          <img src="{{ asset('assets/img/rpl.png')}}" alt="PPLG">
+          <img src="{{ asset('assets/img/rpl.png')}}" alt="PPLG" >
         </div>
       </a>
       <a href="{{ url('/product?TJKT=on') }}">
