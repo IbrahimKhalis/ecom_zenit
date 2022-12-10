@@ -223,3 +223,7 @@ Route::get('export/sale/data', [PController::class, 'export']);
 Route::get('/setup/profile', function () {
     return view('setup');
 })->name('setup');
+
+Route::get('/setup-store', function () {
+    return view('seller.setup-start');
+})->name('setup-store');
