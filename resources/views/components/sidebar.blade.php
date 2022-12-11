@@ -22,13 +22,13 @@
                 </div>
     
                 <div class="menu-transaction">
-                    <a href="{{ route('upcoming') }}" class="transaction">
+                    <a href="{{ route('seller.upcoming') }}" class="transaction">
                         <div class="left">
                             <iconify-icon class="icon" icon="mdi:checkbox-marked-outline"></iconify-icon>
                             <p>Transaction</p>
                         </div>
                         <p>></p>
-               </a>
+                </a>
                 </div>
                 
                 <div class="menu-report">

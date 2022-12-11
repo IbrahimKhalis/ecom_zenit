@@ -15,6 +15,7 @@
     <div class="left-row">
         <div class="pict">
             {{-- <img src="{{ Auth::check() ? auth()->user()->profile->gallery->first()->getUrl() : asset('assets/img/user.png') }}" alt="" style="width:200px;">  --}}
+
             <div class="needsclick dropzone" id="gallery-dropzone" style=" height: 300px; width: 300px; padding:65px;" ></div>
         </div>
     </div>

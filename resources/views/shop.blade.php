@@ -26,7 +26,7 @@
         <p>Total Product</p>
         <p>{{ $products->count() }}</p>
       </div>
-     
+    
       <div class="sosmed">
         @if ($shop->gmail>=1)
         <div class="email">
@@ -59,7 +59,12 @@
       </div>
     </div>
     <div class="seller-since">
-      <p>Seller since {{ $shop->created_at }}</p>
+      @if(isset($buka) && isset($tutup))
+      <p>Open At {{ $buka }}</p>
+      <p>Closed At {{ $tutup }}</p>
+      @else
+      <p>They're in a Vacation!</p>
+      @endif
     </div>
   </div>
   <div class="content-product">
