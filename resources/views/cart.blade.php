@@ -90,13 +90,12 @@
         <p class="summary">Summary</p>
         @foreach( $carts as $sum)
         <div class="product" id="product">
-          <button>-</button>
           <div class="row1">
             <p id="name-summary">{{$sum->product->name}}</p>
             <div class="price">
               <p id="quantity-summary">{{ $sum->quantity }}</p>
               <p>x</p>
-              <p id="price-summary">Rp. {{ $sum->product->price  }}</p>
+              <p id="price-summary">{{ $sum->product->price  }}</p>
             </div>
           </div>
           <div class="row-2">
@@ -110,7 +109,7 @@
         @endforeach
         <div class="total" id="total">
           <p>Total</p>
-          <p id="total-summary">Rp {{ number_format($total,0,',','.')}}</p>
+          <p id="total-summary">Rp.{{ number_format($total,0,',','.')}}</p>
         </div>
   
         <div class="button">

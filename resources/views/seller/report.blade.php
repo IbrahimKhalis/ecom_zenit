@@ -25,7 +25,7 @@
                 style="color: #f24e1e; font-size: 60px; margin-left: 5px;"></iconify-icon>
             <div class="text">
                 <p>Selled Product</p>
-                <h5 style="margin-top: -10px;">{{ $countTerjualProd }}</h5>
+                <h5 style="margin-top: -10px;">{{$countTerjualProd}}</h5>
             </div>
         </div>
         <div class="profit">
@@ -33,7 +33,7 @@
             </iconify-icon>
             <div class="text">
                 <p>Profit</p>
-                <h5 style="margin-top: -10px;">40</h5>
+                <h5 style="margin-top: -10px;"></h5>
             </div>
         </div>
         <div class="income">
@@ -67,10 +67,12 @@
             <th>Income</th>
             <th>Action</th>
         </tr>
+
+        @foreach ($users as $report)
         <tr style="background-color: white;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
-            <td style="width: 30px;">1</td>
-            <td style="width: 300px;">May</td>
-            <td style="width: 220px;">300</td>
+            <td style="width: 30px;">{{$loop->iteration}}</td>
+            <td style="width: 220px;"></td>
+            <td style="width: 300px;">{{$report}}</td>
             <td style="width: 300px;">Rp.300.000</td>
             <td style="width: 250px; align-items: center; justify-content: center; display: flex;">
                 <p
@@ -80,33 +82,26 @@
             </td>
         </tr>
 
-        <tr style="background-color: white;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
-            <td style="width: 30px;">1</td>
-            <td style="width: 300px;">May</td>
-            <td style="width: 220px;">300</td>
-            <td style="width: 300px;">Rp.300.000</td>
-            <td style="width: 250px; align-items: center; justify-content: center; display: flex;">
-                <p
-                    style="padding: 2px; background-color: #5874AF; width: 100px; color: white; border-radius: 6px; margin: auto;">
-                    Details
-                </p>
-            </td>
-        </tr>
-
+        @endforeach
 
     </table>
 </div>
-<script src="{{ asset('assets/js/Chart.js') }}"></script>
-<script>
-    var ctx = document.getElementById("myChart").getContext('2d');
-    var myChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-            datasets: [{
-                label: '# of Votes',
-                data: [12, 19, 3, 23, 2, 3, 10],
-                backgroundColor: [
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" ></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+<script type="text/javascript">
+  
+      var labels =  {{ Js::from($labels) }};
+      var users =  {{ Js::from($data) }};
+  
+      const data = {
+        labels: labels,
+        datasets: [{
+          label: 'My Sales data',
+          data: users,
+          backgroundColor: [
                     'rgba(54, 162, 235, 0.2)',
                     'rgba(255, 17, 0, 0.2)',
                     'rgba(255, 242, 0, 0.2)',
@@ -124,21 +119,21 @@
                     'rgba(255, 153, 0, 1)',
                     'rgba(210, 64, 255, 1)'
                 ],
-                borderWidth: 0.2
-            }]
-        },
-        options: {
-            legend: {
-                display: false
-            },
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }]
-            }
-        }
-    });
+                borderWidth: 0
+        }]
+      };
+  
+      const config = {
+        type: 'bar',
+        data: data,
+        options: {}
+      };
+  
+      const myChart = new Chart(
+        document.getElementById('myChart'),
+        config
+      );
+  
 </script>
+
 @endsection

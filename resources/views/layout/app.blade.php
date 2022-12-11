@@ -51,7 +51,13 @@
     <!-- swal -->
     <link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    {{-- PRELOAD IMG --}}
+    <link rel="preload" as="image" href="{{ asset('assets/img/TIO REVISI TKJ-02.png')}}">
     @yield('css')
+
+    {{-- web icon --}}
+    <link rel="shortcut icon" href="{{ asset('assets/img/logo-web.png') }}" type="image/x-icon">
 
     <title>ZenIT</title>
 </head>

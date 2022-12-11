@@ -67,8 +67,8 @@
                         <input type="number" name="quantity" value="{{ $product->quantity }}">
                     </div>
                     <div class="product-image">
-                        <label for="product-image">Product Image</label>
-                        <div class="image needsclick dropzone" id="gallery-dropzone"></div>
+                        <label  for="product-image">Product Image</label>
+                        <div class="image needsclick dropzone" style="height: 250px" id="gallery-dropzone"></div>
                     </div>
                     <div class="btn">
                         <button class="cancle" disabled><a href="{{ route('product.show', $product->slug) }}">Cancel</a></button>

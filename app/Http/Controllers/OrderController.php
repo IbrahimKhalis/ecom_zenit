@@ -13,7 +13,6 @@ use App\Models\Product;
 use App\Models\Shipping;
 use Illuminate\Support\Facades\Auth;
 
-
 class OrderController extends Controller
 {
     public function index()

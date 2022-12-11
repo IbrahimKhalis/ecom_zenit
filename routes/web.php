@@ -172,7 +172,7 @@ Route::get('/canceled', function () {
     return view('seller.canceled-order');
 })->name('canceled');
 
-Route::get('/seller/report',[SellerReportController::class, 'show'])->name('report');
+Route::get('/seller/report/',[SellerReportController::class, 'show'])->name('report');
 
 Route::get('/monthlyreport', function () {
     return view('seller.monthly-report');
@@ -229,3 +229,7 @@ Route::get('export/sale/data', [PController::class, 'export']);
 Route::get('/setup/profile', function () {
     return view('setup');
 })->name('setup');
+
+Route::get('/setup-store', function () {
+    return view('seller.setup-start');
+})->name('setup-store');
