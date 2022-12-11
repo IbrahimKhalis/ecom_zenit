@@ -17,7 +17,7 @@
             <iconify-icon icon="ph:package" style="font-size: 70px; margin-left: 5px;"></iconify-icon>
             <div class="text">
                 <p>Product Total</p>
-                <h5 style="margin-top: -10px;">{{ $products->count() }}</h5>
+                {{-- <h5 style="margin-top: -10px;">{{ $products->count() }}</h5> --}}
             </div>
         </div>
         <div class="selled-product">
@@ -25,7 +25,7 @@
                 style="color: #f24e1e; font-size: 60px; margin-left: 5px;"></iconify-icon>
             <div class="text">
                 <p>Selled Product</p>
-                <h5 style="margin-top: -10px;">{{$countTerjualProd}}</h5>
+                {{-- <h5 style="margin-top: -10px;">{{$terjualData}}</h5> --}}
             </div>
         </div>
         <div class="profit">
@@ -44,10 +44,16 @@
             </div>
         </div>
     </div>
-
-    <div class="chart">
-        <canvas id="myChart" width="1150px" height="300px"></canvas>
+    <div class="apa" style="width: 100%; height:50%;">
+        {!! $chart->container() !!}
+        {!! $chart->script() !!}
     </div>
+    {{-- <div class="chart">
+       
+        <canvas id="myChart" width="1150px" height="300px">
+
+        </canvas>
+    </div> --}}
 
     <div class="export">
         <p>Export Overall Report</p>
@@ -68,11 +74,10 @@
             <th>Action</th>
         </tr>
 
-        @foreach ($users as $report)
         <tr style="background-color: white;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
-            <td style="width: 30px;">{{$loop->iteration}}</td>
+            <td style="width: 30px;"></td>
             <td style="width: 220px;"></td>
-            <td style="width: 300px;">{{$report}}</td>
+            <td style="width: 300px;"></td>
             <td style="width: 300px;">Rp.300.000</td>
             <td style="width: 250px; align-items: center; justify-content: center; display: flex;">
                 <p
@@ -82,7 +87,6 @@
             </td>
         </tr>
 
-        @endforeach
 
     </table>
 </div>
@@ -93,8 +97,7 @@
   
 <script type="text/javascript">
   
-      var labels =  {{ Js::from($labels) }};
-      var users =  {{ Js::from($data) }};
+    //   var labels =  {{-- Js::from($total_harga) --}};
   
       const data = {
         labels: labels,

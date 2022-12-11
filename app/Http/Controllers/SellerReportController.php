@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Models\OrderItem;
+use App\Models\Product;
 use App\Models\User;
+use App\Charts\reportProduct;   
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,30 +17,50 @@ class SellerReportController extends Controller
     public function show()
     {
         
-        $products = User::find(auth()->id())->products;
+        // $sellproducts = User::find(auth()->id())->products;
+        $sellproducts = OrderItem::where('seller_id', auth()->id())->get();
+        // $sellproducts = Order::whereYear('creaated_at', Carbon::now()->year)->whereMonth('created_at', Carbon::now()->month)->count(); die;
+
+        // $sellproducts = Order::where('users_id', auth()->id());
+
+        // dd($sellproducts);
+
+        $chart = new reportProduct;
+        $chart->labels($sellproducts->keys());
+        $chart->dataset('my data','line',$sellproducts->values());
 
 
-        $terjualMinggu = [];
+        // $terjual = [];
+        
+        
+        // foreach($sellproducts as $product){
+        //     $countTerjualProd = $product->orderItem->all();
 
-        foreach($products as $product){
-            $countTerjualProd = $product->orderItem->count();
+        //     foreach($countTerjualProd as $data){
+        //             array_push($terjual, $data->product_qty);
+        //     }
+        // }
+        
+        // $terjualData = array_sum($terjual);
 
-            array_push($terjualMinggu, [
-                'id'=> $product->id,
-                'count'=> $countTerjualProd
-            ]);
-        }
+        // $total_harga = Order::select(DB::raw("CAST(SUM(total) as int)as total"))->Groupby(DB::raw("Month(created_at)"))->pluck('total');
 
-        $users = Order::select(DB::raw("COUNT(*) as count"), DB::raw("MONTHNAME(created_at) as month_name"))
-                        ->where('users_id', Auth()->id())
-                        ->whereYear('created_at', date('Y'))
-                        ->groupBy(DB::raw("MONTHNAME(created_at)"))
-                        ->orderBy('created_at', 'asc')
-                        ->pluck('count', 'month_name');
+        // $month = Order::select(DB::raw("MONTHNAME(created_at) as bulan"))->Groupby(DB::raw("MONTHNAME(created_at)"))->pluck('bulan');
+        
+        // $users = OrderItem::select(DB::raw("COUNT(*) as count"), DB::raw("MONTHNAME(created_at) as month_name"))
+        //                 ->whereYear('created_at', date('Y'))
+        //                 ->groupBy(DB::raw("MONTHNAME(created_at)"))
+        //                 ->orderBy('created_at', 'asc')
+        //                 ->get();
 
-        $labels = $users->keys();
-        $data = $users->values();
+        // $labels = $users->keys();
+        // $data = $users->values();
 
-        return view('seller.report', compact('products', 'countTerjualProd', 'data', 'labels', 'users'));
+        // dd($users);
+        // dd($total_harga);
+
+        // return view('seller.report', compact('products', 'terjualData','total_harga','month'));
+        return view('seller.report', compact('chart'));
     }
 }
+

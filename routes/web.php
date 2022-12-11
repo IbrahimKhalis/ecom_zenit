@@ -230,6 +230,10 @@ Route::get('/setup/profile', function () {
     return view('setup');
 })->name('setup');
 
+
+Route::get('/chart/report', [SellerReportController::class, 'show']);
+
 Route::get('/setup-store', function () {
     return view('seller.setup-start');
 })->name('setup-store');
+
