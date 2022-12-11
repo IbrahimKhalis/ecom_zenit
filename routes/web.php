@@ -16,9 +16,11 @@ use App\Http\Controllers\RatingController;
 use App\Http\Controllers\SellerdashboardController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\SellerEditController;
+use App\Http\Controllers\SellerOrderController;
 use App\Http\Controllers\SellerProductController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\SellerReportController;
+use App\Http\Controllers\SellerScheduleController;
 use Illuminate\Contracts\Auth\UserProvider;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -121,15 +123,23 @@ Route::group(['middleware' => ['auth','CheckLevel:admin,seller'],  'prefix' => '
     Route::get('/product/edit/{id?}', [SellerProductController::class, 'editProduct'])->name('product.edit');
     Route::put('/product/{id?}', [SellerProductController::class, 'updateProduct'])->name('product.update');
 
-    Route::get('/setting-scedhule', function () {
-        return view('seller.setting-scedhule');
-    })->name('setting-scedhule');
+    Route::get('/setting/scedhule', [SellerScheduleController::class, 'show'])->name('setting-scedhule');
+    Route::post('/setting/scedhule/push', [SellerScheduleController::class, 'createUpdate'])->name('setting.sche.push');
+
+    //orderCon
+
+    Route::get('/orders/upcoming', [SellerOrderController::class, 'showUp'])->name('upcoming');
+    Route::get('/orders/processed', [SellerOrderController::class, 'showPro'])->name('process');
+    Route::post('/orders/accept/{id}', [SellerOrderController::class, 'accept'])->name('accept');
+    Route::post('/orders/reject/{id}', [SellerOrderController::class, 'reject'])->name('reject');
+    Route::post('/orders/resi/up/{id}', [SellerOrderController::class, 'upResi'])->name('resiUp');
 });
 
 //Store-IMG
 Route::post('profile/image',[UserProfileController::class, 'storeImage']);
 Route::post('shop-profile/image',[ShopController::class, 'storeImage']);
 Route::post('product/image',[SellerProductController::class, 'storeImage']);
+Route::post('dataresi/image',[SellerOrderController::class, 'storeImage']);
 
 
 // //old profile seller
@@ -145,10 +155,6 @@ Route::post('product/image',[SellerProductController::class, 'storeImage']);
 //     return view('seller.product-seller');
 // })->name('product-seller');
 
-
-Route::get('/upcoming', function () {
-    return view('upcoming');
-})->name('upcoming');
 
 Route::get('/upcomingS', function () {
     return view('seller.upcoming');
@@ -224,4 +230,10 @@ Route::get('/setup/profile', function () {
     return view('setup');
 })->name('setup');
 
+
 Route::get('/chart/report', [SellerReportController::class, 'show']);
+
+Route::get('/setup-store', function () {
+    return view('seller.setup-start');
+})->name('setup-store');
+

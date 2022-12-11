@@ -26,33 +26,45 @@
         <p>Total Product</p>
         <p>{{ $products->count() }}</p>
       </div>
-     
+    
       <div class="sosmed">
+        @if ($shop->gmail>=1)
         <div class="email">
           <iconify-icon icon="ic:outline-email" style="font-size: 25px;"></iconify-icon>
           <p>{{ $shop->gmail }}</p>
         </div>
+          @endif
         <div class="row-2">
+          @if ($shop->instagram>=1)
           <div class="instagram">
             <iconify-icon icon="mdi:instagram"style="font-size: 25px;"></iconify-icon>
             <p>{{ $shop->instagram }}</p>
           </div>
+          @endif
+          @if ($shop->linkedIn>=1)
           <div class="linkedin">
             <iconify-icon icon="uil:linkedin"style="font-size: 25px;"></iconify-icon>
             <p>{{ $shop->linkedIn }}</p>
           </div>
+          @endif
         </div>
+        @if ($shop->portofolio>=1)
         <a href="{{ asset($shop->portofolio) }}" target="_blank">
         <button class="portfol">
           <iconify-icon icon="gridicons:pages">
-            
           </iconify-icon>Portofolio/cv
         </button>
       </a> 
+          @endif
       </div>
     </div>
     <div class="seller-since">
-      <p>Seller since {{ $shop->created_at }}</p>
+      @if(isset($buka) && isset($tutup))
+      <p>Open At {{ $buka }}</p>
+      <p>Closed At {{ $tutup }}</p>
+      @else
+      <p>They're in a Vacation!</p>
+      @endif
     </div>
   </div>
   <div class="content-product">

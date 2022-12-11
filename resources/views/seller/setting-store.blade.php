@@ -59,7 +59,7 @@
             <div class="col2">
               <div class="linkedin">
                 <label for="link"><iconify-icon icon="mdi:linkedin"></iconify-icon> linkedIn</label>
-                <input type="text" name="linkedIn" id="link" value="{{ $shop->linkedIn }}">
+                <input type="text" name="linkedIn" id="link" value="{{ $shop->linkedin }}">
               </div>  
               
               <div class="cv">

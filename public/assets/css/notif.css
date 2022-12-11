@@ -2,19 +2,12 @@
       margin: 140px 60px;
   }
 
+.notif-title{
+    margin-bottom: 20px;
+}
   .row-1 {
       display: flex;
       justify-content: space-between;
-  }
-
-  .filter-dropdown select {
-      width: 150px;
-  }
-
-  .mark-read {
-      display: flex;
-      align-items: center;
-      gap: 10px;
   }
 
   .notif {
