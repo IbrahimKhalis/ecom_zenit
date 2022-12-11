@@ -9,8 +9,8 @@
 @include('components.sidebar')
 <div class="contents">
     <div class="sub-content">
-        <a href="{{ route('report') }}">Overall Report</a>
-        <a href="{{ route('monthly-report') }}">Monthly Report</a>
+        <a href="{{ route('seller.report') }}">Overall Report</a>
+        <a href="{{ route('seller.monthly-report') }}">Monthly Report</a>
     </div>
     <div class="cards">
         <div class="product-total">

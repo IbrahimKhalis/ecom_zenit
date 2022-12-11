@@ -11,8 +11,8 @@
 @include('components.sidebar')
 <div class="contents">
     <div class="sub-content">
-        <a href="{{ route('setting-info') }}">Information</a>
-        <a href="{{ route('edit-info') }}">Edit Information</a>
+        <a href="{{ route('seller.setting-info') }}">Information</a>
+        <a href="{{ route('seller.edit-info') }}">Edit Information</a>
         <a href="{{ route('seller.setting-scedhule') }}">Scedhule</a>
     </div>
     
@@ -21,7 +21,7 @@
         <i class="fa-solid fa-store"></i>
         <p>Store Information</p>
       </div>
-    <form action="{{ route('update/profile/shop'), auth()->id() }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('seller.profile.shopUp'), auth()->id() }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
       <div class="card-content">
@@ -59,7 +59,7 @@
             <div class="col2">
               <div class="linkedin">
                 <label for="link"><iconify-icon icon="mdi:linkedin"></iconify-icon> linkedIn</label>
-                <input type="text" name="linkedIn" id="link" value="{{ $shop->linkedin }}">
+                <input type="text" name="linkedIn" id="link" value="{{ $shop->linkedIn }}">
               </div>  
               
               <div class="cv">

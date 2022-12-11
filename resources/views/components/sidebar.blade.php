@@ -32,7 +32,7 @@
                 </div>
                 
                 <div class="menu-report">
-                    <a href="{{ route('report') }}" class="report">
+                    <a href="{{ route('seller.report') }}" class="report">
                         <div class="left">
                             <iconify-icon class="icon" icon="ph:flag"></iconify-icon>
                             <p>Report</p>
@@ -42,7 +42,7 @@
                 </div>
 
                 <div class="menu-setting">
-                    <a href="{{ route('setting-info') }}" class="setting">
+                    <a href="{{ route('seller.setting-info') }}" class="setting">
                         <div class="left">
                             <iconify-icon class="icon" icon="ant-design:setting-outlined"></iconify-icon>
                             <p>Setting</p>
