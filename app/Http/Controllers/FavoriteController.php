@@ -48,6 +48,12 @@ class FavoriteController extends Controller
 
         $favor->delete();
 
-        return redirect()->back();
+        $favorites = Favorite::where('users_id', auth()->id());
+
+        $favorCount = $favorites->count();
+
+        $favor = $favorites->paginate(6);
+
+        return view('components.favParts', compact('favor', 'favorCount'));
     }
 }

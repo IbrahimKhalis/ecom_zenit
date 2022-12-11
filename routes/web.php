@@ -223,3 +223,5 @@ Route::get('export/sale/data', [PController::class, 'export']);
 Route::get('/setup/profile', function () {
     return view('setup');
 })->name('setup');
+
+Route::get('/chart/report', [SellerReportController::class, 'show']);
