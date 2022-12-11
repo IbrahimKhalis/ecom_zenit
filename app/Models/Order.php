@@ -21,4 +21,9 @@ class Order extends Model
     public function shipping(){
         return $this->hasOne(Shipping::class, 'orders_id');
     }
+
+    public function dataResi(){
+        return $this->hasMany(DataResi::class, 'orders_id');
+    }
+
 }
