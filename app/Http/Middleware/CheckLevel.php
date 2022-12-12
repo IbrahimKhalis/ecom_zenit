@@ -19,6 +19,6 @@ class CheckLevel
         if(in_array(auth()->user()->level, $level)){
             return $next($request);
         }
-        return redirect('/');
+        return abort(404);
     }
 }
