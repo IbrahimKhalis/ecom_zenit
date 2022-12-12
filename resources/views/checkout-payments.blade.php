@@ -90,7 +90,11 @@
 
                             </div>
                         </div>
-                       
+                        <div class="row2-product">
+                            <div class="type">
+                                <p>{{ $product->product->category->name }}</p>
+                            </div>
+                        </div>
                         <div class="row3-product">
                             <div class="col1">
                                 <p>Unit Price</p>
@@ -113,15 +117,15 @@
                         <p>Total</p>
                     </div>
                     <div class="total-price-order">
-                        <p><span>Total Order ( {{  $qty }} ) :</span> Rp. {{ $total }}</p>
+                        <p><span>Total pesanan ( {{  $qty }} ) :</span> Rp. {{ $total }}</p>
                         <hr>
-                        <p><span>Total Order ( {{  $qty }} ) :</span> Rp. </p>
+                        <p><span>Total pesanan ( {{  $qty }} ) :</span> Rp. </p>
                     </div>
                 </div>
             </div>
             <div class="shipping-method">
                 <div class="title-shipping">
-                    <form action="{{ route('place-order') }}" method="POST">
+                    <form action="{{ route('transaction-store') }}" method="POST">
                         @csrf
                     <p>Available shipping method</p>
                 </div>
@@ -192,45 +196,34 @@
                         <div class="title-payment">
                             <p>Payment Method</p>
                         </div>
+
+                        @foreach ($pay as $p )
+                            @if($p->active)
                         <div class="card-payment">
                             <div class="left-payment">
                                 <div class="payment-logo">
                                     <img src="assets/tes-img.png" alt="">
                                 </div>
                                 <div class="payment-method">
-                                    <p>Paypal</p>
+                                    <p>{{ $p->name }}</p>
                                 </div>
                             </div>
-
-                            <div class="right-payment">
-                                <input type="radio" name="payment_type" value="PAYPAL">
-                            </div>
+                                <div class="right-payment">
+                                    <input type="radio" name="method" value="{{ $p->code }}">
+                                </div>
                         </div>
-                        <div class="card-payment">
-                            <div class="left-payment">
-                                <div class="payment-logo">
-                                    <img src="assets/tes-img.png" alt="">
-                                </div>
-                                <div class="payment-method">
-                                    <p>OVO</p>
-                                </div>
-                            </div>
-
-                            <div class="right-payment">
-                                <input type="radio" name="payment_type" value="OVO">
-                            </div>
-                        </div>
-                    </div>
+                            @endif
+                        @endforeach
 
                     <div class="btn-order">
 
                         <input type="hidden" name="total" value="{{ $total }}">
 
-                        <div class="card-footer text-right">
-                            <button type="submit">Continue</button>
+                        <div class="card-footer text-right                       ">
+                            <button class="btn btn-primary mr-1" type="submit">Continue</button>
                         </div>
 
-                        <button class="cancle">Cancel</button>
+                        <button>Cancel</button>
 
 
                     </div>

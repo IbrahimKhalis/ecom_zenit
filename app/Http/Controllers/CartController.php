@@ -46,6 +46,7 @@ class CartController extends Controller
         $check->update();
 
         return redirect()->back();
+        
 
     }
 
@@ -96,15 +97,15 @@ class CartController extends Controller
         $dataProd = Product::find($products_id);
         if($dataProd->users_id != auth()->id()){
             $check = Cart::where('products_id', $products_id)->where('users_id', Auth()->id())->first();
-    
+
             if ($check){
                 $prod = $check->product;
-    
+
                 if($prod->category->name != 'Software'){
-    
+
                     $check->quantity += 1;
                     $check->update();
-    
+
                     return Redirect()->back()->with([
                         'message' => 'Added More To Cart !',
                         'type' => 'warning'
@@ -141,15 +142,15 @@ class CartController extends Controller
         $dataProd = Product::find($products_id);
         if($dataProd->users_id != auth()->id()){
             $check = Cart::where('products_id', $products_id)->where('users_id', Auth()->id())->first();
-    
+
             if ($check){
                 $prod = $check->product;
-    
+
                 if($prod->category->name != 'Software'){
-    
+
                     $check->quantity += 1;
                     $check->update();
-    
+
                     return 'Added More To Cart !';
                 }
                 return 'Has Been Added To Cart !';
@@ -161,7 +162,7 @@ class CartController extends Controller
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now(),
                 ]);
-    
+
                 return 'Add Cart Success !';
             }
         }else{

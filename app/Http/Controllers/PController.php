@@ -10,6 +10,8 @@ use App\Models\ShopProfile;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\payment\TripayController;
+use App\Models\Cart;
 
 class PController extends Controller
 {
@@ -17,7 +19,7 @@ class PController extends Controller
 
         $seller = User::find($product->users_id)->shop;
 
-        
+
 
         // $seller = ShopProfile::where('users_id', $product->users_id)->first();
 
@@ -40,7 +42,7 @@ class PController extends Controller
         $avg = 0.0;
         $avgsell = 0;
 
-        
+
 
         if($ratings->count() != 0){
             $avg = round((1*$star1+2*$star2+3*$star3+4*$star4+5*$star5)/($star1+$star2+$star3+$star4+$star5),1);
@@ -59,5 +61,16 @@ class PController extends Controller
     }
     public function export(){
         return Excel::download(new DatasaleExport, 'datasale.xlsx');
+    }
+
+    public function checkout()
+    {
+        $products = Cart::where('users_id', Auth::user()->id)->get();
+
+        $tripay = new TripayController();
+
+        $pay = $tripay->pay();
+
+        return view('checkout-payments', compact('products', 'pay'));
     }
 }

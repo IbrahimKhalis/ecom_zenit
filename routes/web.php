@@ -1,29 +1,31 @@
 <?php
 
-use App\Http\Controllers\Admin\ProductController;
-use App\Http\Controllers\Admin\UserController;
-use App\Http\Controllers\CartController;
-use App\Http\Controllers\FavoriteController;
-use App\Http\Controllers\HControllerr;
-use App\Http\Controllers\OrderController;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\PController;
 use App\Http\Controllers\SController;
-use App\Http\Controllers\ShopController;
 use App\Http\Controllers\ShopProfile;
-use App\Http\Controllers\TransactionController;
-use App\Http\Controllers\UserProfileController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HControllerr;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\ShopController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\RatingController;
-use App\Http\Controllers\SellerdashboardController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\SettingController;
+use Illuminate\Contracts\Auth\UserProvider;
+use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\API\GoogleController;
 use App\Http\Controllers\SellerEditController;
 use App\Http\Controllers\SellerOrderController;
-use App\Http\Controllers\SellerProductController;
-use App\Http\Controllers\SettingController;
+use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\SellerReportController;
+use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\SellerProductController;
 use App\Http\Controllers\SellerScheduleController;
-use Illuminate\Contracts\Auth\UserProvider;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SellerdashboardController;
+use App\Http\Controllers\payment\TripayCallbackController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,7 +46,7 @@ use Illuminate\Support\Facades\Route;
     Route::get('/product/tag/{slug?}', [SController::class, 'tag'])->name('product.tag.filter');
 
     Route::get('/search/{slug?}', [SController::class, 'search'])->name('product.search');
-    
+
     Route::get('/detail', function () {
         return view('detail');
     })->name('detail');
@@ -71,7 +73,7 @@ use Illuminate\Support\Facades\Route;
 
 
     route::get('/shop/profile/{slug?}', [ShopProfile::class, 'show'])->name('shop.show.profile');
-    
+
     Route::get('/setting', function () {
         return view('dashboard');
     });
@@ -83,12 +85,11 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/profile/create', [UserProfileController::class, 'create']);
     Route::post('/profile', [UserProfileController::class, 'store']);
     Route::put('/profile', [UserProfileController::class, 'update'])->name('update.profile');
-    
+
     Route::get('/profile/your-profile', [UserProfileController::class, 'show'])->name('profile.cust');
     Route::get('/profile/edityour', [UserProfileController::class, 'edit'])->name('editprofile.cust');
-    
+
     Route::get('checkoutdetail', [OrderController::class, 'index'])->name('checkout-detail');
-    Route::get('checkoutdetail/payment', [OrderController::class, 'payment'])->name('checkout-payment');
     Route::post('place/order', [OrderController::class, 'storeOrder'])->name('place-order');
     Route::get('checkoutdetail/payment/success', [OrderController::class, 'complete'])->name('checkout-complete');
 });
@@ -108,10 +109,10 @@ Route::group(['middleware' => ['auth','CheckLevel:admin,seller'],  'prefix' => '
     Route::get('/profile/edit', function () {
         return view('profile.profile-edit');
     })->name('edit.profile');
-    
+
     Route::put('/profile/save/{id}', [SellerEditController::class, 'update']);
     Route::patch('/profile/{id}', [SellerEditController::class, 'updateIMG']);
-    
+
     Route::get('/profile', function(){
         return view('profile.profile');
     })->name('profile');
@@ -160,6 +161,20 @@ Route::post('profile/image',[UserProfileController::class, 'storeImage']);
 Route::post('shop-profile/image',[ShopController::class, 'storeImage']);
 Route::post('product/image',[SellerProductController::class, 'storeImage']);
 Route::post('dataresi/image',[SellerOrderController::class, 'storeImage']);
+
+
+// API Payment
+Route::get('checkoutdetail/payment', [App\Http\Controllers\PNController::class, 'checkout'])->name('checkout-payment');
+Route::get('checkout/transaction/{reference}', [App\Http\Controllers\TransactionController::class, 'index'])->name('transaction.detail');
+Route::post('checkout/transaction', [App\Http\Controllers\TransactionController::class, 'store'])->name('transaction-store');
+
+Route::post('/callback', [App\Http\Controllers\payment\TripayCallbackController::class, 'handle']);
+
+// API Google
+Route::controller(GoogleController::class)->group(function(){
+    Route::get('/auth/{provider}', [GoogleController::class, 'redirectToProvider']);
+    Route::get('/auth/{provider}/callback', [GoogleController::class, 'handleProvideCallback']);
+});
 
 
 // //old profile seller
