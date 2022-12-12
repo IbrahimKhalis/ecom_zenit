@@ -36,7 +36,12 @@
   border-radius: 5px;
   background-color: #000000;
 }
-.first-name,.last-name,.email,.phone,.address{
+.first-name,
+.last-name,
+.desc,
+.email,
+.phone,
+.address{
   display: flex;
 }
 .first-name p{
@@ -44,6 +49,9 @@
 }
 .last-name p{
   margin-right: 101.5px;
+}
+.desc p{
+  margin-right: 96px;
 }
 .email p{
   margin-right: 138px;
