@@ -19,9 +19,9 @@ class OrderItem extends Model
 
     public function seller(){
         return $this->belongsTo(User::class, 'seller_id');
+    }
 
     public function dataResi(){
         return $this->hasOne(DataResi::class, 'order_items_id');
-
     }
 }

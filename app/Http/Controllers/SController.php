@@ -122,6 +122,8 @@ class SController extends Controller
 
         $tags = [];
 
+        $favorites = [0];
+
         if($request->search != null){
             $products->orWhere('name', 'like', '%'.$request->search.'%');
             $products->orWhere('desc', 'like', '%'.$request->search.'%');
@@ -162,6 +164,12 @@ class SController extends Controller
             $products->where('price', '<=', $request->max);
             array_push($tags, 'MAX : '.$request->max);
         }
+
+        if(Auth::check()){
+            foreach(Auth()->user()->favorites as $favorite){
+                array_push($favorites, $favorite->products_id);
+            }
+        }
         
         if(!is_null($slug)){
             $category = Tb_productcate::whereSlug($slug)->firstOrFail();
@@ -196,7 +204,7 @@ class SController extends Controller
 
         $products = $products->paginate(4);
 
-        return view('product',compact('products', 'tags'));
+        return view('product',compact('products','tags','favorites'));
 
     }
 
@@ -206,6 +214,8 @@ class SController extends Controller
 
 
         $tags = [];
+
+        $favorites = [0];
 
         if($request->BRF != null){
             $products->orWhere('major','=', 'BRF');
@@ -242,6 +252,12 @@ class SController extends Controller
             array_push($tags, 'MAX : '.$request->max);
         }
 
+        if(Auth::check()){
+            foreach(Auth()->user()->favorites as $favorite){
+                array_push($favorites, $favorite->products_id);
+            }
+        }
+
         array_push($tags, $slug);
 
         $products = $products->whereHas('tags', function ($query) use($slug) {
@@ -253,7 +269,7 @@ class SController extends Controller
         ->paginate(4);
 
 
-        return view('product', compact('products','slug', 'tags'));
+        return view('product', compact('products','slug', 'tags','favorites'));
     }
     
 }

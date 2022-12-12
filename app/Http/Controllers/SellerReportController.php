@@ -19,10 +19,23 @@ class SellerReportController extends Controller
         
         // $sellproducts = User::find(auth()->id())->products;
         $sellproducts = OrderItem::where('seller_id', auth()->id())->get();
+
+        foreach($sellproducts as $product){
+            $countTerjualProd = $product->orderItem->all();
+
+            foreach($countTerjualProd as $data){
+                    array_push($terjual, $data->product_qty);
+            }
+        }
+
         // $sellproducts = Order::whereYear('creaated_at', Carbon::now()->year)->whereMonth('created_at', Carbon::now()->month)->count(); die;
 
         // $sellproducts = Order::where('users_id', auth()->id());
 
+
+        // $month = Order::select(DB::raw("MONTHNAME(created_at) as bulan"))->Groupby(DB::raw("MONTHNAME(created_at)"))->pluck('bulan');
+
+        // dd($month,$sellproducts);
         // dd($sellproducts);
 
         $chart = new reportProduct;
@@ -60,7 +73,7 @@ class SellerReportController extends Controller
         // dd($total_harga);
 
         // return view('seller.report', compact('products', 'terjualData','total_harga','month'));
-        return view('seller.report', compact('chart'));
+        return view('seller.report', compact('chart','sellproducts'));
     }
 }
 

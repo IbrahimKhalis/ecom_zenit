@@ -72,7 +72,7 @@ justify-content: space-between;
   width: 100px;
   height: 100px;
   object-fit: cover;
-
+  border-radius: 8px;
 }
 .left-row{
 display: flex;
@@ -113,7 +113,7 @@ align-items: center;
 gap: 5px;
 
 }
-.right-row .last-row button{
+.right-row .last-row button:first-child{
 padding: 3px 15px;
 border-radius: 5px;
 font-size: 12px;
@@ -121,6 +121,13 @@ background-color: #5874AF;
 color: white;
 border: none;
 }
+.right-row .last-row button:last-child{
+  background-color: transparent;
+  border-color: transparent;
+  margin: 0;
+  padding: 0;
+}
+
 .trash{
 font-size: 25px;
 color:rgb(255, 45, 45);
