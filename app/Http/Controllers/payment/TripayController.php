@@ -55,7 +55,7 @@ class TripayController extends Controller
             'amount'         => $total,
             'customer_name'  => $user->name,
             'customer_email' => $user->email,
-            // 'customer_phone' => $user->profile->phoneNumber,
+            'customer_phone' => $user->profile->phoneNumber,
 
             'order_items'    => $Product,
 
@@ -83,8 +83,6 @@ class TripayController extends Controller
         curl_close($curl);
 
         $response = json_decode($response)->data;
-
-        dd($response);
 
         return $response ?: $error;
 
@@ -118,8 +116,6 @@ class TripayController extends Controller
         curl_close($curl);
 
         $response = json_decode($response)->data;
-
-        dd($response);
 
         return $response ?: $error;
 

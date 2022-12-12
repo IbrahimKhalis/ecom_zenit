@@ -30,7 +30,7 @@ class PNController extends Controller
 
         $total = array_sum($prices);
 
-    $qty = Cart::all()->where('users_id',auth()->id())->sum('quantity');
+        $qty = Cart::all()->where('users_id',auth()->id())->sum('quantity');
 
 
         return view('checkout-payments', compact('products', 'pay', 'total', 'qty'));

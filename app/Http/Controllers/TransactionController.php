@@ -79,16 +79,13 @@ class TransactionController extends Controller
 
         Shipping::insert([
             'orders_id' => $order_id,
-            'shipping_name' => $request->shipping_email,
-            'shipping_email' => $request->shipping_name,
+            'shipping_method'=>$request->shipping_method,
+            'shipping_name' => $request->shipping_name,
+            'shipping_email' => $request->shipping_email,
             'shipping_phone' => $request->shipping_phone,
             'adress' => $request->adress,
             'created_at' => Carbon::now(),
         ]);
-
-
-        Cart::where('users_id', auth()->id())->delete();
-
 
         Transaction::create([
             'user_id' => auth()->user()->id,
@@ -98,6 +95,10 @@ class TransactionController extends Controller
             'total_amount' => $transaction->amount,
             'status' => $transaction->status,
         ]);
+
+        Cart::where('users_id', auth()->id())->delete();
+
+
 
         return redirect()->route('transaction.detail', [
             'reference' => $transaction->reference,

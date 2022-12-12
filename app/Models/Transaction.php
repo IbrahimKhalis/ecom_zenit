@@ -11,7 +11,7 @@ class Transaction extends Model
 
     protected $fillable = [
         'user_id',
-        'book_id',
+        'order_id',
         'reference',
         'merchant_ref',
         'total_amount',
@@ -23,8 +23,8 @@ class Transaction extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function book()
+    public function order()
     {
-        return $this->belongsTo(Book::class);
+        return $this->belongsTo(Order::class);
     }
 }
