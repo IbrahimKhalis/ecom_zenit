@@ -1,29 +1,31 @@
 <?php
 
-use App\Http\Controllers\Admin\ProductController;
-use App\Http\Controllers\Admin\UserController;
-use App\Http\Controllers\CartController;
-use App\Http\Controllers\FavoriteController;
-use App\Http\Controllers\HControllerr;
-use App\Http\Controllers\OrderController;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\PController;
 use App\Http\Controllers\SController;
-use App\Http\Controllers\ShopController;
 use App\Http\Controllers\ShopProfile;
-use App\Http\Controllers\TransactionController;
-use App\Http\Controllers\UserProfileController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HControllerr;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\ShopController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\RatingController;
-use App\Http\Controllers\SellerdashboardController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\SettingController;
+use Illuminate\Contracts\Auth\UserProvider;
+use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\API\GoogleController;
 use App\Http\Controllers\SellerEditController;
 use App\Http\Controllers\SellerOrderController;
-use App\Http\Controllers\SellerProductController;
-use App\Http\Controllers\SettingController;
+use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\SellerReportController;
+use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\SellerProductController;
 use App\Http\Controllers\SellerScheduleController;
-use Illuminate\Contracts\Auth\UserProvider;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SellerdashboardController;
+use App\Http\Controllers\payment\TripayCallbackController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,7 +46,7 @@ use Illuminate\Support\Facades\Route;
     Route::get('/product/tag/{slug?}', [SController::class, 'tag'])->name('product.tag.filter');
 
     Route::get('/search/{slug?}', [SController::class, 'search'])->name('product.search');
-    
+
     Route::get('/detail', function () {
         return view('detail');
     })->name('detail');
@@ -71,7 +73,7 @@ use Illuminate\Support\Facades\Route;
 
 
     route::get('/shop/profile/{slug?}', [ShopProfile::class, 'show'])->name('shop.show.profile');
-    
+
     Route::get('/setting', function () {
         return view('dashboard');
     });
@@ -83,12 +85,11 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/profile/create', [UserProfileController::class, 'create']);
     Route::post('/profile', [UserProfileController::class, 'store']);
     Route::put('/profile', [UserProfileController::class, 'update'])->name('update.profile');
-    
+
     Route::get('/profile/your-profile', [UserProfileController::class, 'show'])->name('profile.cust');
     Route::get('/profile/edityour', [UserProfileController::class, 'edit'])->name('editprofile.cust');
-    
+
     Route::get('checkoutdetail', [OrderController::class, 'index'])->name('checkout-detail');
-    Route::get('checkoutdetail/payment', [OrderController::class, 'payment'])->name('checkout-payment');
     Route::post('place/order', [OrderController::class, 'storeOrder'])->name('place-order');
     Route::get('checkoutdetail/payment/success', [OrderController::class, 'complete'])->name('checkout-complete');
 });
@@ -108,31 +109,51 @@ Route::group(['middleware' => ['auth','CheckLevel:admin,seller'],  'prefix' => '
     Route::get('/profile/edit', function () {
         return view('profile.profile-edit');
     })->name('edit.profile');
-    
+
     Route::put('/profile/save/{id}', [SellerEditController::class, 'update']);
     Route::patch('/profile/{id}', [SellerEditController::class, 'updateIMG']);
-    
+
     Route::get('/profile', function(){
         return view('profile.profile');
     })->name('profile');
-
+    
     Route::get('/products',[SellerProductController::class, 'show'])->name('products');
     Route::post('/product/change/{id}',[SellerProductController::class, 'changeStatus'])->name('products.changeStatus');
     Route::get('/product/add', [SellerProductController::class, 'createProduct'])->name('product.add');
     Route::post('/product/add', [SellerProductController::class, 'addProduct'])->name('product.store');
     Route::get('/product/edit/{id?}', [SellerProductController::class, 'editProduct'])->name('product.edit');
     Route::put('/product/{id?}', [SellerProductController::class, 'updateProduct'])->name('product.update');
-
+    
     Route::get('/setting/scedhule', [SellerScheduleController::class, 'show'])->name('setting-scedhule');
     Route::post('/setting/scedhule/push', [SellerScheduleController::class, 'createUpdate'])->name('setting.sche.push');
-
+    Route::get('/setting-info', [SettingController::class, 'show'])->name('setting-info');
+    Route::get('/editstore', [SettingController::class, 'create'])->name('edit-info');
+    Route::put('/update/profile', [SettingController::class, 'update'])->name('profile.shopUp');
+    
     //orderCon
 
     Route::get('/orders/upcoming', [SellerOrderController::class, 'showUp'])->name('upcoming');
     Route::get('/orders/processed', [SellerOrderController::class, 'showPro'])->name('process');
+
+    Route::get('/completed', function () {
+        return view('seller.complete-order');
+    })->name('completed');
+    
+    Route::get('/canceled', function () {
+        return view('seller.canceled-order');
+    })->name('canceled');
+    
     Route::post('/orders/accept/{id}', [SellerOrderController::class, 'accept'])->name('accept');
     Route::post('/orders/reject/{id}', [SellerOrderController::class, 'reject'])->name('reject');
     Route::post('/orders/resi/up/{id}', [SellerOrderController::class, 'upResi'])->name('resiUp');
+
+    //Report
+    Route::get('/report',[SellerReportController::class, 'show'])->name('report');
+    Route::get('/monthlyreport', function () {
+        return view('seller.monthly-report');
+    })->name('monthly-report');
+    
+
 });
 
 //Store-IMG
@@ -142,11 +163,25 @@ Route::post('product/image',[SellerProductController::class, 'storeImage']);
 Route::post('dataresi/image',[SellerOrderController::class, 'storeImage']);
 
 
+// API Payment
+Route::get('checkoutdetail/payment', [App\Http\Controllers\PNController::class, 'checkout'])->name('checkout-payment');
+Route::get('checkout/transaction/{reference}', [App\Http\Controllers\TransactionController::class, 'index'])->name('transaction.detail');
+Route::post('checkout/transaction', [App\Http\Controllers\TransactionController::class, 'store'])->name('transaction-store');
+
+Route::post('/callback', [App\Http\Controllers\payment\TripayCallbackController::class, 'handle']);
+
+// API Google
+Route::controller(GoogleController::class)->group(function(){
+    Route::get('/auth/{provider}', [GoogleController::class, 'redirectToProvider']);
+    Route::get('/auth/{provider}/callback', [GoogleController::class, 'handleProvideCallback']);
+});
+
+
 // //old profile seller
 // Route::get('/profile-seller-old', function () {
-//     return view('seller.profile-old');
-// })->name('profileseller');
-// Route::get('/profile-edit-old', function () {
+    //     return view('seller.profile-old');
+    // })->name('profileseller');
+    // Route::get('/profile-edit-old', function () {
 //     return view('seller.profile-edit-old');
 // })->name('profile-edit1');
 
@@ -156,27 +191,10 @@ Route::post('dataresi/image',[SellerOrderController::class, 'storeImage']);
 // })->name('product-seller');
 
 
-Route::get('/upcomingS', function () {
-    return view('seller.upcoming');
-})->name('upcomingS');
+// Route::get('/upcomingS', function () {
+//     return view('seller.upcoming');
+// })->name('upcomingS');
 
-Route::get('/processed', function () {
-    return view('seller.processed');
-})->name('processed');
-
-Route::get('/completed', function () {
-    return view('seller.complete-order');
-})->name('completed');
-
-Route::get('/canceled', function () {
-    return view('seller.canceled-order');
-})->name('canceled');
-
-Route::get('/seller/report/',[SellerReportController::class, 'show'])->name('report');
-
-Route::get('/monthlyreport', function () {
-    return view('seller.monthly-report');
-})->name('monthly-report');
 
 // Route::get('/addproduct', function () {
 //     return view('seller.add-product');
@@ -193,7 +211,6 @@ Route::get('/setting', function () {
 //     return view('seller.setting-info');
 // })->name('setting-info');
 
-Route::get('/setting-info', [SettingController::class, 'show'])->name('setting-info');
 
 
 Route::get('/report-invoice', function () {
@@ -208,8 +225,6 @@ Route::get('/product/detail/review/{product:slug?}', [ReviewController::class, '
 //     return view('seller.setting-store');
 // })->name('edit-info');
 
-Route::get('/seller/editstore', [SettingController::class, 'create'])->name('edit-info');
-Route::put('/seller/update/profile', [SettingController::class, 'update'])->name('update/profile/shop');
 
 Route::get('/notif', function () {
     return view('notif');

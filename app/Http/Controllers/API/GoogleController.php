@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 use App\Models\SocialAccount;
 use PhpParser\Node\Stmt\Catch_;
 use App\Http\Controllers\Controller;
-use App\Models\Tb_customer;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Socialite\Facades\Socialite;
@@ -47,20 +47,16 @@ class GoogleController extends Controller
     {
 
 
-            $user = Tb_customer::where('email', $socialUser->getEmail())->first();
+            $user = User::where('email', $socialUser->getEmail())->first();
 
 
             if (!$user) {
 
 
-                $user = Tb_customer::create([
-                    'username'  => $socialUser->getName(),
-                    'password' => Hash::make('password'),
-                    'firstname'  => $socialUser->getName(),
-                    'lastname'  => $socialUser->getName(),
+                $user = User::create([
+                    'name'  => $socialUser->getName(),
                     'email' => $socialUser->getEmail(),
-                    'phoneNumber'  => $socialUser->getName(),
-                    'adress'  => $socialUser->getName(),
+
 
 
                 ]);

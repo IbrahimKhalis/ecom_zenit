@@ -164,7 +164,7 @@ class SettingController extends Controller
         // $data->portofolio = $portofolio_name;
         // $data->save(); 
 
-        return redirect('/setting-info');
+        return redirect('/seller/setting-info');
     }
 
     /**
