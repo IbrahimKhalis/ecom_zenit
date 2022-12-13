@@ -19,7 +19,7 @@ class TransactionController extends Controller
         $tripay = new TripayController();
         $detail =  $tripay->detailTransaction($reference);
 
-        return view('dashboard.transaction.detail', compact('detail'));
+        return view('details', compact('detail'));
     }
 
     public function store(Request $request)
@@ -33,10 +33,10 @@ class TransactionController extends Controller
             array_push($kumpulHarga, $cart->product->price * $cart->quantity);
         }
 
-
+        // dd($carts);
         $total = array_sum($kumpulHarga);
 
-        
+
         $Product = [];
 
         foreach($carts as $products){
@@ -59,8 +59,8 @@ class TransactionController extends Controller
         $order_id = Order::insertGetId([
             'users_id' => Auth::id(),
             'invoice_no' => mt_rand(10000000 ,99999999),
-            'payment_type' => $request->payment_type,
-            'total' => $request->total,
+            'payment_type' => $method,
+            'total' => $total,
             'created_at' => Carbon::now(),
         ]);
 
@@ -69,6 +69,7 @@ class TransactionController extends Controller
             OrderItem::insert([
                 'orders_id' => $order_id,
                 'products_id' => $cart->products_id,
+                'seller_id' => $cart->product->users_id,
                 'product_name' => $cart->product->name,
                 'product_qty' => $cart->quantity,
                 'subtotal'=> $cart->quantity * $cart->product->price,
@@ -78,16 +79,13 @@ class TransactionController extends Controller
 
         Shipping::insert([
             'orders_id' => $order_id,
+            'shipping_method'=>$request->shipping_method,
             'shipping_name' => $request->shipping_name,
             'shipping_email' => $request->shipping_email,
             'shipping_phone' => $request->shipping_phone,
             'adress' => $request->adress,
             'created_at' => Carbon::now(),
         ]);
-
-
-        Cart::where('users_id', auth()->id())->delete();
-
 
         Transaction::create([
             'user_id' => auth()->user()->id,
@@ -97,6 +95,10 @@ class TransactionController extends Controller
             'total_amount' => $transaction->amount,
             'status' => $transaction->status,
         ]);
+
+        Cart::where('users_id', auth()->id())->delete();
+
+
 
         return redirect()->route('transaction.detail', [
             'reference' => $transaction->reference,

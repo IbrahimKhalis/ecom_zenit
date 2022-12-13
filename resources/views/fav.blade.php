@@ -6,7 +6,7 @@
 
 @section('content')
 
-<div class="container">
+<div class="container" id="container">
   <div class="your-fav">
     <iconify-icon icon="akar-icons:heart" class="heart"></iconify-icon>
     <h3>Your Favorite</h3>
@@ -38,7 +38,7 @@
             <p>RP. {{ $favorite->product->price }}</p>
             <div class="last-row">
               <button>Buy Now</button>
-              <a href="{{ url('favorite/del', $favorite->id) }}"><iconify-icon class="trash" icon="fe:trash"></iconify-icon></a>
+              <button onclick="trash('{{ url('favorite/del', $favorite->id) }}')"><iconify-icon class="trash" icon="fe:trash"></iconify-icon></button>
             </div>
           </div>
         </div>
@@ -52,5 +52,6 @@
 </div>
 
 </div>
+<script src="{{ asset('assets/js/fav.js') }}"></script>
 
 @endsection

@@ -8,8 +8,11 @@ var btnRec = document.getElementById("btn-receipt");
 var span = document.getElementsByClassName("close-rec")[0];
 
 // When the user clicks the button, open the modal 
-function On_click(clicked){
+function On_click(url){
   modalRec.style.display = "block";
+
+  document.getElementById('modalForm').action = url;
+
 }
 
 // When the user clicks on <span> (x), close the modal

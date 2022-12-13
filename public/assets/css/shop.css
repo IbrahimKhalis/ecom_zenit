@@ -14,7 +14,7 @@ body{
 
 .card-profile {
   width: 300px;
-  min-height: 470px;
+  min-height: 480px;
   background-color: #fff;
   border-radius: 15px;
   position: fixed;
@@ -95,7 +95,7 @@ body{
 }
 
 .seller-since {
-  margin-top: 180px;
+  margin-top: 205px;
   text-align: center;
   font-size: 14px;
   font-family: 'quicksand';
@@ -238,14 +238,20 @@ body{
 .sosmed{
   margin-top: 40px;
   font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .email{
   display: flex;
   gap: 5px;
+  justify-content: center;
 }
 .sosmed .row-2{
   display: flex;
-  gap: 10px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .instagram{
   display: flex;

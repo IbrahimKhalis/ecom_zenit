@@ -85,12 +85,9 @@ class SettingController extends Controller
             'instagram' ,
             'gmail' ,
             'linkedIn',
-            'portofolio',
+            'portofolio' => 'mimes:pdf',
         ]);
         // dd($validated);
-       
-        
-        $shop->update($request->all());
         
 
         if (count($shop->gallery) > 0) {
@@ -109,7 +106,70 @@ class SettingController extends Controller
             }
         }
 
-        return redirect('/setting-info');
+        $porto = null;
+        if ($request->hasFile('portofolio')) {
+            $porto = $request->file('portofolio')->storeAs(
+                'public/portofolio',
+                $name = auth()->user()->name. '.' . $request->file('portofolio')->getClientOriginalExtension(),
+            );
+        }    
+        
+        $shop->update([
+            'name' => $request->name,
+            'desc' => $request->desc,
+            'instagram' => $request->instagram,
+            'gmail' => $request->gmail,
+            'linkedIn' => $request->linkedIn,
+        ]);
+
+        if($request->portofolio != null){
+            $shop->update([
+                'portofolio' => 'storage/portofolio/'.$name,
+            ]);
+        }
+
+
+
+        // $path = $request->file('portofolio')->store('portofolio');
+
+
+        // if(!empty($request->file('file_upload'))){
+        //     $filename = time().'_'. $request->file('file_upload')->getClientOriginalName();
+        //     $request->file('file_upload')->storeAs('file', $filename,
+        //     'public_uploads');
+        // }
+
+        // $destinationPath = 'portofolio';
+        // $myfile = $request->file->getClientOriginalName();
+        // $request->image->move(public_path($destinationPath), $myfile);
+
+        // $porto_name = $request->file('portofolio');
+        // $porto->move(public_path($porto_name), $porto);
+    
+
+
+        // $portofolio_name = 'portofolio/';
+        // $porto->move($portofolio_name, $porto);
+
+        // $request->get('$porto')->move($portofolio_name);
+
+        // if($request->file('portofolio')) 
+        // {
+        //     $file = $request->file('portofolio');
+        //     $porto = time() . '.' . $request->file('portofolio')->getClientOriginalName();
+        //     $portofolio_name = public_path() . '/files/uploads/';
+        //     $file->move($portofolio_name, $porto);
+        // }
+
+        // $portofolio = $request->file('portofolio');
+        
+            
+
+        // $data = new ShopProfile();
+        // $data->portofolio = $portofolio_name;
+        // $data->save(); 
+
+        return redirect('/seller/setting-info');
     }
 
     /**

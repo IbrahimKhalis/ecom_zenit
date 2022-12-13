@@ -9,9 +9,9 @@
 @include('components.sidebar')
 <div class="contents">
     <div class="sub-content">
-        <a href="{{ route('setting-info') }}">Information</a>
-        <a href="{{ route('edit-info') }}">Edit Information</a>
-        <a href="{{ route('setting-scedhule') }}">Scedhule</a>
+        <a href="{{ route('seller.setting-info') }}">Information</a>
+        <a href="{{ route('seller.edit-info') }}">Edit Information</a>
+        <a href="{{ route('seller.setting-scedhule') }}">Scedhule</a>
     </div>
 
     <div class="content-setting">
@@ -28,7 +28,7 @@
 
                   <p>{{ $shop->desc }}</p>
               </div>
-              <a href="{{ route('edit-info') }}">
+              <a href="{{ route('seller.edit-info') }}">
                   <button>Edit</button>
             </a>
           </div>

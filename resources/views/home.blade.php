@@ -9,7 +9,7 @@
   <div class="header-content">
     <div class="left-row">
       <div class="bg-tio">
-        <img src="{{ asset('assets/img/TIO REVISI TKJ-02.png')}}" alt="Tio">
+        <img src="{{ asset('assets/img/TIO REVISI TKJ-02.png')}}" alt="Tio" >
       </div>
     </div>
     <div class="middle-row">
@@ -22,16 +22,16 @@
       <div class="box-top-right"></div>
       <div class="box-bottom-right"></div>
       <div class="btn-explore">
-        <a href="{{ url('product') }}">
+        <a  href="{{ url('product') }}">
           <button>Explore Now!</button>
         </a>
       </div>
     </div>
-  <div class="right-row">
-    <div class="bg-bian">
-      <img src="{{ asset('assets/img/INDIVIDUAL PROP-03.png')}}" alt="Bianca">
+    <div class="right-row">
+      <div class="bg-bian">
+        <img src="{{ asset('assets/img/INDIVIDUAL PROP-03.png')}}" alt="Bianca">
+      </div>
     </div>
-  </div>
   </div>
 
   <div class="sorted">
@@ -49,7 +49,7 @@
       </a>
       <a href="{{ url('/product?PPLG=on') }}">
         <div class="rpl">
-          <img src="{{ asset('assets/img/rpl.png')}}" alt="PPLG">
+          <img src="{{ asset('assets/img/rpl.png')}}" alt="PPLG" >
         </div>
       </a>
       <a href="{{ url('/product?TJKT=on') }}">

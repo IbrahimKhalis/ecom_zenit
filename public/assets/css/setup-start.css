@@ -1,0 +1,26 @@
+.contents{
+    width: 800px;
+    height: 350px;
+    background-color: white;
+    box-shadow: 1px 1px 5px rgba(151, 151, 151, 0.477);
+    margin: 200px auto 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.img{
+    width: 200px;
+    height: 100px;
+
+}
+button{
+    width: 200px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #6093F9;
+    border: none;
+    color: white;
+    font-weight: 600;
+}

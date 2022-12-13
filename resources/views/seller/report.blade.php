@@ -9,8 +9,8 @@
 @include('components.sidebar')
 <div class="contents">
     <div class="sub-content">
-        <a href="{{ route('report') }}">Overall Report</a>
-        <a href="{{ route('monthly-report') }}">Monthly Report</a>
+        <a href="{{ route('seller.report') }}">Overall Report</a>
+        <a href="{{ route('seller.monthly-report') }}">Monthly Report</a>
     </div>
     <div class="cards">
         <div class="product-total">
@@ -25,7 +25,7 @@
                 style="color: #f24e1e; font-size: 60px; margin-left: 5px;"></iconify-icon>
             <div class="text">
                 <p>Selled Product</p>
-                <h5 style="margin-top: -10px;">{{$countTerjualProd}}</h5>
+                <h5 style="margin-top: -10px;">{{$terjualData}}</h5>
             </div>
         </div>
         <div class="profit">
@@ -44,9 +44,12 @@
             </div>
         </div>
     </div>
-
+    {{-- <div class="apa" style="width: 100%; height:50%;">
+        {!! $chart->container() !!}
+        {!! $chart->script() !!}
+    </div> --}}
     <div class="chart">
-        <canvas id="myChart" width="1150px" height="300px"></canvas>
+       <canvas id="myChart" width="1150px" height="300px"></canvas>
     </div>
 
     <div class="export">
@@ -68,21 +71,21 @@
             <th>Action</th>
         </tr>
 
-        @foreach ($users as $report)
+        @foreach ($sumprice as $key =>$value)
         <tr style="background-color: white;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
             <td style="width: 30px;">{{$loop->iteration}}</td>
-            <td style="width: 220px;"></td>
-            <td style="width: 300px;">{{$report}}</td>
-            <td style="width: 300px;">Rp.300.000</td>
+            <td style="width: 220px;">{{$key}}</td>
+            <td style="width: 300px;"> Product</td>
+            <td style="width: 300px;">Rp.{{$value}}</td>
             <td style="width: 250px; align-items: center; justify-content: center; display: flex;">
                 <p
                     style="padding: 2px; background-color: #5874AF; width: 100px; color: white; border-radius: 6px; margin: auto;">
                     Details
                 </p>
-            </td>
+            </td> 
         </tr>
-
         @endforeach
+
 
     </table>
 </div>
@@ -94,13 +97,14 @@
 <script type="text/javascript">
   
       var labels =  {{ Js::from($labels) }};
-      var users =  {{ Js::from($data) }};
   
+      var values =  {{ Js::from($values) }};
+
       const data = {
         labels: labels,
         datasets: [{
           label: 'My Sales data',
-          data: users,
+          data: values,
           backgroundColor: [
                     'rgba(54, 162, 235, 0.2)',
                     'rgba(255, 17, 0, 0.2)',
@@ -126,7 +130,14 @@
       const config = {
         type: 'bar',
         data: data,
-        options: {}
+        options: {
+            scales: {
+                y: {
+                beginAtZero: true,
+                // offset: true,
+                }
+            }       
+        }
       };
   
       const myChart = new Chart(

@@ -14,7 +14,8 @@
 <div class="edit-profile-content">
     <div class="left-row">
         <div class="pict">
-            <img src="{{ Auth::check() ? auth()->user()->profile->gallery->first()->getUrl() : asset('assets/img/user.png') }}" alt=""> 
+            {{-- <img src="{{ Auth::check() ? auth()->user()->profile->gallery->first()->getUrl() : asset('assets/img/user.png') }}" alt="" style="width:200px;">  --}}
+
             <div class="needsclick dropzone" id="gallery-dropzone" style=" height: 300px; width: 300px; padding:65px;" ></div>
         </div>
     </div>
@@ -27,6 +28,10 @@
             <p>Last Name</p>
             <input type="text" value="{{ Auth()->user()->profile->lastname }}" name="lastname">
         </div>
+        <div class="desc">
+          <p>Description</p>
+          <textarea name="desk" id="" cols="79" rows="2">{{ Auth()->user()->profile->desk }}</textarea>
+      </div>
         <div class="email">
             <p>Email</p>
             <input type="email" value="{{ Auth()->user()->email }}" name="email">

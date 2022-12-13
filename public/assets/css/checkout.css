@@ -162,8 +162,7 @@ header {
 .ctgr-order p {
     font-size: 12px;
     font-weight: 600;
-    color: #000000;
-    opacity: .5;
+    color: #77A4FF;
 }
 
 .name-product-order p {
@@ -220,6 +219,7 @@ header {
     color: white;
     border-radius: 7px;
     margin-left: -10px;
+    margin-top:80px;
 }
 
 .row3-product {

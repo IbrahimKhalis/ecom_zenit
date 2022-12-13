@@ -87,7 +87,7 @@
               <p>{{ $seller->name }}</p>
             </div>
             <div class="count-product">
-              <p>{{ $product->quantity }} Product</p>
+              <p>{{ $seller->users->products->count() }} Product</p>
             </div>
           </div>  
         </div>

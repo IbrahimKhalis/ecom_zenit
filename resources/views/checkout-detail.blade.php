@@ -77,11 +77,6 @@
                 
               </div>
             </div>
-            <div class="row2-product">
-              <div class="type">
-                <p>{{ $cart->product->category->name }}</p>
-              </div>
-            </div>
             <div class="row3-product">
               <div class="col1">
                 <p>Unit Price</p>
@@ -104,7 +99,7 @@
             <p>Total</p>
           </div>
           <div class="total-price-order">
-            <p><span>Total pesanan ({{  $qty }} produk) :</span> Rp. {{ $total }}</p>
+            <p><span>Total Order ({{  $qty }} product) :</span> Rp. {{ $total }}</p>
           </div>
         </div>
       </div>
