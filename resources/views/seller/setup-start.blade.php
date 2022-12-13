@@ -12,6 +12,6 @@
     <h5>Welcome to Zenit Store</h5>
     <p>To start selling, register as a seller by completing <br>
          the necessary information.</p>
-         <button>Start Registration</button>
+        <a href="/setup-store/info">Start Registration</a>
 </div>
 @endsection

@@ -252,3 +252,11 @@ Route::get('/setup-store', function () {
     return view('seller.setup-start');
 })->name('setup-store');
 
+
+Route::get('/setup-store/info', function () {
+    return view('seller.setup-two');
+});
+Route::get('/setup-store/personal', function () {
+    return view('seller.setup-three');
+});
+
