@@ -22,6 +22,7 @@ use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\SellerReportController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\CustomerOrderController;
 use App\Http\Controllers\SellerProductController;
 use App\Http\Controllers\SellerScheduleController;
 use App\Http\Controllers\SellerdashboardController;
@@ -252,3 +253,9 @@ Route::get('/setup-store', function () {
     return view('seller.setup-start');
 })->name('setup-store');
 
+route::get('/test', function(){
+    return view('order-cust');
+});
+
+Route::get('/order', [CustomerOrderController::class, 'show']);
+Route::post('/order', [CustomerOrderController::class, 'getTable']);
