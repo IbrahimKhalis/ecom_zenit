@@ -28,6 +28,10 @@
             <p>Last Name</p>
             <input type="text" value="{{ Auth()->user()->profile->lastname }}" name="lastname">
         </div>
+        <div class="desc">
+          <p>Description</p>
+          <textarea name="desk" id="" cols="79" rows="2">{{ Auth()->user()->profile->desk }}</textarea>
+      </div>
         <div class="email">
             <p>Email</p>
             <input type="email" value="{{ Auth()->user()->email }}" name="email">

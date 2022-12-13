@@ -102,6 +102,7 @@ class UserProfileController extends Controller
         $validated = $request->validate([
             'firstname' => 'bail|required|max:255',
             'lastname' => 'required|max:255',
+            'desk' => 'required',
             'phoneNumber' => 'required|numeric',
             'Address' => 'required',
             'gallery'=>'required',
@@ -128,7 +129,7 @@ class UserProfileController extends Controller
             }
         }
 
-        return redirect('/');
+        return redirect('/profile/your-profile');
     }
 
     /**

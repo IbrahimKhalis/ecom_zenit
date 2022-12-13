@@ -14,7 +14,7 @@
 
                     <h1>{{ auth()->user()->name }}</h1>
                     <h6>#{{ auth()->user()->id }}</h6>
-                    <p>{{ auth()->user()->desk }}</p>
+                    <p>{{ auth()->user()->profile->desk }}</p>
                 </div>
             </div>
             <div class="right">

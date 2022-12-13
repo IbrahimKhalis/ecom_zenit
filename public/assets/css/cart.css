@@ -135,6 +135,7 @@
   object-fit: cover;
   margin-right: 20px;
   margin-left: -15px;
+  border-radius: 7px;
 }
 .row-1 .name p:first-child{
   font-size: 13px;

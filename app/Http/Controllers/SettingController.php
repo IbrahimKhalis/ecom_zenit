@@ -120,8 +120,13 @@ class SettingController extends Controller
             'instagram' => $request->instagram,
             'gmail' => $request->gmail,
             'linkedIn' => $request->linkedIn,
-            'portofolio' => 'storage/portofolio/'.$name,
         ]);
+
+        if($request->portofolio != null){
+            $shop->update([
+                'portofolio' => 'storage/portofolio/'.$name,
+            ]);
+        }
 
 
 
