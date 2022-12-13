@@ -1,0 +1,214 @@
+.containers {
+    width: 94vw;
+    height: 20vh;
+    margin-top: 8%;
+    margin-left: 3vw;
+}
+
+.container-title {
+    font-size: 2.5vw;
+    font-family: 'Nunito';
+    margin-left: 1vw;
+    font-weight: 700;
+}
+
+.garis1 {
+    width: 94vw;
+    height: 0.1vh;
+    background-color: #9f9f9f;
+    margin-top: 1vw;
+}
+
+.garis2 {
+    width: 94vw;
+    height: 0.1vh;
+    background-color: #9f9f9f;
+    margin-top: 2vw;
+}
+
+.garis3 {
+    width: 46vw;
+    height: 0.1vh;
+    background-color: #9f9f9f;
+    margin-top: 1vw;
+    margin-left: 2vw;
+}
+
+.garis4 {
+    width: 94vw;
+    height: 0.1vh;
+    background-color: #9f9f9f;
+    margin-top: 2vw;
+}
+
+.garis5 {
+    width: 94vw;
+    height: 0.1vh;
+    background-color: #9f9f9f;
+    margin-top: 1vw;
+}
+
+.payment-deadline {
+    font-size: 1.6vw;
+    font-family: 'Nunito';
+    font-weight: 800;
+    margin-top: 2vw;
+}
+
+.isi-payment-deadline {
+    font-size: 1.6vw;
+    font-family: 'Nunito';
+    font-weight: 400;
+    margin-top: 2vw;
+    margin-left: 64vw;
+}
+
+.payment-status {
+    font-size: 1.6vw;
+    font-family: 'Nunito';
+    font-weight: 800;
+    margin-top: 1.5vw;
+}
+
+.isi-payment-status {
+    font-size: 1.6vw;
+    font-family: 'Nunito';
+    font-weight: 400;
+    margin-top: 1.5vw;
+    margin-left: 76vw;
+}
+
+.container-content {
+    width: 94vw;
+}
+
+.kotak-rekening {
+    width: 50vw;
+    height: 38vh;
+    border: solid 1px #9f9f9f;
+    border-radius: 10px;
+    margin-top: 2vw;
+    margin-left: 22vw;
+}
+
+.title-bank {
+    font-size: 1.8vw;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    margin-left: 2vw;
+    margin-top: 1.3vw;
+}
+
+.title-logo-bank {
+    gap: 22vw;
+}
+
+.logo-bank {
+    width: 7vw;
+    height: 5vh;
+    margin-top: 1vw;
+}
+
+.title-virtual-account {
+    font-size: 1.5vw;
+    margin-left: 2vw;
+    margin-top: 1vw;
+    font-family: 'Nunito';
+    font-weight: 600;
+}
+
+.title-total-payment {
+    font-size: 1.5vw;
+    margin-left: 2vw;
+    margin-top: 1vw;
+    font-family: 'Nunito';
+    font-weight: 600;
+}
+
+.norek-account {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2vw;
+    font-weight: 700;
+    margin-left: 2vw;
+}
+
+.total-pembayaran {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2vw;
+    font-weight: 700;
+    margin-left: 2vw;
+}
+
+.total-payment {
+    gap: 1vw;
+}
+
+
+
+.rekening {
+    gap: 24vw;
+}
+
+.text-copy {
+    font-family: 'Nunito';
+    font-size: 1.5vw;
+    color: #77A4FF;
+    cursor: pointer;
+    font-weight: 800;
+}
+
+.copy iconify-icon{
+  font-family: 'Nunito';
+  font-size: 1.5vw;
+  color: #77A4FF;
+  cursor: pointer;
+  font-weight: 800;
+  margin: 3px 3px;
+}
+
+
+.title-payment-internet-banking {
+    font-family: 'Nunito';
+    font-size: 2vw;
+    margin-top: 2vw;
+    font-weight: 700;
+}
+
+.title-atm-bni {
+    font-family: 'Nunito';
+    font-size: 2vw;
+    margin-top: 2vw;
+    font-weight: 700;
+}
+
+.isi-cara-pembayaran {
+    font-family: 'Nunito';
+    font-size: 1vw;
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+    margin-top: 2vw;
+}
+
+.isi-cara-pembayaran-atm {
+    font-family: 'Nunito';
+    font-size: 1vw;
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+    margin-top: 2vw;
+}
+
+.payment-atm-bni {
+    padding-bottom: 70px;
+}
+
+.footer-simple {
+    display: none;
+}
+
+.back-btn{
+  color: #000;
+  font-size: 30px;
+  margin: 7px 0px 0px;
+}

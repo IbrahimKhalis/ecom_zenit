@@ -241,32 +241,36 @@ Route::get('/customer/order', function () {
 
 Route::get('export/sale/data', [PController::class, 'export']);
 
-Route::get('/setup/profile', function () {
-    return view('setup');
-})->name('setup');
-
-<<<<<<< HEAD
-Route::get('/setup/profile', function () {
-    return view('setup');
-})->name('setup');
-
 Route::get('/transaction/detail', function () {
     return view('seller/transaction-detail');
-})->name('transaction');
+});
 
-Route::get('/setup/shop', function () {
-    return view('seller/setup-shop');
-})->name('setup');
+Route::get('/setup/profile', function () {
+    return view('setup');
+});
 
-Route::get('/setup/shop/personal', function () {
-    return view('seller/setup-shop-personal');
-})->name('setup-personal');
-=======
+Route::get('/setup/store', function () {
+    return view('seller.setup-start');
+});
+
+Route::get('/setup/store/information', function () {
+    return view('seller/setup-store');
+});
+
+Route::get('/setup/store/personal', function () {
+    return view('seller/setup-store-personal');
+});
+
+Route::get('/setup/store/complete', function () {
+    return view('seller/setup-store-complete');
+});
 
 Route::get('/chart/report', [SellerReportController::class, 'show']);
 
-Route::get('/setup-store', function () {
-    return view('seller.setup-start');
-})->name('setup-store');
+Route::get('/order/detail', function () {
+    return view('order-detail');
+});
 
->>>>>>> f602f6c8be2ff56310c66dfbb74824f0f8ae422f
+Route::get('/tutorial', function () {
+    return view('tutorial');
+});

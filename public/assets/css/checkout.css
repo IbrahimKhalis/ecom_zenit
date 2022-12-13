@@ -3,6 +3,10 @@
     padding: 0;
 }
 
+a{
+    text-decoration: none;
+}
+
 .main-content {
     width: 100%;
 }
@@ -115,6 +119,11 @@ header {
 
 .subtitle-order {
     width: 350px;
+}
+
+.btn-tutor{
+    font-size: 20px;
+    font-weight: 600;
 }
 
 .subtitle-order p {
