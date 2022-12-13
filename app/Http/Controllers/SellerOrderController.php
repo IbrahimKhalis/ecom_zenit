@@ -63,25 +63,6 @@ class SellerOrderController extends Controller
             'massage' => 'The Order has been Confirmed'
         ]);
         
-        
-                // $check = $order->orders->orderItem;
-        
-                // $statusOne = [];
-        
-                // foreach($check as $item){
-                //     array_push($statusOne, $item->status);
-                // };
-        
-                // if(in_array("CANCELED", $statusOne)){
-                //     foreach($check as $ite){
-                //         $ite->status = 'CANCELED';
-                //         $ite->update();
-                //     }
-                    
-                //     return redirect()->back()->with([
-                //         'massage' => 'The Order has been Canceled Because It Was Canceled by you, the customer or another Seller'
-                //     ]);
-                // }
     }
     
     public function reject($id){
@@ -95,24 +76,6 @@ class SellerOrderController extends Controller
             'massage' => 'The Order has been REJECTED'
         ]);
 
-        // $check = $order->orders->orderItem;
-
-        // $statusOne = [];
-
-        // foreach($check as $item){
-        //     array_push($statusOne, $item->status);
-        // };
-
-        // if(in_array("CANCELED", $statusOne)){
-        //     foreach($check as $ite){
-        //         $ite->status = 'CANCELED';
-        //         $ite->update();
-        //     }
-            
-        //     return redirect()->back()->with([
-        //         'massage' => 'The Order has been Canceled Because It Was Canceled by you, the customer or another Seller'
-        //     ]);
-        // }
     }
 
     public function showPro(){
@@ -134,7 +97,7 @@ class SellerOrderController extends Controller
         }
 
         foreach($individualOrder as $item){
-            if($item->status == 'CONFIRMED'){
+            if($item->status == 'CONFIRMED' || $item->status == 'SHIPPED'){
                 if($item->orders->status == 'PAID' || 'PROCESSED'){
                     array_push($confirmed, $item);
                 }
@@ -164,6 +127,42 @@ class SellerOrderController extends Controller
         ]);
 
         return redirect()->back();
-        
+    }
+
+    public function detailTrans($id){
+
+        $order = OrderItem::find($id)->orders;
+
+        return view('seller.transaction-detail', compact('order'));
+    }
+
+    public function showCome(){
+
+        $products = auth()->user()->products;
+
+        $itemOrder = [];
+        $individualOrder = [];
+        $confirmed = [];
+
+        foreach($products as $product){
+            $orderItem = $product->orderItem->all();
+            array_push($itemOrder, $orderItem);
+        }
+
+        foreach($itemOrder as $inOrder){
+            foreach($inOrder as $idnItem){
+                array_push($individualOrder, $idnItem);
+            }
+        }
+
+        foreach($individualOrder as $item){
+            if($item->status == 'COMPLETE'){
+                if($item->orders->status == 'PAID' || 'PROCESSED' || 'COMPLETE'){
+                    array_push($confirmed, $item);
+                }
+            }  
+        }
+
+        return view('seller.complete-order', compact('confirmed'));
     }
 }
