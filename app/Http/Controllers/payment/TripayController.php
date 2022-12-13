@@ -31,7 +31,10 @@ class TripayController extends Controller
 
         curl_close($curl);
 
+
         $response = json_decode($response)->data;
+
+        dd($response);
 
         return $response ? $response : $error;
 
@@ -83,7 +86,9 @@ class TripayController extends Controller
         curl_close($curl);
 
 
+
         $response = json_decode($response)->data;
+        dd($response);
 
         return $response ?: $error;
 
@@ -116,7 +121,11 @@ class TripayController extends Controller
 
         curl_close($curl);
 
+        
+
         $response = json_decode($response)->data;
+
+        dd($response);
         
         return $response ?: $error;
 
