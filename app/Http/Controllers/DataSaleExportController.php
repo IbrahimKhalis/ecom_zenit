@@ -2,18 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Carbon\Carbon;
 use App\Models\User;
-use App\Models\Order;
-use App\Models\Product;
 use App\Models\OrderItem;
 use Illuminate\Http\Request;
 use App\Charts\reportProduct;
-use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth;
+use App\Exports\DatasaleExport;
+use Maatwebsite\Excel\Facades\Excel;
 
-class SellerReportController extends Controller
+
+class DataSaleExportController extends Controller
 {
 
     public function sumsum($accumulator, $item){
@@ -49,7 +46,7 @@ class SellerReportController extends Controller
         $dataSet = [];
         $terjual = [];
         $dataLol =[];
-
+        
         foreach($total_terjual as $product){
             $countTerjualProd = $product->orderItem->where('status', 'COMPLETE');
             foreach($countTerjualProd as $data){
@@ -106,13 +103,11 @@ class SellerReportController extends Controller
         }
 
         $chart = new reportProduct;
-        // $chart->labels(array_keys($sum)); 
-        // $chart->dataset('data Penjualan','bar',array_values($sum));
-
-
-        // dd($labels);
-        return view('seller.report', compact('chart', 'labels', 'values','terjualData','products', 'ibe','income'));
-        
+        return view('exports.datasale', compact('chart', 'labels', 'values','terjualData','products', 'ibe','income'));
+    
+    }
+    public function export(){
+        return Excel::download(new DatasaleExport, 'datasale.xlsx');
     }
 }
 

@@ -12,9 +12,16 @@
 }
 .img{
     width: 200px;
-    height: 100px;
-
+    height: 130px;
+    margin: 0px auto 10px;
 }
+
+.img img{
+    width: 200px;
+    height: 130px;
+    object-fit: contain;
+}
+
 button{
     width: 200px;
     padding: 10px;
