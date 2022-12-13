@@ -22,6 +22,7 @@ use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\SellerReportController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\CustomerOrderController;
 use App\Http\Controllers\SellerProductController;
 use App\Http\Controllers\SellerScheduleController;
 use App\Http\Controllers\SellerdashboardController;
@@ -245,7 +246,7 @@ Route::get('/setup/profile', function () {
     return view('setup');
 })->name('setup');
 
-<<<<<<< HEAD
+
 Route::get('/setup/profile', function () {
     return view('setup');
 })->name('setup');
@@ -261,7 +262,7 @@ Route::get('/setup/shop', function () {
 Route::get('/setup/shop/personal', function () {
     return view('seller/setup-shop-personal');
 })->name('setup-personal');
-=======
+
 
 Route::get('/chart/report', [SellerReportController::class, 'show']);
 
@@ -269,4 +270,11 @@ Route::get('/setup-store', function () {
     return view('seller.setup-start');
 })->name('setup-store');
 
->>>>>>> f602f6c8be2ff56310c66dfbb74824f0f8ae422f
+
+route::get('/test', function(){
+    return view('order-cust');
+});
+
+Route::get('/order', [CustomerOrderController::class, 'show']);
+Route::post('/order', [CustomerOrderController::class, 'getTable']);
+

@@ -57,6 +57,7 @@
 
 <div id="myReceipt" class="modalreceipt">
     <form action="" id="modalForm" method="POST">
+        @csrf
         <div class="modalreceipt-content">
             <div class="header">
                 <span class="close close-rec">&times;</span>
@@ -67,8 +68,8 @@
                     <div class="needsclick dropzone" id="gallery-dropzone" style="margin-bottom: 0px;"></div>
                 </div>
                 <div class="receipt-number" style="margin-top: 20px;">
-                    <p>Receipt Number</p>
-                    <input type="text">
+                    <p>No Resi</p>
+                    <input type="text" name="no_resi">
                 </div>
                 <div class="btn-receipt">
                     <button>submit</button>

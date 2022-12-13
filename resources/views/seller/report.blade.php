@@ -71,12 +71,12 @@
             <th>Action</th>
         </tr>
 
-        @foreach ($sumprice as $key =>$value)
+        @foreach ($ibe as $key=>$value)
         <tr style="background-color: white;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
             <td style="width: 30px;">{{$loop->iteration}}</td>
             <td style="width: 220px;">{{$key}}</td>
-            <td style="width: 300px;"> Product</td>
-            <td style="width: 300px;">Rp.{{$value}}</td>
+            <td style="width: 300px;">{{ $value['qty'] }} Product</td>
+            <td style="width: 300px;">Rp.{{$value['subtotal']}}</td>
             <td style="width: 250px; align-items: center; justify-content: center; display: flex;">
                 <p
                     style="padding: 2px; background-color: #5874AF; width: 100px; color: white; border-radius: 6px; margin: auto;">
@@ -134,7 +134,6 @@
             scales: {
                 y: {
                 beginAtZero: true,
-                // offset: true,
                 }
             }       
         }

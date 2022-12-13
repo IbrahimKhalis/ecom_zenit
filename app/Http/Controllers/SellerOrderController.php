@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Traits\ImageUploadingTrait;
+use App\Models\DataResi;
 use App\Models\OrderItem;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class SellerOrderController extends Controller
@@ -48,6 +50,15 @@ class SellerOrderController extends Controller
         
         $order->update();
         
+        $orders = $order->orders->orderItem->pluck('status')->all();
+
+        if (!in_array('NOT CONFIRM', $orders)) {
+            $data = $order->orders;
+
+            $data->update([
+                'status' => 'PROCESSED'
+            ]);
+        }
         return redirect()->back()->with([
             'massage' => 'The Order has been Confirmed'
         ]);
@@ -124,7 +135,7 @@ class SellerOrderController extends Controller
 
         foreach($individualOrder as $item){
             if($item->status == 'CONFIRMED'){
-                if($item->orders->status == 'PAID'){
+                if($item->orders->status == 'PAID' || 'PROCESSED'){
                     array_push($confirmed, $item);
                 }
             }  
@@ -133,7 +144,26 @@ class SellerOrderController extends Controller
         return view('seller.processed', compact('confirmed'));
     }
 
-    public function upResi($id){
-        return dd($id);
+    public function upResi(Request $request, $id){
+        $order_items = OrderItem::find($id);
+
+        
+        $DataResi = DataResi::create([
+            'orders_id' => $order_items->orders->id,
+            'no_resi'=> $request->no_resi,
+            'order_items_id' => $order_items->id,
+            'created_at'=>Carbon::now()
+        ]);
+        
+        foreach ($request->input('gallery', []) as $file) {
+            $DataResi->addMedia(storage_path('tmp/uploads/' . $file))->toMediaCollection('gallery');
+        }
+
+        $order_items->update([
+            'status'=>'SHIPPED',
+        ]);
+
+        return redirect()->back();
+        
     }
 }
