@@ -22,6 +22,7 @@ use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\SellerReportController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\CustomerOrderController;
 use App\Http\Controllers\SellerProductController;
 use App\Http\Controllers\SellerScheduleController;
 use App\Http\Controllers\SellerdashboardController;
@@ -241,6 +242,15 @@ Route::get('/customer/order', function () {
 
 Route::get('export/sale/data', [PController::class, 'export']);
 
+Route::get('/setup/profile', function () {
+    return view('setup');
+})->name('setup');
+
+
+Route::get('/setup/profile', function () {
+    return view('setup');
+})->name('setup');
+
 Route::get('/transaction/detail', function () {
     return view('seller/transaction-detail');
 });
@@ -261,9 +271,14 @@ Route::get('/setup/store/personal', function () {
     return view('seller/setup-store-personal');
 });
 
+Route::get('/setup/shop/personal', function () {
+    return view('seller/setup-shop-personal');
+})->name('setup-personal');
+
 Route::get('/setup/store/complete', function () {
     return view('seller/setup-store-complete');
 });
+
 
 Route::get('/chart/report', [SellerReportController::class, 'show']);
 
@@ -271,6 +286,18 @@ Route::get('/order/detail', function () {
     return view('order-detail');
 });
 
-Route::get('/tutorial', function () {
-    return view('tutorial');
+route::get('/test', function(){
+  return view('order-cust');
 });
+
+Route::get('/order', [CustomerOrderController::class, 'show']);
+Route::post('/order', [CustomerOrderController::class, 'getTable']);
+
+route::get('/test', function(){
+    return view('order-cust');
+});
+Route::get('/tutorial', function () {
+  return view('tutorial');
+});
+
+

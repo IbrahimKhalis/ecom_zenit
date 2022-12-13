@@ -67,7 +67,6 @@ class SellerProductController extends Controller
             'users_id' => auth()->id(),
             'desc' => $request->desc,
             'major' => $request->major,
-
             'price' => $request->price,
             'quantity' => $request->quantity,
             'category_id' => $request->category_id

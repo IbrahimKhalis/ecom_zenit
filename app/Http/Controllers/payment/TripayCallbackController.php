@@ -98,14 +98,17 @@ class TripayCallbackController extends Controller
         switch ($data->status) {
             case 'PAID':
                 $transaction->update(['status' => 'PAID']);
+                $transaction->order->update(['status'=>'PAID']);
                 return Response::json(['success' => true]);
 
             case 'EXPIRED':
                 $transaction->update(['status' => 'EXPIRED']);
+                $transaction->order->update(['status'=>'EXPIRED']);
                 return Response::json(['success' => true]);
 
             case 'FAILED':
                 $transaction->update(['status' => 'UNPAID']);
+                $transaction->order->update(['status'=>'UNPAID']);
                 return Response::json(['success' => true]);
 
             default:
