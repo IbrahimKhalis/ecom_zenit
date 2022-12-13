@@ -121,6 +121,13 @@ class SController extends Controller
 
 
         $tags = [];
+        $favorites = [0];
+
+        if(Auth::check()){
+            foreach(Auth()->user()->favorites as $favorite){
+                array_push($favorites, $favorite->products_id);
+            }
+        }
 
         $favorites = [0];
 
@@ -214,6 +221,13 @@ class SController extends Controller
 
 
         $tags = [];
+        $favorites = [0];
+        
+        if(Auth::check()){
+            foreach(Auth()->user()->favorites as $favorite){
+                array_push($favorites, $favorite->products_id);
+            }
+        }
 
         $favorites = [0];
 

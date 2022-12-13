@@ -247,11 +247,29 @@ Route::get('/setup/profile', function () {
 })->name('setup');
 
 
+Route::get('/setup/profile', function () {
+    return view('setup');
+})->name('setup');
+
+Route::get('/transaction/detail', function () {
+    return view('seller/transaction-detail');
+})->name('transaction');
+
+Route::get('/setup/shop', function () {
+    return view('seller/setup-shop');
+})->name('setup');
+
+Route::get('/setup/shop/personal', function () {
+    return view('seller/setup-shop-personal');
+})->name('setup-personal');
+
+
 Route::get('/chart/report', [SellerReportController::class, 'show']);
 
 Route::get('/setup-store', function () {
     return view('seller.setup-start');
 })->name('setup-store');
+
 
 route::get('/test', function(){
     return view('order-cust');
@@ -259,3 +277,4 @@ route::get('/test', function(){
 
 Route::get('/order', [CustomerOrderController::class, 'show']);
 Route::post('/order', [CustomerOrderController::class, 'getTable']);
+
