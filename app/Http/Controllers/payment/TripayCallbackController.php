@@ -16,7 +16,7 @@ class TripayCallbackController extends Controller
     {
         $callbackSignature = $request->server('HTTP_X_CALLBACK_SIGNATURE');
         $json = $request->getContent();
-        $signature = hash_hmac('sha256', $json, $this->privateKey);
+        $signature = hash_hmac('sha256' , $json, $this->privateKey);
 
         if ($signature !== (string) $callbackSignature) {
             return Response::json([

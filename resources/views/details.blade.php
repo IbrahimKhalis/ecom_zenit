@@ -15,31 +15,40 @@
                     </div>
                 </div>
                 <div class="col-12 px-0 mb-4">
-                    @foreach ($detail->instructions as $pay )
+                    {{-- @foreach ($detail->instructions as $pay ) --}}
+                    <br>
 
                     <div class="box-right">
                         <div class="d-flex pb-2">
                             <p class="fw-bold h7"><span class="textmuted">Payment-</span>{{ $pay->title }}</p>
+
                         </div>
+
 
                         @foreach($pay->steps as $step)
 
+                        {{-- <div class="bg-blue p-2">
+                            <P class="h8 textmuted"> {!! preg_replace('/[^0-9]/' ,' ', $pay->steps[3]) !!}</P>
+                        </div> --}}
+
                         <div class="bg-blue p-2">
-                            <P class="h8 textmuted">{{ $loop->iteration }}. {!! $step !!}</P>
+                            <P class="h8 textmuted">{{ $loop->iteration }} . {!! $step !!}</P>
                         </div>
+
+
 
                         @endforeach
 
 
                     </div>
 
-                    @endforeach
+                    {{-- @endforeach --}}
                 </div>
             </div>
         </div>
         <div class="col-md-5 col-12 ps-md-5 p-0 ">
             <div class="box-left">
-                <p class="textmuted h8">QR Scan</p>
+                {{-- <p class="textmuted h8">QR Scan</p> --}}
                 <p class="fw-bold h7">{{-- $detail->qr_string --}}</p>
                 </div>
             </div>
