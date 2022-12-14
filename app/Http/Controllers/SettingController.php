@@ -105,14 +105,14 @@ class SettingController extends Controller
                 $shop->addMedia(storage_path('tmp/uploads/' . $file))->toMediaCollection('gallery');
             }
         }
-
+        
         $porto = null;
         if ($request->hasFile('portofolio')) {
             $porto = $request->file('portofolio')->storeAs(
-                'public/portofolio',
+                'portofolio',
                 $name = auth()->user()->name. '.' . $request->file('portofolio')->getClientOriginalExtension(),
             );
-        }    
+        }  
         
         $shop->update([
             'name' => $request->name,
@@ -127,6 +127,7 @@ class SettingController extends Controller
                 'portofolio' => 'storage/portofolio/'.$name,
             ]);
         }
+
 
         return redirect('/seller/setting-info');
     }

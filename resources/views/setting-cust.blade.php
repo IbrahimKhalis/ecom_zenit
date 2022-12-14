@@ -42,7 +42,6 @@
                     <p>></p>
                 </div>
                 </a>
-               
             </div>
         </div>
         
@@ -50,7 +49,9 @@
         <div class="order">
             <p class="order-title">Order</p>
             <div class="order-content">
-                <a href="{{ url('404') }}">
+
+                <a href="{{ route('cust.order') }}">
+
                     <div class="my-order">
                         <div class="my-order-content">
                             <iconify-icon icon="icon-park-outline:transaction-order" class="my-order-icon"></iconify-icon>

@@ -26,7 +26,8 @@
                 <th>Type</th>
                 <th></th>
             </tr>
-        @foreach ($complete as $item)
+            
+            @foreach($confirmed as $item)
             <tr>
                 <td  style="width: 100px;">{{ $loop->iteration }}</td>
                 <td style="display: flex; gap:20px; text-align: start; width: 250px;">
@@ -45,46 +46,21 @@
                     <button  onclick="On_klik(this.id)" id="refund" style="font-weight:600;" >Refund</button>
                 </td>
             </tr>
-        @endforeach 
+        
+
+                <td style="width: 100px;">
+                    <p id="label-order" style="margin-top: 10px;">{{ $item->products->category->name }}</p>
+                </td>
+                <td style="width: 100px;">
+                <a id="label-order" style="display:inline-block; margin-top: 10px;" href="{{ route('seller.order.detail', $item->id) }}">Detail</a>
+                </td>
+            </tr>
+            @endforeach 
+
         </table>
     </div>
 </div>
 </div>
-<div id="myForm" class="modalform">
-    <div class="modalform-content">
-        <div class="header">
-            <span class="close close-form">&times;</span>
-        </div>
-        <div class="reciep-content">
-            <div class="form-profile">
-                <img src="assets/ALM00016.JPG" alt="">
-                <p>Username kiagus ahmad farhan azis</p>
-            </div>
-            <div class="form-ratings">
-                <p>Rating</p>
-                <div class="star-widget">
-                    <input type="radio" name="rate" id="rate-5">
-                    <label for="rate-5" class="fas fa-star"></label>
-                    <input type="radio" name="rate" id="rate-4">
-                    <label for="rate-4" class="fas fa-star"></label>
-                    <input type="radio" name="rate" id="rate-3">
-                    <label for="rate-3" class="fas fa-star"></label>
-                    <input type="radio" name="rate" id="rate-2">
-                    <label for="rate-2" class="fas fa-star"></label>
-                    <input type="radio" name="rate" id="rate-1">
-                    <label for="rate-1" class="fas fa-star"></label>
-                </div>
-            </div>
-            <div class="form-review">
-                <p>Review</p>
-                <textarea name="" id="" cols="83" rows="7"></textarea>
-            </div>
-            <div class="btn-form">
-                <button>submit</button>
-            </div>
-        </div>
-    </div>
-</div>
-<script src="{{ asset('assets/js/form-review.js')}}"></script>
+
 
 @endsection

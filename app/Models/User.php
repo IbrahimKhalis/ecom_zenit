@@ -65,4 +65,8 @@ class User extends Authenticatable
     public function favorites(){
         return $this->hasMany(Favorite::class, 'users_id');
     }
+
+    public function transData(){
+        return $this->hasMany(Transaction::class, 'user_id');
+    }
 }

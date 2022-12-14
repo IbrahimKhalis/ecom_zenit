@@ -45,8 +45,14 @@
                     <p id="label-order" style="margin-top: 10px;">{{ $item->products->category->name }}</p>
                 </td>
                 <td style="width: 120px;">
+                @if($item->status == 'SHIPPED')
+                <a style="font-weight:600;">SHIPPED</a>
+                @else
                     <a href="#" style="font-weight:600;" id="btn-receipt" onclick="On_click('{{ route('seller.resiUp', $item->id) }}')">Send</a>
+                @endif
                 </td>
+                <td>
+                <a id="label-order" style="display:inline-block; margin-top: 10px;" href="{{ route('seller.order.detail', $item->id) }}">Detail</a>
             </tr>
             @endforeach
         </table>

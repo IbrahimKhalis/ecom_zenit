@@ -82,7 +82,7 @@
             <td>Rp. {{ number_format($order->total,0,',','.') }}</td>
             <td>{{ $order->payment_type }}</td>
             <td>
-                <a href="">Details</a>
+                <a href="{{ route('cust.order.detail', $order->id) }}">Details</a>
             </td>
         </tr>
         @endforeach
