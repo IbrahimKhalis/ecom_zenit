@@ -28,6 +28,7 @@ use App\Http\Controllers\SellerProductController;
 use App\Http\Controllers\SellerScheduleController;
 use App\Http\Controllers\SellerdashboardController;
 use App\Http\Controllers\payment\TripayCallbackController;
+use App\Http\Controllers\SetupShopController;
 use Maatwebsite\Excel\Row;
 
 /*
@@ -72,8 +73,6 @@ use Maatwebsite\Excel\Row;
     });
     
     Route::get('/coba/coba', [TransactionController::class, 'store']);
-
-
 
     route::get('/shop/profile/{slug?}', [ShopProfile::class, 'show'])->name('shop.show.profile');
 
@@ -122,7 +121,7 @@ Route::group(['middleware' => ['auth','CheckLevel:admin,seller'],  'prefix' => '
     Route::get('/setup/shop', function () {
         return view('seller/setup-shop');
     })->name('setup');
-    
+
     Route::get('/setup/shop/personal', function () {
         return view('seller/setup-shop-personal');
     })->name('setup-personal');
@@ -135,16 +134,25 @@ Route::group(['middleware' => ['auth','CheckLevel:admin,seller'],  'prefix' => '
     
     //orderCon
     //   TRANSACTION PAGE SELLER
-    Route::get('/completed', [SellerOrderController::class, 'showComplete'])->name('completed');
     Route::get('/canceled', [SellerOrderController::class, 'showCancel'])->name('canceled');
     Route::get('/orders/upcoming', [SellerOrderController::class, 'showUp'])->name('upcoming');
     Route::get('/orders/processed', [SellerOrderController::class, 'showPro'])->name('process');
     Route::get('/orders/completed', [SellerOrderController::class, 'showCome'])->name('completed');
-    Route::get('/canceled', function () {
-        return view('seller.canceled-
-        ');
-    })->name('canceled');
 
+    Route::get('/setup/store', function () {
+        return view('seller.setup-start');
+    })->name('setup.start');
+    Route::get('/setup/store/step1', function(){
+        return view('seller.setup-store');
+    })->name('setup.create');
+    Route::get('setup/store/personal-page', function(){
+        return view('seller.setup-store-personal');
+    })->name('setup.personal');
+    Route::get('/setup/store/complete', function () {
+        return view('seller.setup-store-complete');
+    })->name('setup.complete');
+    
+    Route::post('setup/store/shop', [SetupShopController::class, 'store'])->name('setup.store');
     
     //ORDERSELLER
     Route::post('/orders/accept/{id}', [SellerOrderController::class, 'accept'])->name('accept');
@@ -160,21 +168,6 @@ Route::group(['middleware' => ['auth','CheckLevel:admin,seller'],  'prefix' => '
     
 });
 
-Route::get('/setup/store', function () {
-    return view('seller.setup-start');
-});
-
-Route::get('/setup/store/information', function () {
-    return view('seller/setup-store');
-});
-
-Route::get('/setup/store/personal', function () {
-    return view('seller/setup-store-personal');
-});
-
-Route::get('/setup/store/complete', function () {
-    return view('seller/setup-store-complete');
-});
 
 //Store-IMG
 Route::post('profile/image',[UserProfileController::class, 'storeImage']);

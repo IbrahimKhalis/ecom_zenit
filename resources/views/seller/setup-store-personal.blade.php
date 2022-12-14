@@ -37,12 +37,16 @@
       <input type="url" name="ig-toko" id="ig-toko" class="input-ig">
     </div>
     <div class="linkedin-toko">
+      <h1 class="judul-linkedin">Gmail</h1>
+      <input type="url" name="linkedin-toko" id="linkedin-toko" class="input-linkedin">
+    </div>  
+    <div class="linkedin-toko">
       <h1 class="judul-linkedin">Linkedin</h1>
       <input type="url" name="linkedin-toko" id="linkedin-toko" class="input-linkedin">
     </div>
-    <div class="foto-toko">
-      <h1 class="judul-foto-toko">Store Photo</h1>
-      <input type="file" name="foto-toko" id="foto-toko" class="input-foto-toko">
+    <div class="linkedin-toko">
+      <h1 class="judul-linkedin">Portofolio</h1>
+      <input type="url" name="linkedin-toko" id="linkedin-toko" class="input-linkedin">
     </div>
     <div class="button-grup d-flex">
       <a href="toko-setup-personal.html" class="submit-link"><button type="submit"
