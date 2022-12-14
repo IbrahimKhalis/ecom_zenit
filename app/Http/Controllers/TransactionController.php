@@ -20,7 +20,12 @@ class TransactionController extends Controller
         $detail =  $tripay->detailTransaction($reference);
         $pay = $detail->instructions[0];
 
-        return view('details', compact('detail', 'pay'));
+
+        $tripay2 = new TripayController();
+
+        $payz = $tripay2->pay();
+
+        return view('tutorial', compact('detail', 'pay', 'payz'));
     }
 
     public function store(Request $request)
