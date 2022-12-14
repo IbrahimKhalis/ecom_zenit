@@ -135,15 +135,10 @@ Route::group(['middleware' => ['auth','CheckLevel:admin,seller'],  'prefix' => '
     
     //orderCon
     //   TRANSACTION PAGE SELLER
-    Route::get('/completed', [SellerOrderController::class, 'showComplete'])->name('completed');
-    Route::get('/canceled', [SellerOrderController::class, 'showCancel'])->name('canceled');
+    Route::get('/orders/canceled', [SellerOrderController::class, 'showCancel'])->name('canceled');
     Route::get('/orders/upcoming', [SellerOrderController::class, 'showUp'])->name('upcoming');
     Route::get('/orders/processed', [SellerOrderController::class, 'showPro'])->name('process');
     Route::get('/orders/completed', [SellerOrderController::class, 'showCome'])->name('completed');
-    Route::get('/canceled', function () {
-        return view('seller.canceled-
-        ');
-    })->name('canceled');
 
     
     //ORDERSELLER
@@ -197,7 +192,8 @@ Route::controller(GoogleController::class)->group(function(){
 });
 
 
-Route::get('add-rating', [RatingController::class, 'add']);
+Route::post('add-rating', [RatingController::class, 'add']);
+Route::get('/product/detail/review/{product:slug?}', [RatingController::class, 'create'])->name('product.review');
 
 Route::get('/setting', function () {
     return view('setting-cust');
@@ -209,7 +205,6 @@ Route::get('/report-invoice', function () {
 
 Route::put('/user/edit/{id}', [UserProfileController::class, 'update']);
 
-Route::get('/product/detail/review/{product:slug?}', [ReviewController::class, 'show'])->name('product.review');
 
 
 Route::get('/notif', function () {
@@ -243,6 +238,7 @@ route::get('/test', function(){
 Route::get('/order/detail/{id}', [CustomerOrderController::class, 'detail'])->name('cust.order.detail');
 Route::get('/order', [CustomerOrderController::class, 'show'])->name('cust.order');
 Route::post('/order', [CustomerOrderController::class, 'getTable']);
+Route::post('/order/complete/{id}', [CustomerOrderController::class, 'Completed'])->name('cust.complete');
 
 route::get('/test', function(){
     return view('order-cust');
