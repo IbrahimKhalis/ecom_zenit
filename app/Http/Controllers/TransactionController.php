@@ -20,7 +20,6 @@ class TransactionController extends Controller
         $detail =  $tripay->detailTransaction($reference);
         $pay = $detail->instructions[0];
 
-
         $tripay2 = new TripayController();
 
         $payz = $tripay2->pay();

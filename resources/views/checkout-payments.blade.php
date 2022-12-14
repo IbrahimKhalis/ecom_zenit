@@ -133,7 +133,7 @@
                         <div class="card-shipping">
                             <div class="left-shiping">
                                 <div class="shipping-logo">
-                                    <img src="assets/tes-img.png" alt="">
+                                    <img src="{{ asset('assets/img/fedexlogo.png') }}" alt="">
                                 </div>
                                 <div class="shipping-delivery">
                                     <p>Fedex Delivery</p>
@@ -147,7 +147,7 @@
                         <div class="card-shipping">
                             <div class="left-shiping">
                                 <div class="shipping-logo">
-                                    <img src="assets/tes-img.png" alt="">
+                                    <img src="{{ asset('assets/img/JNELOGO.png') }}" alt="">
                                 </div>
                                 <div class="shipping-delivery">
                                     <p>JNE</p>
