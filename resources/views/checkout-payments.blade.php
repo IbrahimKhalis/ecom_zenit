@@ -141,8 +141,7 @@
                                 </div>
                             </div>
                             <div class="right-shipping">
-                                <p>Rp. 200.000</p>
-                                <input type="radio" name="shipping_method" id="" value="FedEx">
+                                <input type="radio" name="shipping_method" value="FedEx">
                             </div>
                         </div>
                         <div class="card-shipping">
@@ -156,7 +155,6 @@
                                 </div>
                             </div>
                             <div class="right-shipping">
-                                <p>Rp. 100.000</p>
                                 <input type="radio" name="shipping_method" value="JNE">
                             </div>
                         </div>
@@ -224,7 +222,6 @@
                         </div>
 
                         <button>Cancel</button>
-
 
                     </div>
                 </form>

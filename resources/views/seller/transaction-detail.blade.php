@@ -99,6 +99,8 @@
                         <td><h2 class="nama-subtotal">{{ $item->dataResi->no_resi }}</h2></td>
                         @elseif($item->status == 'COMPLETE')
                         <td><h2 class="nama-subtotal">Complete</h2></td>
+                        @elseif($item->status == 'CANCELED')
+                        <td><h2 class="nama-subtotal">Canceled</h2></td>
                         @else
                         <td><h2 class="nama-subtotal">Not Shipped</h2></td>
                         @endif
