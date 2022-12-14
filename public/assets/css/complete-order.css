@@ -32,9 +32,11 @@
 table th {
   text-align: center;
   padding: 10px 0px;
+  width: 200px;    
 }
 table tr{
-  border-bottom: #000 solid 0.5px;
+  border: #000 solid 0.5px;   
+  width: 250px;   
 }
 table td {
   width: 250px;
@@ -46,6 +48,8 @@ table td img {
   width: 80px;
   height: 80px;
   object-fit: cover;
+  border-radius: 8px;
+
 }
 
 
@@ -75,6 +79,7 @@ table td img {
   align-items: center;
   border-radius: 7px;
   color: white;
+  padding: 5px 45px;
 }
 
 /* modal */
@@ -146,6 +151,7 @@ table td img {
     width: 50px;
     height: 50px;
     object-fit: cover;
+    border-radius: 8px;
 }
 
 .form-profile p{

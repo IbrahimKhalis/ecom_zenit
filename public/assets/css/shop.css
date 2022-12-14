@@ -1,5 +1,6 @@
 body{
   overflow-x: hidden;
+  overflow-y: scroll;
 }
 .content {
   width: 100%;
@@ -18,7 +19,7 @@ body{
   background-color: #fff;
   border-radius: 15px;
   position: fixed;
-  top: 220px;
+  top: 180px;
   left: 4%;
   box-shadow: 1px 1px 5px rgba(123, 123, 123, 0.477);
   border: 1px solid rgb(207, 207, 207);
@@ -95,9 +96,9 @@ body{
 }
 
 .seller-since {
-  margin-top: 205px;
+  margin-top: 180px;
   text-align: center;
-  font-size: 14px;
+  font-size: 15px;
   font-family: 'quicksand';
   font-weight: 500;
   color: #7d7d7d;

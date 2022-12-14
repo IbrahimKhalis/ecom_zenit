@@ -51,14 +51,9 @@ class GoogleController extends Controller
 
 
             if (!$user) {
-
-
                 $user = User::create([
                     'name'  => $socialUser->getName(),
                     'email' => $socialUser->getEmail(),
-
-
-
                 ]);
             }
 

@@ -19,6 +19,7 @@ class Profile extends Model implements HasMedia
         'user_id',
         'firstname',
         'lastname',
+        'desk',
         'phoneNumber',
         'Address'
     ];

@@ -31,6 +31,7 @@ class TripayController extends Controller
 
         curl_close($curl);
 
+
         $response = json_decode($response)->data;
 
         return $response ? $response : $error;
@@ -62,7 +63,7 @@ class TripayController extends Controller
             'expired_time' => (time() + (24 * 60 * 60)), // 24 jam
             'signature'    => hash_hmac('sha256', $merchantCode.$merchantRef.$total, $privateKey)
         ];
-        // dd($data);
+
         $curl = curl_init();
 
         curl_setopt_array($curl, [
@@ -114,6 +115,8 @@ class TripayController extends Controller
         $error = curl_error($curl);
 
         curl_close($curl);
+
+        
 
         $response = json_decode($response)->data;
 

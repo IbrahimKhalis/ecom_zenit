@@ -1,0 +1,312 @@
+.judul-content{
+  font-size: 30px;
+  font-family: 'Nunito';
+  font-weight: 700;
+}
+
+.contents{
+  margin-top: 2%;
+  margin-left: 320px;
+}
+
+.menu-transaction {
+  background-color: #ECF3FE;
+}
+
+.kotak-kiri1{
+  width: 100%;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 5px;
+}
+
+.kotak-kiri3{
+  width: 100%;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+.kotak-kiri4{
+  width: 100%;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.judul-kiri1{
+  font-size: 18px;
+  font-family: 'Nunito';
+  font-weight: 700;
+  margin-left: 19px;
+  padding-top: 10px;
+}
+
+.garis-kiri1{
+  width: 280px;
+  height: 1px;
+  background: #0000004D;
+  margin-left: 19px;
+}
+.garis-kiri4{
+  width: 280px;
+  height: 1px;
+  background: #0000004D;
+  margin-left: 19px;
+  margin-top: 5px;
+}
+.kotak-kiri2{
+  width: 100%;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+
+.judul-kiri2{
+  font-size: 18px;
+  font-family: 'Nunito';
+  font-weight: 700;
+  margin-left: 19px;
+  padding-top: 10px;
+}
+
+.garis-kiri2{
+  width: 280px;
+  height: 1px;
+  background: #0000004D;
+  margin-left: 19px;
+}
+
+.judul-kiri3{
+  font-size: 18px;
+  font-family: 'Nunito';
+  font-weight: 700;
+  margin-left: 19px;
+  padding-top: 10px;
+}
+
+.garis-kiri3{
+  width: 280px;
+  height: 1px;
+  background: #0000004D;
+  margin-left: 19px;
+}
+.judul-kiri4{
+  font-size: 18px;
+  font-family: 'Nunito';
+  font-weight: 700;
+  margin-left: 19px;
+  padding-top: 10px;
+}
+
+.garis-kiri4{
+  width: 280px;
+  height: 1px;
+  background: #0000004D;
+  margin-left: 19px;
+}
+
+.invoice-num{
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  margin-left: 19px;
+  margin-top: 10px;
+  color: #000000B2;
+}
+.isi-date{
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  margin-left: 5px;
+  color: #000000B2;
+}
+.isi-status{
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  margin-left: 5px;
+  color: #000000B2;
+}
+.isi-phone{
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  margin-left: 5px;
+  color: #000000B2;
+}
+.isi-address{
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  margin-left: 5px;
+  color: #000000B2;
+}
+.isi-price{
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  margin-left: 5px;
+  color: #000000B2;
+}
+.isi-shipping{
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  margin-left: 5px;
+  color: #000000B2;
+}
+.nama-buyer{
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  margin-left: 5px;
+  color: #000000B2;
+  margin-top: 11px;
+}
+.nama-expedition{
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  margin-left: 5px;
+  color: #000000B2;
+  margin-top: 11px;
+}
+.isi-payment{
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  margin-left: 5px;
+  color: #000000B2;
+  margin-top: 11px;
+}
+.isi-total{
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  margin-left: 5px;
+  color: #000000B2;
+  margin-top: 11px;
+}
+.isi-tracking{
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  margin-left: 5px;
+  color: #000000B2;
+}
+
+
+/* kanan */
+
+.kanan{
+  width: 100%;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  height: 100%;
+  margin-left: 1.6vw;
+  border-radius: 5px;
+}
+
+.judul-kanan{
+  font-size: 25px;
+  font-weight: 700;
+  font-family: 'Nunito';
+  margin-left: 2vw;
+  margin-top: 1vw;
+}
+
+.garis-kanan{
+  width: 45.6vw;
+  height: 0.3vh;
+  background-color: #9f9f9f;
+  margin-left: 2vw;
+}
+
+.container{
+  width: 47vw;
+}
+
+.table{
+  font-family: 'Nunito';
+  margin-top: 1vw;
+}
+
+.table-product{
+  width: 22vw;
+}
+
+.table-qty{
+  width: 4vw;
+}
+
+.table-unit{
+  width: 9vw;
+}
+
+td img{
+  width: 5vw;
+  border-radius: 10px;
+}
+
+.table-striped{
+  background-color: #F1F5F9;
+}
+
+.nama-product{
+  font-size: 18px;
+  font-family: 'Nunito';
+  font-weight: 700;
+  margin-top: 1.8vw;
+  margin-left: 1vw;
+}
+
+.nama-price{
+  font-size: 18px;
+  font-family: 'Nunito';
+  font-weight: 700;
+  margin-top: 1.8vw; 
+}
+.nama-qty{
+  font-size: 18px;
+  font-family: 'Nunito';
+  font-weight: 700;
+  margin-top: 1.8vw;
+  margin-left: 0.5vw; 
+}
+.nama-subtotal{
+  font-size: 18px;
+  font-family: 'Nunito';
+  font-weight: 700;
+  margin-top: 1.8vw;
+}
+
+.total{
+  font-size: 26px;
+  margin-top: -5px;
+  font-family: 'Nunito';
+  font-weight: 700;
+}
+
+.jumlah-total{
+  margin-left: 34.8vw;
+  font-size: 26px;
+  margin-top: -10px;
+  font-family: 'Nunito';
+  font-weight: 700;
+  width: 15vw;
+}

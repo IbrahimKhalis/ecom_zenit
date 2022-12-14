@@ -17,7 +17,7 @@
             <iconify-icon icon="ph:package" style="font-size: 70px; margin-left: 5px;"></iconify-icon>
             <div class="text">
                 <p>Product Total</p>
-                {{-- <h5 style="margin-top: -10px;">{{ $products->count() }}</h5> --}}
+                <h5 style="margin-top: -10px;">{{ $products->count() }}</h5>
             </div>
         </div>
         <div class="selled-product">
@@ -25,35 +25,32 @@
                 style="color: #f24e1e; font-size: 60px; margin-left: 5px;"></iconify-icon>
             <div class="text">
                 <p>Selled Product</p>
-                {{-- <h5 style="margin-top: -10px;">{{$terjualData}}</h5> --}}
+                <h5 style="margin-top: -10px;">{{ $terjualData }}</h5>
             </div>
         </div>
-        <div class="profit">
+        {{-- <div class="profit">
             <iconify-icon icon="material-symbols:show-chart" style="color: #0fa958; font-size: 60px; margin-left: 5px;">
             </iconify-icon>
             <div class="text">
                 <p>Profit</p>
                 <h5 style="margin-top: -10px;"></h5>
             </div>
-        </div>
+        </div> --}}
         <div class="income">
             <iconify-icon icon="mdi:dollar" style="color: #ffd233; font-size: 60px; margin-left: 5px;"></iconify-icon>
             <div class="text" style="display: flex; flex-direction: column; gap: -20px;">
-                <p>Income this Month</p>
-                <h5 style="margin-top: -10px;">40</h5>
+                <p>Your Total Income</p>
+                <h5 style="margin-top: -10px;">Rp.{{ $income }}</h5>
             </div>
         </div>
     </div>
-    <div class="apa" style="width: 100%; height:50%;">
+    {{-- <div class="apa" style="width: 100%; height:50%;">
         {!! $chart->container() !!}
         {!! $chart->script() !!}
-    </div>
-    {{-- <div class="chart">
-       
-        <canvas id="myChart" width="1150px" height="300px">
-
-        </canvas>
     </div> --}}
+    <div class="chart">
+       <canvas id="myChart" width="1150px" height="300px"></canvas>
+    </div>
 
     <div class="export">
         <p>Export Overall Report</p>
@@ -71,21 +68,16 @@
             <th>Month</th>
             <th>Sold Total</th>
             <th>Income</th>
-            <th>Action</th>
         </tr>
 
+        @foreach ($ibe as $key => $value)
         <tr style="background-color: white;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
-            <td style="width: 30px;"></td>
-            <td style="width: 220px;"></td>
-            <td style="width: 300px;"></td>
-            <td style="width: 300px;">Rp.300.000</td>
-            <td style="width: 250px; align-items: center; justify-content: center; display: flex;">
-                <p
-                    style="padding: 2px; background-color: #5874AF; width: 100px; color: white; border-radius: 6px; margin: auto;">
-                    Details
-                </p>
-            </td>
+            <td style="width: 30px;">{{$loop->iteration}}</td>
+            <td style="width: 220px;">{{$key}}</td>
+            <td style="width: 300px;">{{ $value['qty'] }} Product</td>
+            <td style="width: 300px;">Rp.{{$value['subtotal']}}</td>
         </tr>
+        @endforeach
 
 
     </table>
@@ -97,13 +89,15 @@
   
 <script type="text/javascript">
   
-    //   var labels =  {{-- Js::from($total_harga) --}};
+      var labels =  {{ Js::from($labels) }};
   
+      var values =  {{ Js::from($values) }};
+
       const data = {
         labels: labels,
         datasets: [{
           label: 'My Sales data',
-          data: users,
+          data: values,
           backgroundColor: [
                     'rgba(54, 162, 235, 0.2)',
                     'rgba(255, 17, 0, 0.2)',
@@ -129,7 +123,13 @@
       const config = {
         type: 'bar',
         data: data,
-        options: {}
+        options: {
+            scales: {
+                y: {
+                beginAtZero: true,
+                }
+            }       
+        }
       };
   
       const myChart = new Chart(

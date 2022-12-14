@@ -9,10 +9,10 @@
 @include('components.sidebar')
 <div class="contents">
     <div class="sub-content">
-        <a href="{{ route('upcoming') }}">Upcoming Orders</a>
-        <a href="{{ route('processed') }}">Processed Orders</a>
-        <a href="{{ route('completed') }}">Completed Orders</a>
-        <a href="{{ route('canceled') }}">Canceled Orders</a>
+        <a href="{{ route('seller.upcoming') }}">Upcoming Orders</a>
+        <a href="{{ route('seller.process') }}">Processed Orders</a>
+        <a href="{{ route('seller.completed') }}">Completed Orders</a>
+        <a href="{{ route('seller.canceled') }}">Canceled Orders</a>
     </div>
 
     <div class="content-tabs">
@@ -20,84 +20,32 @@
             <tr>
                 <th style="width: 70px;">No</th>
                 <th style="text-align: start;">Product</th>
-                <th >Order ID</th>
+                <th>Order ID</th>
                 <th>Customer Name</th>
                 <th style="width: 100px;">Quantity</th>
                 <th>Type</th>
                 <th></th>
             </tr>
+        @foreach ($canceled as $item)
             <tr>
-                <td  style="width: 100px;">1</td>
+                <td  style="width: 100px;">{{ $loop->iteration }}</td>
                 <td style="display: flex; gap:20px; text-align: start; width: 250px;">
-                    <img src="assets/web3.jpg" alt="">
+                    <img src="{{ $item->products->gallery->first()->getUrl() }}" alt="">
                     <div class="prod-details" style="line-height: 14px;">
-                        <p>Product Name</p>
-                        <p>19 - 11 - 22</p>
-                        <p>Rp.999.999</p>
+                        <p>{{ $item->product_name }}</p>
+                        <p>{{ $item->created_at }}</p>
+                        <p>Rp.{{ $item->subtotal }}</p>
                     </div>
                 </td>
-                <td style="width: 110px;">001</td>
-                <td style="width: 250px;">User Agus</td>
-                <td style="width: 120px;">2</td>
-                <td style="width: 100px;"><p id="label-order"  style="margin-top: 10px;">Software</p></td>
+                <td style="width: 110px;">{{ $item->orders->invoice_no }}</td>
+                <td style="width: 250px;">{{ $item->orders->users->name }}</td>
+                <td style="width: 120px;">{{ $item->product_qty }}</td>
+                <td style="width: 100px;"><p id="label-order"  style="margin-top: 10px;">{{ $item->products->category->name }}</p></td>
                 <td style="width: 100px;">
                     <button  onclick="On_klik(this.id)" id="refund" style="font-weight:600;" >Refund</button>
                 </td>
             </tr>
-             <tr>
-                <td  style="width: 90px;">1</td>
-                <td style="display: flex; gap:20px; text-align: start; width: 250px;">
-                    <img src="assets/web3.jpg" alt="">
-                    <div class="prod-details" style="line-height: 14px;">
-                        <p>Product Name</p>
-                        <p>19 - 11 - 22</p>
-                        <p>Rp.999.999</p>
-                    </div>
-                </td>
-                <td style="width: 70px;">001</td>
-                <td style="width: 180px;">User Agus</td>
-                <td style="width: 100px;">2</td>
-                <td style="width: 70px;"><p id="label-order" style="margin-top: 10px;">Software</p></td>
-                <td style="width: 100px;">
-                  <button  onclick="On_klik(this.id)" id="refund" style="font-weight:600;">Refund</button>
-                </td>
-            </tr>
-            <tr>
-                <td  style="width: 90px;">1</td>
-                <td style="display: flex; gap:20px; text-align: start; width: 250px;">
-                    <img src="assets/web3.jpg" alt="">
-                    <div class="prod-details" style="line-height: 14px;">
-                        <p>Product Name</p>
-                        <p>19 - 11 - 22</p>
-                        <p>Rp.999.999</p>
-                    </div>
-                </td>
-                <td style="width: 70px;">001</td>
-                <td style="width: 180px;">User Agus</td>
-                <td style="width: 100px;">2</td>
-                <td style="width: 70px;"><p id="label-order" style="margin-top: 10px;">Software</p></td>
-                <td style="width: 100px;">
-                  <button  onclick="On_klik(this.id)" id="refund" style="font-weight:600;">Refund</button>
-                </td>
-            </tr>
-            <tr>
-                <td  style="width: 90px;">1</td>
-                <td style="display: flex; gap:20px; text-align: start; width: 250px;">
-                    <img src="assets/web3.jpg" alt="">
-                    <div class="prod-details" style="line-height: 14px;">
-                        <p>Product Name</p>
-                        <p>19 - 11 - 22</p>
-                        <p>Rp.999.999</p>
-                    </div>
-                </td>
-                <td style="width: 70px;">001</td>
-                <td style="width: 180px;">User Agus</td>
-                <td style="width: 100px;">2</td>
-                <td style="width: 70px;"><p id="label-order" style="margin-top: 10px;">Software</p></td>
-                <td style="width: 100px;">
-                    <button  onclick="On_klik(this.id)" id="refund" style="font-weight:600;">Refund</button>
-                </td>
-            </tr>
+        @endforeach   
         </table>
     </div>
 </div>
