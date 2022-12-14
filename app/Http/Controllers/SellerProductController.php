@@ -14,8 +14,6 @@ use Illuminate\Http\Request;
 
 class SellerProductController extends Controller
 {
-
-
     use ImageUploadingTrait;
 
     public function show(){

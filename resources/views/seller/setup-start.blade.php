@@ -12,6 +12,6 @@
     <h5>Welcome to Zenit Store</h5>
     <p>To start selling, register as a seller by completing <br>
          the necessary information.</p>
-         <button>Start Registration</button>
+         <a href="{{ route('seller.setup.create') }}"><button>Start Registration</button></a> 
 </div>
 @endsection
