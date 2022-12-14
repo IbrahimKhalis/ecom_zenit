@@ -156,6 +156,22 @@ Route::group(['middleware' => ['auth','CheckLevel:admin,seller'],  'prefix' => '
     
 });
 
+Route::get('/setup/store', function () {
+    return view('seller.setup-start');
+});
+
+Route::get('/setup/store/information', function () {
+    return view('seller/setup-store');
+});
+
+Route::get('/setup/store/personal', function () {
+    return view('seller/setup-store-personal');
+});
+
+Route::get('/setup/store/complete', function () {
+    return view('seller/setup-store-complete');
+});
+
 //Store-IMG
 Route::post('profile/image',[UserProfileController::class, 'storeImage']);
 Route::post('shop-profile/image',[ShopController::class, 'storeImage']);
@@ -200,21 +216,7 @@ Route::get('/otpverification', function () {
     return view('otp-verif');
 })->name('otp');
 
-Route::get('/customer/order', function () {
-    return view('myorder');
-})->name('order');
-
-
 Route::get('export/sale/data', [DataSaleExportController::class, 'export']);
-
-Route::get('/setup/profile', function () {
-    return view('setup');
-})->name('setup');
-
-
-Route::get('/setup/profile', function () {
-    return view('setup');
-})->name('setup');
 
 
 Route::get('/transaction/detail', function () {
@@ -225,43 +227,24 @@ Route::get('/setup/profile', function () {
     return view('setup');
 });
 
-Route::get('/setup/store', function () {
-    return view('seller.setup-start');
-});
-
-Route::get('/setup/store/information', function () {
-    return view('seller/setup-store');
-});
-
-Route::get('/setup/store/personal', function () {
-    return view('seller/setup-store-personal');
-});
-
-
-
-Route::get('/setup/store/complete', function () {
-    return view('seller/setup-store-complete');
-});
 
 
 Route::get('/chart/report', [SellerReportController::class, 'show']);
 
-Route::get('/order/detail', function () {
-    return view('order-detail');
-});
 
 route::get('/test', function(){
-  return view('order-cust');
+    return view('order-cust');
 });
 
-Route::get('/order', [CustomerOrderController::class, 'show']);
+Route::get('/order/detail/{id}', [CustomerOrderController::class, 'detail'])->name('cust.order.detail');
+Route::get('/order', [CustomerOrderController::class, 'show'])->name('cust.order');
 Route::post('/order', [CustomerOrderController::class, 'getTable']);
 
 route::get('/test', function(){
     return view('order-cust');
 });
 Route::get('/tutorial', function () {
-  return view('tutorial');
+    return view('tutorial');
 });
 
 

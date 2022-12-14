@@ -166,7 +166,7 @@ class CartController extends Controller
                 return 'Add Cart Success !';
             }
         }else{
-            return 'Nggak Bisa Lah TOLOL';
+            return "Can't add your own Product !";
         }
     }
 
