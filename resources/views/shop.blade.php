@@ -63,7 +63,7 @@
       <p>Open At {{ $buka }}</p>
       <p>Closed At {{ $tutup }}</p>
       @else
-      <p>They're in a Vacation!</p>
+      <p>Closed</p>
       @endif
     </div>
   </div>

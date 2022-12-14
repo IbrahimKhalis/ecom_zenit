@@ -30,6 +30,7 @@ header {
     width: 100px;
     height: 61px;
     object-fit: contain;
+    border-radius: 8px;
 }
 
 .title-header {
@@ -161,6 +162,7 @@ header {
     width: 100px;
     height: 100px;
     object-fit: cover;
+    border-radius: 8px;
 }
 
 .card-order p {

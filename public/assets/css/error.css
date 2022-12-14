@@ -31,4 +31,5 @@ button{
   background-color: #233874;
   color: white;
   border: none;
+  border-radius: 8px;
 }

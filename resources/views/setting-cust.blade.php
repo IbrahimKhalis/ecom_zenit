@@ -50,7 +50,7 @@
         <div class="order">
             <p class="order-title">Order</p>
             <div class="order-content">
-                <a href="{{ url('profileC') }}">
+                <a href="{{ url('404') }}">
                     <div class="my-order">
                         <div class="my-order-content">
                             <iconify-icon icon="icon-park-outline:transaction-order" class="my-order-icon"></iconify-icon>
@@ -75,7 +75,7 @@
         <div class="help-centre">
             <p class="help-centre-title">Help Centre</p>
             <div class="help-centre-content">
-                <a href="">
+                <a href="{{ url('404') }}">
                     <div class="privacy-policy">
                         <div class="privacy-policy-content">
                             <iconify-icon icon="fluent-mdl2:page" class="privacy-policy"></iconify-icon>
@@ -85,7 +85,7 @@
                     </div>
                 </a>
 
-                <a href="">
+                <a href="{{ url('404') }}">
                     <div class="terms-conditions">
                         <div class="terms-conditions-content">
                             <iconify-icon icon="fa:history" class="terms-conditions-icon"></iconify-icon>

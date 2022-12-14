@@ -30,11 +30,13 @@
 }
 
 table th {
-    text-align: center;
-    padding: 10px 0px;
+  text-align: center;
+  padding: 10px 0px;
+  width: 200px;    
 }
 table tr{
-    border-bottom: #000 solid 0.5px;
+  border: #000 solid 0.5px;   
+  width: 250px;   
 }
 table td {
     width: 250px;
@@ -46,6 +48,7 @@ table td img {
     width: 80px;
     height: 80px;
     object-fit: cover;
+    border-radius: 8px;
 }
 
 .prod-details p:first-child,
@@ -67,7 +70,7 @@ table td img {
 #label-order {
     background-color: #5874af;
     width: 75px;
-    height: 30px;
+    padding: 5px 45px;
     display: flex;
     justify-content: center;
     align-items: center;
