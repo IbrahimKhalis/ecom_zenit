@@ -50,8 +50,11 @@ class SettingController extends Controller
      */
     public function show()
     {
-       
         $shop = auth()->user()->shop;
+     
+        if(!isset($shop)){
+            return redirect()->route('seller.setup.start');
+        }
 
         return view('seller.setting-info', compact('shop'));
     }
