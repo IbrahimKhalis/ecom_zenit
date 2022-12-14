@@ -26,9 +26,10 @@
                 <th>Type</th>
                 <th></th>
             </tr>
+            
             @foreach($confirmed as $item)
             <tr>
-                <td style="width: 100px;">1</td>
+                <td  style="width: 100px;">{{ $loop->iteration }}</td>
                 <td style="display: flex; gap:20px; text-align: start; width: 250px;">
                     <img src="{{ $item->products->gallery->first()->getUrl() }}" alt="">
                     <div class="prod-details" style="line-height: 14px;">
@@ -40,6 +41,13 @@
                 <td style="width: 110px;">{{ $item->orders->invoice_no }}</td>
                 <td style="width: 250px;">{{ $item->orders->users->name }}</td>
                 <td style="width: 120px;">{{ $item->product_qty }}</td>
+                <td style="width: 100px;"><p id="label-order"  style="margin-top: 10px;">{{ $item->products->category->name }}</p></td>
+                <td style="width: 100px;">
+                    <button  onclick="On_klik(this.id)" id="refund" style="font-weight:600;" >Refund</button>
+                </td>
+            </tr>
+        
+
                 <td style="width: 100px;">
                     <p id="label-order" style="margin-top: 10px;">{{ $item->products->category->name }}</p>
                 </td>
@@ -47,7 +55,8 @@
                 <a id="label-order" style="display:inline-block; margin-top: 10px;" href="{{ route('seller.order.detail', $item->id) }}">Detail</a>
                 </td>
             </tr>
-            @endforeach
+            @endforeach 
+
         </table>
     </div>
 </div>

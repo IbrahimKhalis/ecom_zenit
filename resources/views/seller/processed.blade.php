@@ -23,13 +23,13 @@
                 <th style="text-align: start;">Product</th>
                 <th>Order ID</th>
                 <th>Customer Name</th>
-                <th>Quantity</th>
-                <th>Type</th>
+                <th style="width: 100px ">Quantity</th>
+                <th style="width: 100px ">Type</th>
                 <th></th>
             </tr>
             @foreach($confirmed as $item)
             <tr>
-                <td style="width: 100px;">1</td>
+                <td style="width: 100px;">{{ $loop->iteration }}</td>
                 <td style="display: flex; gap:20px; text-align: start; width: 250px;">
                     <img src="{{ $item->products->gallery->first()->getUrl() }}" alt="">
                     <div class="prod-details" style="line-height: 14px;">

@@ -28,6 +28,7 @@ use App\Http\Controllers\SellerProductController;
 use App\Http\Controllers\SellerScheduleController;
 use App\Http\Controllers\SellerdashboardController;
 use App\Http\Controllers\payment\TripayCallbackController;
+use Maatwebsite\Excel\Row;
 
 /*
 |--------------------------------------------------------------------------
@@ -133,14 +134,17 @@ Route::group(['middleware' => ['auth','CheckLevel:admin,seller'],  'prefix' => '
     Route::put('/update/profile', [SettingController::class, 'update'])->name('profile.shopUp');
     
     //orderCon
-
+    //   TRANSACTION PAGE SELLER
+    Route::get('/completed', [SellerOrderController::class, 'showComplete'])->name('completed');
+    Route::get('/canceled', [SellerOrderController::class, 'showCancel'])->name('canceled');
     Route::get('/orders/upcoming', [SellerOrderController::class, 'showUp'])->name('upcoming');
     Route::get('/orders/processed', [SellerOrderController::class, 'showPro'])->name('process');
     Route::get('/orders/completed', [SellerOrderController::class, 'showCome'])->name('completed');
-    
     Route::get('/canceled', function () {
-        return view('seller.canceled-order');
+        return view('seller.canceled-
+        ');
     })->name('canceled');
+
     
     //ORDERSELLER
     Route::post('/orders/accept/{id}', [SellerOrderController::class, 'accept'])->name('accept');

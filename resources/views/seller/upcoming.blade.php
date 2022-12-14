@@ -11,8 +11,8 @@
     <div class="sub-content">
         <a href="{{ route('seller.upcoming') }}">Upcoming Orders</a>
         <a href="{{ route('seller.process') }}">Processed Orders</a>
-        <a href="">Completed Orders</a>
-        <a href="">Canceled Orders</a>
+        <a href="{{ route('seller.completed') }}">Completed Orders</a>
+        <a href="{{ route('seller.canceled') }}">Canceled Orders</a>
     </div>
 
     @if(session()->has('massage'))
@@ -33,7 +33,7 @@
             </tr>
             @foreach($Paid as $item)
             <tr>
-                <td style="width: 100px;">1</td>
+                <td style="width: 100px;">{{ $loop->iteration }}</td>
                 <td style="display: flex; gap:20px; text-align: start; width: 250px;">
                     <img src="{{ $item->products->gallery->first()->getUrl() }}" alt="">
                     <div class="prod-details" style="line-height: 14px;">

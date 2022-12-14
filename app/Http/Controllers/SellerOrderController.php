@@ -107,6 +107,62 @@ class SellerOrderController extends Controller
         return view('seller.processed', compact('confirmed'));
     }
 
+    public function showCancel(){
+        $products = auth()->user()->products;
+
+        $itemOrder = [];
+        $individualOrder = [];
+        $canceled = [];
+
+        foreach($products as $product){
+            $orderItem = $product->orderItem->all();
+            array_push($itemOrder, $orderItem);
+        }
+
+        foreach($itemOrder as $inOrder){
+            foreach($inOrder as $idnItem){
+                array_push($individualOrder, $idnItem);
+            }
+        }
+
+        foreach($individualOrder as $item){
+            if($item->status == 'CANCELED'){
+                    array_push($canceled, $item);
+            }  
+        }
+
+        return view('seller.canceled-order', compact('canceled'));
+    }
+
+    public function showComplete(){
+        $products = auth()->user()->products;
+
+        $itemOrder = [];
+        $individualOrder = [];
+        $complete = [];
+
+        foreach($products as $product){
+            $orderItem = $product->orderItem->all();
+            array_push($itemOrder, $orderItem);
+        }
+
+        foreach($itemOrder as $inOrder){
+            foreach($inOrder as $idnItem){
+                array_push($individualOrder, $idnItem);
+            }
+        }
+
+        foreach($individualOrder as $item){
+            if($item->status == 'COMPLETE'){
+                if($item->orders->status == 'COMPLETE' || 'COMPLETE'){
+                    array_push($complete, $item);
+                }
+            }  
+        }
+
+        return view('seller.complete-order', compact('complete'));
+    }
+
     public function upResi(Request $request, $id){
         $order_items = OrderItem::find($id);
 
