@@ -30,7 +30,7 @@
               <p>RP. {{ $favorite->product->price }}</p>
               <div class="last-row">
                 <button>Buy Now</button>
-                <button onclick="trash({{ url('favorite/del', $favorite->id) }})"><iconify-icon class="trash" icon="fe:trash"></iconify-icon></button>
+                <button onclick="trash('{{ url('favorite/del', $favorite->id) }}')"><iconify-icon class="trash" icon="fe:trash"></iconify-icon></button>
               </div>
             </div>
           </div>
