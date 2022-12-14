@@ -200,7 +200,7 @@
                         <div class="card-payment">
                             <div class="left-payment">
                                 <div class="payment-logo">
-                                    <img src="assets/tes-img.png" alt="">
+                                    <img src="{{ asset('storage/bank/' . $p->code . '.png') }}" alt="">
                                 </div>
                                 <div class="payment-method">
                                     <p>{{ $p->name }}</p>

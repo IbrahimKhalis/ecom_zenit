@@ -5,6 +5,9 @@
 @endsection
 
 @section('content')
+
+@include('sweetalert::alert')
+
 <div class="main-content" id="main-content">
     <div class="forms-container">
         <div class="signin-signup">

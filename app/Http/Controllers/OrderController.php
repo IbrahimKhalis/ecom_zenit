@@ -127,4 +127,5 @@ class OrderController extends Controller
     {
         return view('frontend.order.complete');
     }
+
 }
