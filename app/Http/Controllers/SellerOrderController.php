@@ -72,6 +72,28 @@ class SellerOrderController extends Controller
 
         $order->update();
 
+        $orders = $order->orders->orderItem->pluck('status')->all();
+
+        $target = array('NOT CONFIRM', 'CONFIRMED', 'SHIPPED');
+
+        $coba = count(array_intersect($orders, $target));
+
+        if (!in_array('NOT CONFIRM', $orders)) {
+            $data = $order->orders;
+
+            $data->update([
+                'status' => 'PROCESSED'
+            ]);
+        }
+
+        if(count(array_intersect($orders, $target)) == 0) {
+            $data = $order->orders;
+
+            $data->update([
+                'status' => 'CANCELED'
+            ]);
+        }
+
         return redirect()->back()->with([
             'massage' => 'The Order has been REJECTED'
         ]);
@@ -134,39 +156,27 @@ class SellerOrderController extends Controller
         return view('seller.canceled-order', compact('canceled'));
     }
 
-    public function showComplete(){
-        $products = auth()->user()->products;
-
-        $itemOrder = [];
-        $individualOrder = [];
-        $complete = [];
-
-        foreach($products as $product){
-            $orderItem = $product->orderItem->all();
-            array_push($itemOrder, $orderItem);
-        }
-
-        foreach($itemOrder as $inOrder){
-            foreach($inOrder as $idnItem){
-                array_push($individualOrder, $idnItem);
-            }
-        }
-
-        foreach($individualOrder as $item){
-            if($item->status == 'COMPLETE'){
-                if($item->orders->status == 'COMPLETE' || 'COMPLETE'){
-                    array_push($complete, $item);
-                }
-            }  
-        }
-
-        return view('seller.complete-order', compact('complete'));
-    }
-
     public function upResi(Request $request, $id){
         $order_items = OrderItem::find($id);
 
         
+        $target = array('NOT CONFIRM', 'CONFIRMED');
+        
+        $order_items->update([
+            'status'=>'SHIPPED',
+        ]);
+        
+        $orders = $order_items->orders->orderItem->pluck('status')->all();
+
+        
+        if (count(array_intersect($orders, $target)) == 0) {
+            $data = $order_items->orders;
+            
+            $data->update([
+                'status' => 'SHIPPED'
+            ]);
+        }
+
         $DataResi = DataResi::create([
             'orders_id' => $order_items->orders->id,
             'no_resi'=> $request->no_resi,
@@ -177,10 +187,6 @@ class SellerOrderController extends Controller
         foreach ($request->input('gallery', []) as $file) {
             $DataResi->addMedia(storage_path('tmp/uploads/' . $file))->toMediaCollection('gallery');
         }
-
-        $order_items->update([
-            'status'=>'SHIPPED',
-        ]);
 
         return redirect()->back();
     }

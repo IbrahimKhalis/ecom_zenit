@@ -46,7 +46,21 @@ class CustomerOrderController extends Controller
                 return view('table.myorderTable', compact('orders'));
                 break;
         }
+    }
 
-        
+    public function Completed($id){
+        $order = Order::find($id);
+
+        $order->status = 'COMPLETE';
+
+        $order->update();
+
+        foreach($order->orderItem as $item){
+            $item->status = 'COMPLETE';
+
+            $item->update();
+        }
+
+        return redirect()->back();
     }
 }

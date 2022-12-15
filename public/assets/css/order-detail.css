@@ -60,12 +60,10 @@
   }
   
   .name-detail p{
-    height: 30px;
     margin: 0;
     font-size: 20px;
     font-family: 'quicksand';
     font-weight: 700;
-    margin-bottom: 10px;
   }
   
   .desc-order {
@@ -79,6 +77,20 @@
     gap: 10px;
     font-size: 14px;
     align-items: center;
+  }
+
+  .category-detail p{
+    margin: 0;
+  }
+
+  .btn-review button {
+    width: 100px;
+    height: 32px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(98, 219, 110);
+    font-weight: 600;
+    font-family: 'Quicksand';
   }
   
   .category-detail p:last-child{

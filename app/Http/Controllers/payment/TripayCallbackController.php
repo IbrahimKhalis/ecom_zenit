@@ -16,7 +16,7 @@ class TripayCallbackController extends Controller
     {
         $callbackSignature = $request->server('HTTP_X_CALLBACK_SIGNATURE');
         $json = $request->getContent();
-        $signature = hash_hmac('sha256', $json, $this->privateKey);
+        $signature = hash_hmac('sha256' , $json, $this->privateKey);
 
         if ($signature !== (string) $callbackSignature) {
             return Response::json([
@@ -58,6 +58,7 @@ class TripayCallbackController extends Controller
                 ->where('status', '!=', 'PAID')
                 ->first();
 
+
             if (! $transaction) {
                 return Response::json([
                     'success' => false,
@@ -65,7 +66,28 @@ class TripayCallbackController extends Controller
                 ]);
             }
 
-            $transaction->update(['status' => $status]);
+            switch ($data->status) {
+                case 'PAID':
+                    $transaction->order->update(['status'=>'PAID']);
+                    $transaction->update(['status' => 'PAID']);
+                    return Response::json(['success' => true]);
+    
+                case 'EXPIRED':
+                    $transaction->order->update(['status'=>'EXPIRED']);
+                    $transaction->update(['status' => 'EXPIRED']);
+                    return Response::json(['success' => true]);
+    
+                case 'FAILED':
+                    $transaction->order->update(['status'=>'UNPAID']);
+                    $transaction->update(['status' => 'UNPAID']);
+                    return Response::json(['success' => true]);
+    
+                default:
+                    return Response::json([
+                        'success' => false,
+                        'message' => 'Unrecognized payment status',
+                    ]);
+            }
 
             return Response::json(['success' => true]);
         }
@@ -77,7 +99,7 @@ class TripayCallbackController extends Controller
         |--------------------------------------------------------------------------
         */
 
-        $transaction = Transaction::where('id', $reference)
+        $transaction = Transaction::where('reference', $reference)
             ->where('status', 'UNPAID')
             ->first();
 
@@ -97,18 +119,18 @@ class TripayCallbackController extends Controller
 
         switch ($data->status) {
             case 'PAID':
-                $transaction->update(['status' => 'PAID']);
                 $transaction->order->update(['status'=>'PAID']);
+                $transaction->update(['status' => 'PAID']);
                 return Response::json(['success' => true]);
 
             case 'EXPIRED':
-                $transaction->update(['status' => 'EXPIRED']);
                 $transaction->order->update(['status'=>'EXPIRED']);
+                $transaction->update(['status' => 'EXPIRED']);
                 return Response::json(['success' => true]);
 
             case 'FAILED':
-                $transaction->update(['status' => 'UNPAID']);
                 $transaction->order->update(['status'=>'UNPAID']);
+                $transaction->update(['status' => 'UNPAID']);
                 return Response::json(['success' => true]);
 
             default:

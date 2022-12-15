@@ -15,19 +15,21 @@
 
       <div class="Status d-flex">
           <h2 class="payment-status">Payment Status</h2>
-          <h2 class="isi-payment-status">Unpaid</h2>
+          <h2 class="isi-payment-status">{{ $detail->status }}</h2>
       </div>
       <div class="garis2"></div>
       <div class="kotak-rekening">
           <div class="title-logo-bank d-flex">
-              <h1 class="title-bank">Bca Virtual Account</h1>
-              <img src="assets/logo-bca.png" alt="" class="logo-bank">
+              <h1 class="title-bank">{{ $detail->payment_name }}</h1>
+              <img src="{{ asset('storage/bank/' . $detail->payment_method . '.png') }}" style="background-size: cover;" class="logo-bank">
           </div>
           <div class="garis3"></div>
 
-          <h1 class="title-virtual-account">Bca Virtual Account</h1>
+          <h1 class="title-virtual-account">{{ $detail->payment_name }}</h1>
           <div class="rekening d-flex">
-              <h1 class="norek-account">04643443253278</h1>
+              <h1 class="norek-account">{!! preg_replace('/[^0-9]/' ,' ', $pay->steps[2]) !!} {!! preg_replace('/[^0-9]/' ,' ', $pay->steps[3]) !!} </h1>
+
+
               <div class="copy d-flex">
                   <h2 class="text-copy">Copy</h2>
                   <iconify-icon icon="ic:round-content-copy"></iconify-icon>
@@ -36,42 +38,27 @@
 
           <h1 class="title-total-payment">Total Payment</h1>
           <div class="total-payment d-flex">
-              <h1 class="total-pembayaran">Rp. 300.000</h1>
+              <h1 class="total-pembayaran">Rp. {{ number_format( $detail->amount ) }}</h1>
               <img src="assets/copy.png" alt="" class="logo-copy" style="margin-top: 0.2vw;">
           </div>
 
 
       </div>
       <div class="garis4"></div>
-
+      @foreach ($detail->instructions as $pay )
       <div class="payment-internet-banking">
-          <h2 class="title-payment-internet-banking">Payment Internet Banking</h2>
+          <br>
+          <hr>
+          <h2 class="title-payment-internet-banking">Payment {{ $pay->title }}</h2>
+          @foreach($pay->steps as $step)
           <div class="isi-cara-pembayaran">
-              <h2 class="no1-internet-banking">1. Login ke Internet banking Bank BNI anda</h2>
-              <h2 class="no2-internet-banking">2. Pilih menu transaksi lalu klik menu Virtual Account Billing
-              </h2>
-              <h2 class="no3-internet-banking">3. Masukkan Nomor VA (21031224898412) Lalu Pilih rekening Debit
-              </h2>
-              <h2 class="no4-internet-banking">4. Detail Transaksi akan ditampilkan, pastikan data sudah
-                  sesuai</h2>
-              <h2 class="no5-internet-banking">5. Masukkan respon Key BNI appli 2</h2>
-              <h2 class="no6-internet-banking">6. Transaksi sukses, simpan bukti transaksi Anda</h2>
+              <h2 class="no1-internet-banking">{{ $loop->iteration }} . {!! $step !!}</h2>
           </div>
+          @endforeach
       </div>
+      @endforeach
 
-      <div class="garis5"></div>
 
-      <div class="payment-atm-bni">
-          <h2 class="title-atm-bni">Payment ATM BNI</h2>
-          <div class="isi-cara-pembayaran-atm">
-              <h2 class="no1-atm-bni">1. Login ke Internet banking Bank BNI anda</h2>
-              <h2 class="no2-atm-bni">2. Pilih menu transaksi lalu klik menu Virtual Account Billing</h2>
-              <h2 class="no3-atm-bni">3. Masukkan Nomor VA (21031224898412) Lalu Pilih rekening Debit</h2>
-              <h2 class="no4-atm-bni">4. Detail Transaksi akan ditampilkan, pastikan data sudah sesuai</h2>
-              <h2 class="no5-atm-bni">5. Masukkan respon Key BNI appli 2</h2>
-              <h2 class="no6-atm-bni">6. Transaksi sukses, simpan bukti transaksi Anda</h2>
-          </div>
-      </div>
-  </div>
-</div>
+
 @endsection
+

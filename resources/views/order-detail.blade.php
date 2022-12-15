@@ -1,15 +1,22 @@
 @extends('layout/app')
 
 @section('css')
-  <link rel="stylesheet" href="{{ asset('assets/css/order-detail.css')}}">
+<link rel="stylesheet" href="{{ asset('assets/css/order-detail.css')}}">
 @endsection
 
 @section('content')
 <div class="content">
-    <div class="header-detail">
+  <div class="header-detail">
       <div class="title-header">
-        <p>Order Detail</p>
+        <p>Order Detail</p> 
       </div>
+      @if(session()->has('message'))
+      <div class="alert alert-primary d-flex align-items-center" role="alert">
+          <div>
+          {{ session()->get('message') }}
+          </div>
+      </div>
+      @endif
       <div class="desc-header">
         <div class="row-top">
           <p>Order Id : {{ $order->id }}</p>
@@ -47,6 +54,13 @@
               <p>|</p>
               <p>{{ $item->products->category->name }}</p>
             </div>
+            @if($item->status == 'COMPLETE')
+            <div class="btn-review">
+              <a href="{{ route('product.review', $item->id) }}">
+                <button>Review</button> 
+              </a>
+            </div>
+            @endif
           </div>
         </div>
         <div class="left-detail">
@@ -65,7 +79,12 @@
     @endforeach
     <div class="content-information">
       <div class="payment-det">
+        @if($order->status != 'Not Paid')
+        <p>Payment</p>
+        @else
         <p>Payment<span><a href="">How to Pay?</a></span></p>
+        @endif
+
         <p>{{ $order->payment_type }}</p>
       </div>
       <div class="gmail-det">
@@ -108,4 +127,14 @@
       <p>Rp. TBD</p>
     </div>
   </div>
+
+  @if($order->status == 'SHIPPED')
+  <div style="width: 100%; display:flex; align-items: center; justify-content:center">
+    <form action="{{ route('cust.complete', $order->id) }}" method='POST'>
+      @csrf
+      <button type="submit" class="btn btn-primary">Complete</button>
+    </form>
+  </div>
+  @endif
+
   @endsection

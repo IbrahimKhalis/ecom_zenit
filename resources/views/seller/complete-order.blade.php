@@ -43,15 +43,6 @@
                 <td style="width: 120px;">{{ $item->product_qty }}</td>
                 <td style="width: 100px;"><p id="label-order"  style="margin-top: 10px;">{{ $item->products->category->name }}</p></td>
                 <td style="width: 100px;">
-                    <button  onclick="On_klik(this.id)" id="refund" style="font-weight:600;" >Refund</button>
-                </td>
-            </tr>
-        
-
-                <td style="width: 100px;">
-                    <p id="label-order" style="margin-top: 10px;">{{ $item->products->category->name }}</p>
-                </td>
-                <td style="width: 100px;">
                 <a id="label-order" style="display:inline-block; margin-top: 10px;" href="{{ route('seller.order.detail', $item->id) }}">Detail</a>
                 </td>
             </tr>
