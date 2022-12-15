@@ -5,9 +5,19 @@
 @endsection
 
 @section('content')
+
+{!! $data = preg_replace('/[^0-9]/' ,' ', $pay->steps[2]) !!}
+
+
+{{ $data2 =   preg_replace('/[^0-9]/' ,' ', $pay->steps[3]) }}
+
+@if(strlen($data2) < 61)
+    {{ $data = $data2 }}
+@endif
+
 <div class="containers">
   <div class="judul d-flex">
-      <a href=""><iconify-icon class="back-btn" icon="material-symbols:arrow-back-rounded"></iconify-icon></a>
+      <a href="{{ url('/') }}"><iconify-icon class="back-btn" icon="material-symbols:arrow-back-rounded"></iconify-icon></a>
       <h2 class="container-title">Payment</h2>
   </div>
   <div class="garis1"></div>
@@ -27,7 +37,7 @@
 
           <h1 class="title-virtual-account">{{ $detail->payment_name }}</h1>
           <div class="rekening d-flex">
-              <h1 class="norek-account">{!! preg_replace('/[^0-9]/' ,' ', $pay->steps[2]) !!} {!! preg_replace('/[^0-9]/' ,' ', $pay->steps[3]) !!} </h1>
+              <h1 class="norek-account">{!! $data !!}</h1>
 
 
               <div class="copy d-flex">

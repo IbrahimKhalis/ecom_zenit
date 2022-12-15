@@ -66,7 +66,7 @@
                         <iconify-icon class="trash" icon="fe:trash"></iconify-icon>
                       </button>
                       <a href="{{ $cart->product->category->name != 'Software' ? url('cart/dec', $cart->id) : '' }}">
-                        <button id="decrease" {{ $cart->product->category->name == 'Software' ? 'disabled' : '' }} >-</button>
+                        <button id="decrease" {{ $cart->product->category->name == 'Software' ? 'disabled' : '' }} {{ $cart->quantity <= 1 ? 'disabled' : '' }}>-</button>
                       </a>
     
                       <input type="text" value="{{ $cart->quantity }}" id="quantity" name="quantity" >
