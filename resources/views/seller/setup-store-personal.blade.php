@@ -31,30 +31,30 @@
   </div>
   <div class="garis-batas"></div>
   <!-- End BreadCrumb -->
-  <form action="#">
+  <form action="{{ route('seller.setup.social') }}" method="POST" enctype="multipart/form-data">
+    @csrf
+    @method('PATCH')
     <div class="ig-toko">
       <h1 class="judul-ig">Instagram</h1>
-      <input type="url" name="ig-toko" id="ig-toko" class="input-ig">
+      <input type="text" name="instagram" id="ig-toko" class="input-ig">
     </div>
     <div class="linkedin-toko">
       <h1 class="judul-linkedin">Gmail</h1>
-      <input type="url" name="linkedin-toko" id="linkedin-toko" class="input-linkedin">
+      <input type="text" name="gmail" id="linkedin-toko" class="input-linkedin">
     </div>  
     <div class="linkedin-toko">
       <h1 class="judul-linkedin">Linkedin</h1>
-      <input type="url" name="linkedin-toko" id="linkedin-toko" class="input-linkedin">
+      <input type="text" name="linkedIn" id="linkedin-toko" class="input-linkedin">
     </div>
     <div class="linkedin-toko">
       <h1 class="judul-linkedin">Portofolio</h1>
-      <input type="url" name="linkedin-toko" id="linkedin-toko" class="input-linkedin">
+      <input type="file" accept="application/pdf" name="portofolio" id="link" value="" class="form-control">
     </div>
-    <div class="button-grup d-flex">
-      <a href="toko-setup-personal.html" class="submit-link"><button type="submit"
-          class="back-button">Back</button></a>
-      <a href="toko-setup-personal.html" class="submit-link"><button type="submit"
-          class="next-button">Next</button></a>
-    </div>
+      <button type="submit"
+          class="next-button">Save</button>
   </form>
 
 </div>
+
+
 @endsection

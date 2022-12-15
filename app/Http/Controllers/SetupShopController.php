@@ -36,4 +36,44 @@ class SetupShopController extends Controller
 
         return redirect()->route('seller.setup.personal');
     }
+
+    public function update(Request $request)
+    {
+        $shop = auth()->user()->shop;
+
+        
+        $validated = $request->validate([
+            'instagram' => 'required',
+            'gmail' => 'required',
+            'linkedIn' => 'required',
+            'portofolio' => 'mimes:pdf',
+        ]);        
+        
+        $porto = null;
+        if ($request->hasFile('portofolio')) {
+            $porto = $request->file('portofolio')->storeAs(
+                'portofolio',
+                $name = auth()->user()->name. '.' . $request->file('portofolio')->getClientOriginalExtension(),
+            );
+        }  
+        
+        $shop->update([
+            'instagram' => $request->instagram,
+            'gmail' => $request->gmail,
+            'linkedIn' => $request->linkedIn,
+        ]);
+
+        if($request->portofolio != null){
+            $shop->update([
+                'portofolio' => 'storage/portofolio/'.$name,
+            ]);
+        }
+
+        return redirect('/seller/setting/schedule');
+    }
+    public function create()
+    {
+        $shop = auth()->user()->shop;
+        return view('seller.setup-store-personal', compact('shop'));
+    }
 }

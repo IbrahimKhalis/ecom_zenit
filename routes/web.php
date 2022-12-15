@@ -145,14 +145,18 @@ Route::group(['middleware' => ['auth','CheckLevel:admin,seller'],  'prefix' => '
     Route::get('/setup/store/step1', function(){
         return view('seller.setup-store');
     })->name('setup.create');
+
     Route::get('setup/store/personal-page', function(){
         return view('seller.setup-store-personal');
     })->name('setup.personal');
+
     Route::get('/setup/store/complete', function () {
         return view('seller.setup-store-complete');
     })->name('setup.complete');
     
     Route::post('setup/store/shop', [SetupShopController::class, 'store'])->name('setup.store');
+    Route::patch('setup/store/last', [SetupShopController::class, 'update'])->name('setup.social');
+
     
     //ORDERSELLER
     Route::post('/orders/accept/{id}', [SellerOrderController::class, 'accept'])->name('accept');

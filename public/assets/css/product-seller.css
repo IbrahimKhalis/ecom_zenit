@@ -48,8 +48,8 @@
 }
 
 .add-product a button {
-  padding: 0px 7px;
-  height: 40px;
+  padding: 5px 7px;
+  width: 16vh;
   border: none;
   border-radius: 7px;
   background-color: #4768b6;
@@ -86,9 +86,9 @@ table {
   margin: 50px;
 }
 
-table tr {
-  height: 50px;
-
+table tr{
+  border: #000 solid 0.5px;   
+  width: 250px;   
 }
 
 table img {
@@ -100,7 +100,8 @@ table img {
 
 table th {
   text-align: center;
-  border-bottom: 1px solid black;
+  padding: 10px 0px;
+  width: 145px;    
 }
 
 table td {

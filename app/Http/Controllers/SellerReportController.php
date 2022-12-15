@@ -111,8 +111,7 @@ class SellerReportController extends Controller
 
 
         // dd($labels);
-        return view('seller.report', compact('chart', 'labels', 'values','terjualData','products', 'ibe','income'));
-        
+        return view('seller.report', compact('chart', 'labels', 'values','terjualData','products', 'ibe','income'));   
     }
 }
 

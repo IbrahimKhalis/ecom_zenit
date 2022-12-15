@@ -51,7 +51,9 @@
     <div class="chart">
        <canvas id="myChart" width="1150px" height="300px"></canvas>
     </div>
+    @if ($values == [])
 
+    @else    
     <div class="export">
         <p>Export Overall Report</p>
         <a href="{{ url('export/sale/data') }}">
@@ -61,6 +63,7 @@
         </button>
     </a>
     </div>
+    @endif
 
     <table>
         <tr>
