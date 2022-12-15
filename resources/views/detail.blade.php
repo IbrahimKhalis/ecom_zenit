@@ -244,7 +244,7 @@
             @if(Auth::check())
                   <div class="other-btn">
                     <div class="btn-detail">
-                      <button class="modal__button" id="open-modal" onClick="Open_click('{{ $related_product->gallery->first()->getUrl() }}', '{{ $related_product->major }}', '{{ $related_product->name }}', '{{ $related_product->price }}', '{{ url('/cart/modal', $related_product->id) }}')"><i class="fa-solid fa-cart-shopping"></i></button>
+                      <button class="modal__button" type="button" id="open-modal" onClick="Open_click('{{ $related_product->gallery->first()->getUrl() }}', '{{ $related_product->major }}', '{{ $related_product->name }}', '{{ $related_product->price }}', '{{ url('/cart/modal', $related_product->id) }}')"><i class="fa-solid fa-cart-shopping"></i></button>
                       <button class="modal__button" id="open-modal" onClick="Open_click('{{ $related_product->gallery->first()->getUrl() }}', '{{ $related_product->major }}', '{{ $related_product->name }}', '{{ $related_product->price }}', '{{ url('/favorite/add', $related_product->id) }}')">
                         @if(in_array($related_product->id, $favorites))
                         <i class="fa-solid fa-heart"></i>
@@ -254,7 +254,7 @@
                       </button>
                     </div>
                   </div>
-                @endif
+            @endif
           </div>
         </div>
       </div>
