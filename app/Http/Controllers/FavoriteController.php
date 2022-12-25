@@ -25,8 +25,9 @@ class FavoriteController extends Controller
 
         $dataProd = Product::find($products_id);
         if($dataProd->users_id != auth()->id()){
+
             $check = Favorite::where('users_id', auth()->id())->where('products_id', $products_id)->first();
-    
+
             if($check){
                 return 'Already Been Favorite!';
             }else{
