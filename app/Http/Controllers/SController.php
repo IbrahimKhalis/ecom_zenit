@@ -34,7 +34,7 @@ class SController extends Controller
                 $products->orderby('products.name','Asc');
                 array_push($tags, 'Z-A');
             }
-           }
+        }
 
         if(Auth::check()){
             foreach(Auth()->user()->favorites as $favorite){
