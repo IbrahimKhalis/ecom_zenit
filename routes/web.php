@@ -227,7 +227,7 @@ Route::get('/setup/profile', function () {
     return view('setup');
 })->name('setup');
 
-<<<<<<< HEAD
+
 Route::get('/setup/profile', function () {
     return view('setup');
 })->name('setup');
