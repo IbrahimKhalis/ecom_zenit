@@ -29,8 +29,17 @@ class TransactionController extends Controller
 
     public function store(Request $request)
     {
-        $carts = Cart::where('users_id', auth()->id())->latest()->get();
 
+        $request->validate([
+            'shipping_method' => 'required',
+            'shipping_email' => 'required',
+            'shipping_name' => 'required',
+            'shipping_phone' => 'required',
+            'adress' => 'required',
+            'method' => 'required',
+        ]);
+        
+        $carts = Cart::where('users_id', auth()->id())->latest()->get();
 
         $kumpulHarga = [];
 
@@ -102,7 +111,6 @@ class TransactionController extends Controller
         ]);
 
         Cart::where('users_id', auth()->id())->delete();
-
 
 
         return redirect()->route('transaction.detail', [
