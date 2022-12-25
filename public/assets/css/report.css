@@ -85,6 +85,24 @@ table th {
   text-align: center;
   padding: 10px 0px;
 }
+table tr:first-child{
+  width: 100%;
+}
+table th:first-child{
+  width: 60px;
+}
+table th:nth-child(2){
+  width: 220px;
+}
+table th:nth-child(3){
+  width: 300px;
+}
+table th:nth-child(4){
+  width: 300px;
+}
+table th:nth-child(5){
+  width: 250px;
+}
 table td {
   text-align: center;
   padding-top: 10px;

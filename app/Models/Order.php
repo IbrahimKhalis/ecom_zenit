@@ -26,4 +26,8 @@ class Order extends Model
         return $this->hasMany(DataResi::class, 'orders_id');
     }
 
+    public function transData(){
+        return $this->hasOne(Transaction::class, 'order_id');
+    }
+
 }

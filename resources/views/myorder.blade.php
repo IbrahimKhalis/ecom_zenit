@@ -1,7 +1,8 @@
 @extends('layout/app')
 
 @section('css')
-  <link rel="stylesheet" href="{{ asset('assets/css/myorder.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/myorder.css')}}">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
 @endsection
 
 @section('content')
@@ -16,23 +17,23 @@
     <div class="search">
         <input type="text" class="search__input" placeholder="Search...">
         <div class="search__icon">
-          <ion-icon name="search"></ion-icon>
+            <ion-icon name="search"></ion-icon>
         </div>
-      </div>
+    </div>
     <div class="menus">
-        <p style="font-size: 20px; font-weight: 600;">Total : 3 Orders</p>
+        <p style="font-size: 20px; font-weight: 600;">Total : {{ $orders->count() }} Orders</p>
         <div class="left-row">
-            <div class="tabs">
-                <input type="radio" id="radio-1" name="tabs" checked />
-                <label class="tab" for="radio-1">View All</label>
-                <input type="radio" id="radio-2" name="tabs" />
-                <label class="tab" for="radio-2">My Order</label>
-                <input type="radio" id="radio-3" name="tabs" />
-                <label class="tab" for="radio-3">Completed</label>
-                <input type="radio" id="radio-4" name="tabs" />
-                <label class="tab" for="radio-4">Canceled</label>
-                <span class="glider"></span>
-              </div>
+            <form class="tabs" action="" method="POST" id="toggle">
+                    <input type="radio" id="radio-1" name="tabs" value="1" checked onchange="change()"/>
+                    <label class="tab" for="radio-1">View All</label>
+                    <input type="radio" id="radio-2" name="tabs" value="2" onchange="change()"/>
+                    <label class="tab" for="radio-2">My Order</label>
+                    <input type="radio" id="radio-3" name="tabs" value="3" onchange="change()"/>
+                    <label class="tab" for="radio-3">Completed</label>
+                    <input type="radio" id="radio-4" name="tabs" value="4" onchange="change()"/>
+                    <label class="tab" for="radio-4">Canceled</label>
+                    <span class="glider"></span>
+            </form>
         </div>
         <div class="filter-dropdown">
             <select name="sort" id='sort' class="option-filter" >
@@ -40,7 +41,7 @@
             </select>
         </div>
     </div>
-    <table border="1px">
+    <table border="1px" id="tableData">
         <tr>
             <th style="width: 50px;">No.</th>
             <th>Invoice</th>
@@ -51,125 +52,63 @@
             <th>Payment Method</th>
             <th>Action</th>
         </tr>
+        @foreach($orders as $order)
         <tr>
-            <td style="width: 50px;">1</td>
-            <td>12345678</td>
+            <td style="width: 50px;">{{ $loop->iteration }}</td>
+            <td>{{ $order->invoice_no }}</td>
             <td class="status">
-                <p class="status-verif">
-                    <iconify-icon icon="ic:outline-verified-user"></iconify-icon>
-                    Verified
-                </p>
+                @if($order->status == 'Not Paid')
+                    @include('status.notPaid')
+                @elseif($order->status == 'PAID')
+                    @include('status.verified')
+                @elseif($order->status == 'PROCESSED')
+                    @include('status.processed')
+                @elseif($order->status == 'SHIPPED')
+                    @include('status.shipped')
+                @elseif($order->status == 'CANCELED')
+                    @include('status.canceled')
+                @elseif($order->status == 'DELIVERED')
+                    @include('status.delivered')
+                @elseif($order->status == 'COMPLETE')
+                    @include('status.complete')
+                @elseif($order->status == 'REFUNDED')
+                    @include('status.refunded')
+                @else
+                <p>Status Unknown</p>
+                @endif
             </td>
-            <td>20/20/20</td>
-            <td>10</td>
-            <td>Rp.500.000</td>
-            <td></td>
+            <td>{{ $order->created_at->format('Y/m/d') }}</td>
+            <td>{{ array_sum($order->orderItem->pluck('product_qty')->all()) }}</td>
+            <td>Rp. {{ number_format($order->total,0,',','.') }}</td>
+            <td>{{ $order->payment_type }}</td>
             <td>
-                <a href="">Details</a>
+                <a href="{{ route('cust.order.detail', $order->id) }}">Details</a>
             </td>
         </tr>
-        <tr>
-            <td style="width: 50px;">2</td>
-            <td>12345678</td>
-            <td class="status">
-                <p class="status-proses">
-                    <iconify-icon icon="uim:process"></iconify-icon>
-                    Processed
-                </p>
-            </td>
-            <td>20/20/20</td>
-            <td>10</td>
-            <td>Rp.500.000</td>
-            <td></td>
-            <td>
-                <a href="">Details</a>
-            </td>
-        </tr>
-        <tr>
-            <td style="width: 50px;">3</td>
-            <td>12345678</td>
-            <td class="status">
-                <p class="status-shipped">
-                    <iconify-icon icon="grommet-icons:deliver"></iconify-icon>
-                    Shipped
-                </p>
-            </td>
-            <td>20/20/20</td>
-            <td>10</td>
-            <td>Rp.500.000</td>
-            <td></td>
-            <td>
-                <a href="">Details</a>
-            </td>
-        </tr>
-        <tr>
-            <td style="width: 50px;">3</td>
-            <td>12345678</td>
-            <td class="status">
-                <p class="status-delivered">
-                    <iconify-icon icon="icon-park-outline:delivery"></iconify-icon>
-                    Delivered
-                </p>
-            </td>
-            <td>20/20/20</td>
-            <td>10</td>
-            <td>Rp.500.000</td>
-            <td></td>
-            <td>
-                <a href="">Details</a>
-            </td>
-        </tr>
-        <tr>
-            <td style="width: 50px;">3</td>
-            <td>12345678</td>
-            <td class="status">
-                <p class="status-done">
-                    <iconify-icon style="font-size: 20px;" icon="material-symbols:done-all"></iconify-icon>
-                    Complete
-                </p>
-            </td>
-            <td>20/20/20</td>
-            <td>10</td>
-            <td>Rp.500.000</td>
-            <td></td>
-            <td>
-                <a href="">Details</a>
-            </td>
-        </tr>
-        <tr>
-            <td style="width: 50px;">3</td>
-            <td>12345678</td>
-            <td class="status">
-                <p class="status-canceled">
-                    <iconify-icon style="font-size: 26px;" icon="iconoir:cancel"></iconify-icon>
-                    Canceled
-                </p>
-            </td>
-            <td>20/20/20</td>
-            <td>10</td>
-            <td>Rp.500.000</td>
-            <td></td>
-            <td>
-                <a href="">Details</a>
-            </td>
-        </tr>
-        <tr>
-            <td style="width: 50px;">3</td>
-            <td>12345678</td>
-            <td class="status">
-                <p class="status-refund">
-                    <iconify-icon style="font-size:24px;" icon="tabler:arrow-back-up"></iconify-icon>
-                    Refunded
-                </p>
-            </td>
-            <td>20/20/20</td>
-            <td>10</td>
-            <td>Rp.500.000</td>
-            <td></td>
-            <td>
-                <a href="">Details</a>
-            </td>
-        </tr> 
+        @endforeach
     </table>
 </div>
+
+<script>
+
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
+    function change(){
+
+        let x = $('#toggle').serialize();
+
+    $.ajax({
+        type: "POST",
+        url: "{{ url('/order') }}",
+        data: x,
+        success: function (response) {
+            $('#tableData').html(response)
+        }
+    });
+}
+</script>
 @endsection

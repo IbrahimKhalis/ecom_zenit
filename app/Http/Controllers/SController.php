@@ -118,8 +118,6 @@ class SController extends Controller
     public function search(Request $request,$slug = null){
 
         $products = Product::with('category');
-
-
         $tags = [];
         $favorites = [0];
 

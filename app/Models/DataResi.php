@@ -11,6 +11,13 @@ class DataResi extends Model implements HasMedia
 {
     use HasFactory,InteractsWithMedia;
 
+    protected $fillable = [
+        'orders_id',
+        'no_resi',
+        'order_items_id',
+        'created_at'
+    ];
+
     public function getGalleryAttribute()
     {
         return $this->getMedia('gallery');

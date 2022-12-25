@@ -1,18 +1,17 @@
 @extends('layout/app')
 
 @section('css')
-  <link rel="stylesheet" href="{{ asset('assets/css/order-review.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/order-review.css')}}">
 @endsection
 
 @section('content')
 
 <div class="content">
-
     <div class="content-review">
         <div class="card-review">
-            <form action="{{ url('/add-rating')}}">
-              @csrf
-              <input type="hidden" name="product_id" value="{{ $product->id }}">
+            <form action="{{ url('/add-rating')}}" method="POST">
+                @csrf
+                <input type="hidden" name="product_id" value="{{ $product->id }}">
                 <div class="header-card">
                     <i class="fas fa-store    "></i>
                     <p>{{ $seller->name }}</p>
@@ -46,14 +45,14 @@
                     <div class="right-rev">
                         <label for="user">Show this review as..</label>
                         <select name="name" id="user">
-                          <option value="{{ Auth()->user()->name }}" checked>{{ Auth()->user()->name }}</option>
+                            <option value="{{ Auth()->user()->name }}" checked>{{ Auth()->user()->name }}</option>
                             <option value="anonymous"> Anonymous</option>
                         </select>
                     </div>
                 </div>
                 <div class="row-comment">
                     <div class="comment-rev">
-                        <textarea name="comment" cols="167" rows="4" placeholder="Give us your honey review"></textarea>
+                        <textarea name="comment" cols="167" rows="4" placeholder="Give us your honest review"></textarea>
                     </div>
                 </div>
                 <div class="btn-submit">
@@ -62,7 +61,7 @@
             </form>
         </div>
     </div>
-  </div>
-  <script src="{{ asset('assets/js/cartmodal.js')}}"></script>
+</div>
+    <script src="{{ asset('assets/js/cartmodal.js')}}"></script>
 
 @endsection

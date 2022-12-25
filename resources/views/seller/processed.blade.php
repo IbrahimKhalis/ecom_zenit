@@ -23,13 +23,13 @@
                 <th style="text-align: start;">Product</th>
                 <th>Order ID</th>
                 <th>Customer Name</th>
-                <th>Quantity</th>
-                <th>Type</th>
+                <th style="width: 100px ">Quantity</th>
+                <th style="width: 100px ">Type</th>
                 <th></th>
             </tr>
             @foreach($confirmed as $item)
             <tr>
-                <td style="width: 100px;">1</td>
+                <td style="width: 100px;">{{ $loop->iteration }}</td>
                 <td style="display: flex; gap:20px; text-align: start; width: 250px;">
                     <img src="{{ $item->products->gallery->first()->getUrl() }}" alt="">
                     <div class="prod-details" style="line-height: 14px;">
@@ -45,8 +45,14 @@
                     <p id="label-order" style="margin-top: 10px;">{{ $item->products->category->name }}</p>
                 </td>
                 <td style="width: 120px;">
+                @if($item->status == 'SHIPPED')
+                <a style="font-weight:600;">SHIPPED</a>
+                @else
                     <a href="#" style="font-weight:600;" id="btn-receipt" onclick="On_click('{{ route('seller.resiUp', $item->id) }}')">Send</a>
+                @endif
                 </td>
+                <td>
+                <a id="label-order" style="display:inline-block; margin-top: 10px;" href="{{ route('seller.order.detail', $item->id) }}">Detail</a>
             </tr>
             @endforeach
         </table>
@@ -57,6 +63,7 @@
 
 <div id="myReceipt" class="modalreceipt">
     <form action="" id="modalForm" method="POST">
+        @csrf
         <div class="modalreceipt-content">
             <div class="header">
                 <span class="close close-rec">&times;</span>
@@ -67,8 +74,8 @@
                     <div class="needsclick dropzone" id="gallery-dropzone" style="margin-bottom: 0px;"></div>
                 </div>
                 <div class="receipt-number" style="margin-top: 20px;">
-                    <p>Receipt Number</p>
-                    <input type="text">
+                    <p>No Resi</p>
+                    <input type="text" name="no_resi">
                 </div>
                 <div class="btn-receipt">
                     <button>submit</button>

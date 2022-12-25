@@ -133,7 +133,7 @@
                         <div class="card-shipping">
                             <div class="left-shiping">
                                 <div class="shipping-logo">
-                                    <img src="assets/tes-img.png" alt="">
+                                    <img src="{{ asset('assets/img/fedexlogo.png') }}" alt="">
                                 </div>
                                 <div class="shipping-delivery">
                                     <p>Fedex Delivery</p>
@@ -141,14 +141,13 @@
                                 </div>
                             </div>
                             <div class="right-shipping">
-                                <p>Rp. 200.000</p>
-                                <input type="radio" name="shipping_method" id="" value="FedEx">
+                                <input type="radio" name="shipping_method" value="FedEx">
                             </div>
                         </div>
                         <div class="card-shipping">
                             <div class="left-shiping">
                                 <div class="shipping-logo">
-                                    <img src="assets/tes-img.png" alt="">
+                                    <img src="{{ asset('assets/img/JNELOGO.png') }}" alt="">
                                 </div>
                                 <div class="shipping-delivery">
                                     <p>JNE</p>
@@ -156,7 +155,6 @@
                                 </div>
                             </div>
                             <div class="right-shipping">
-                                <p>Rp. 100.000</p>
                                 <input type="radio" name="shipping_method" value="JNE">
                             </div>
                         </div>
@@ -202,7 +200,7 @@
                         <div class="card-payment">
                             <div class="left-payment">
                                 <div class="payment-logo">
-                                    <img src="assets/tes-img.png" alt="">
+                                    <img src="{{ asset('storage/bank/' . $p->code . '.png') }}" alt="">
                                 </div>
                                 <div class="payment-method">
                                     <p>{{ $p->name }}</p>
@@ -224,7 +222,6 @@
                         </div>
 
                         <button>Cancel</button>
-
 
                     </div>
                 </form>

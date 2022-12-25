@@ -18,10 +18,12 @@ class PController extends Controller
     public function show(Product $product){
 
         $seller = User::find($product->users_id)->shop;
-
-
-
-        // $seller = ShopProfile::where('users_id', $product->users_id)->first();
+        $favorites = [0];
+        if(Auth::check()){
+            foreach(Auth()->user()->favorites as $favorite){
+                array_push($favorites, $favorite->products_id);
+            }
+        }
 
         $related_products = Product::whereHas('category', function ($query) use ($product) {
             $query->whereId($product->category_id);
@@ -49,13 +51,7 @@ class PController extends Controller
             $avgsell = round((1*$star1+2*$star2+3*$star3+4*$star4+5*$star5)/($star1+$star2+$star3+$star4+$star5),0);
         }
 
-        // dd($avg);
-        $favorites = [0];
-        if(Auth::check()){
-            foreach(Auth()->user()->favorites as $favorite){
-                array_push($favorites, $favorite->products_id);
-            }
-        }
+        
 
         return view('detail', compact('product',  'related_products', 'seller', 'ratings', 'star1', 'star2', 'star3', 'star4', 'star5', 'avg', 'avgsell','favorites'));
     }

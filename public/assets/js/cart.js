@@ -65,3 +65,18 @@ function trash(url){
   });
 }
 
+$(function() {
+  $("#refreshAjout, #refreshSupp").click(function() {
+    var newSrc = this.id == "refreshAjout" ? "../../images/pink-heart.jpg" : "../../images/empty-heart.jpg";
+    $.ajax({
+      type: "POST",
+      url: $(this).attr('action'),
+      data: { [this.id]: this.value },
+      success: function(retour) {
+        $(".ajouter").attr("src", newSrc);
+      }
+    });
+    return false;
+  });
+});
+

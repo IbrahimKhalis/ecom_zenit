@@ -57,8 +57,13 @@
       <div class="title-order">
         <p>Summary Order</p>
       </div>
-      <div class="subtitle-order">
-        <p>Finish your payment to complete this last step order.</p>
+      <div class="sub-title d-flex justify-content-between">
+        <div class="subtitle-order">
+          <p>Finish your payment to complete this last step order.</p>
+        </div>  
+        <div class="btn-tutor">
+          <a href="">How to Pay?</a>
+        </div>
       </div>
       <div class="card-report">
         <div class="header-report">

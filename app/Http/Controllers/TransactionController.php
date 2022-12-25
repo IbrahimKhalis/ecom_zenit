@@ -18,14 +18,28 @@ class TransactionController extends Controller
     {
         $tripay = new TripayController();
         $detail =  $tripay->detailTransaction($reference);
+        $pay = $detail->instructions[0];
 
-        return view('details', compact('detail'));
+        $tripay2 = new TripayController();
+
+        $payz = $tripay2->pay();
+
+        return view('tutorial', compact('detail', 'pay', 'payz'));
     }
 
     public function store(Request $request)
     {
-        $carts = Cart::where('users_id', auth()->id())->latest()->get();
 
+        $request->validate([
+            'shipping_method' => 'required',
+            'shipping_email' => 'required',
+            'shipping_name' => 'required',
+            'shipping_phone' => 'required',
+            'adress' => 'required',
+            'method' => 'required',
+        ]);
+        
+        $carts = Cart::where('users_id', auth()->id())->latest()->get();
 
         $kumpulHarga = [];
 
@@ -97,7 +111,6 @@ class TransactionController extends Controller
         ]);
 
         Cart::where('users_id', auth()->id())->delete();
-
 
 
         return redirect()->route('transaction.detail', [

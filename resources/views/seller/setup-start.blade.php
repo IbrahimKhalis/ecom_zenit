@@ -7,7 +7,7 @@
 @section('content')
 <div class="contents">
     <div class="img">
-        
+        <img src="{{ asset('assets/img/logo-setup-store.png') }}" alt="">
     </div>
     <h5>Welcome to Zenit Store</h5>
     <p>To start selling, register as a seller by completing <br>
