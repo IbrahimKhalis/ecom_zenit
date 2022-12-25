@@ -245,18 +245,18 @@ Route::get('/setup/profile', function () {
     return view('setup');
 })->name('setup');
 
+Route::get('/setup/profile', function () {
+    return view('setup');
+})->name('setup');
 
-Route::get('/chart/report', [SellerReportController::class, 'show']);
+Route::get('/transaction/detail', function () {
+    return view('seller/transaction-detail');
+})->name('transaction');
 
-Route::get('/setup-store', function () {
-    return view('seller.setup-start');
-})->name('setup-store');
+Route::get('/setup/shop', function () {
+    return view('seller/setup-shop');
+})->name('setup');
 
-
-Route::get('/setup-store/info', function () {
-    return view('seller.setup-two');
-});
-Route::get('/setup-store/personal', function () {
-    return view('seller.setup-three');
-});
-
+Route::get('/setup/shop/personal', function () {
+    return view('seller/setup-shop-personal');
+})->name('setup-personal');
