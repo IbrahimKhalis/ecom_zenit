@@ -65,6 +65,7 @@
     </div>
   </div>
   <div class="featured-product" data-aos="zoom-in-up">
+    @if($products->last())
     <h1>Featured Product</h1>
     <h2>This Week</h2>
     <div class="product">
@@ -88,6 +89,7 @@
         </div>
       </div>
     </div>
+    @endif
   </div>
   <div class="our-product" data-aos="zoom-in-up">
     <h1>Our Product</h1>
@@ -116,12 +118,12 @@
                       </div>
                       @if(Auth::check())
                       <div class="button-detail">
-                        <button class="modal__button" id="open-modal" onClick="Open_click('{{ $product->gallery->first()->getUrl() }}', '{{ $product->major }}', '{{ $product->name }}', '{{ $product->price }}', '{{ url('/cart/modal', $product->id) }}')"><i class="fa-solid fa-cart-shopping"></i></button>
-                        <button class="modal__button" id="open-modal" onClick="Open_click('{{ $product->gallery->first()->getUrl() }}', '{{ $product->major }}', '{{ $product->name }}', '{{ $product->price }}', '{{ url('/favorite/add', $product->id) }}')">
+                        <button class="modal__button" id="open-modal" onClick="Open_click2('{{ $product->gallery->first()->getUrl() }}', '{{ $product->major }}', '{{ $product->name }}', '{{ $product->price }}', '{{ url('/cart/modal', $product->id) }}')"><i class="fa-solid fa-cart-shopping"></i></button>
+                        <button class="modal__button" id="open-modal" onClick="Open_click2('{{ $product->gallery->first()->getUrl() }}', '{{ $product->major }}', '{{ $product->name }}', '{{ $product->price }}', '{{ url('/favorite/add', $product->id) }}', 'fav{{ $loop->iteration }}' )">
                         @if(in_array($product->id, $favorites))
-                        <i class="fa-solid fa-heart"></i>
+                        <i class="fa-solid fa-heart" id="fav{{ $loop->iteration }}"></i>
                         @else
-                        <i class="fa-regular fa-heart"></i>
+                        <i class="fa-regular fa-heart" id="fav{{ $loop->iteration }}"></i>
                         @endif
                         </button>
                       </div>
