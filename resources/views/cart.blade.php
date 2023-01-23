@@ -32,7 +32,7 @@
             <div class="header-cart">
               <div class="profile-shop">
                 <a href="">
-                  <iconify-icon `class="store" icon="clarity:store-solid"></iconify-icon>
+                  <iconify-icon class="store" icon="clarity:store-solid"></iconify-icon>
                   <p>{{$cart->product->users->shop->name}}</p>
                 </a>
               </div>
@@ -50,17 +50,13 @@
                     <p>{{ $cart->product->major }}</p>
                     <p id="product-name">{{ $cart->product->name }}</p>
                   </div>
-                  <p class="price" id="product-price">{{ number_format($cart->product->price,2,',','.')}}</p>
+                  <p class="price" id="product-price">Rp. {{ number_format($cart->product->price,2,',','.')}}</p>
                 </div>
     
                 <div class="row-2">
                   <p class="type" id="type">{{ $cart->product->category->name }}</p>
                   <div class="row-kanan">
-                    <div class="favs">
-                      <button>
-                        <iconify-icon class="heart" icon="akar-icons:heart"></iconify-icon>
-                      </button>
-                    </div>
+                    <div class="favs"></div>
                     <div class="quantity">
                       <button onclick="trash('{{ url('cart/dest', $cart->id) }}')">
                         <iconify-icon class="trash" icon="fe:trash"></iconify-icon>
@@ -82,7 +78,7 @@
             </div>
           </div>
           @endforeach
-        
+          
       </div>
   
       <!-- card summary -->

@@ -108,7 +108,7 @@ class SController extends Controller
 
         $products->where('isActive', 1);
 
-        $products = $products->paginate(4);
+        $products = $products->paginate(10);
 
         return view('product',compact('products', 'tags', 'favorites'));
 
@@ -207,7 +207,7 @@ class SController extends Controller
 
         $products->where('isActive', 1);
 
-        $products = $products->paginate(4);
+        $products = $products->paginate(10);
 
         return view('product',compact('products','tags','favorites'));
 
@@ -278,7 +278,7 @@ class SController extends Controller
             ]);
         })
         ->where('isActive', 1)
-        ->paginate(4);
+        ->paginate(10);
 
 
         return view('product', compact('products','slug', 'tags','favorites'));

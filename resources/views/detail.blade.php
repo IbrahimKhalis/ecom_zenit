@@ -55,10 +55,10 @@
       </div>
       @else
       <div class="btn-product">
-        <a href="checkout-delivery.html"><button class="btn-buy"><i class="fa-solid fa-bag-shopping"></i>Buy
-            Now</button></a>
+        {{-- <a href="checkout-delivery.html"><button class="btn-buy"><i class="fa-solid fa-bag-shopping"></i>Buy
+            Now</button></a> --}}
         <div>
-          <a class="btn-cart" href="{{ url('cart', $product->id) }}"><i class="fa-solid fa-cart-shopping"></i>Add to cart</a>
+      <button class="modal__button btn-cart" type='button' id="open-modal" onClick="Open_click('{{ $product->gallery->first()->getUrl() }}', '{{ $product->major }}', '{{ $product->name }}', '{{ $product->price }}', '{{ url('/cart/modal', $product->id) }}')"><i class="fa-solid fa-cart-shopping"></i>Add to cart</button>
           @if(session()->has('message'))
           <p>{{ session()->get('message') }}</p>
           @endif
@@ -67,8 +67,8 @@
       @endif
       @else
       <div class="btn-product">
-        <a href="checkout-delivery.html"><button class="btn-buy"><i class="fa-solid fa-bag-shopping"></i>Buy
-            Now</button></a>
+        {{-- <a href="checkout-delivery.html"><button class="btn-buy"><i class="fa-solid fa-bag-shopping"></i>Buy
+            Now</button></a> --}}
         <div>
           <a class="btn-cart" href="{{ url('cart', $product->id) }}"><i class="fa-solid fa-cart-shopping"></i>Add to cart</a>
           @if(session()->has('message'))
@@ -221,7 +221,7 @@
         <p>Related Product</p>
       </div>
       <div class="see-more">
-        <a href="#">See More...</a>
+        <a href="/product">See More...</a>
       </div>
     </div>
     <div class="related-product">
@@ -242,19 +242,19 @@
               <p>Rp {{ number_format($related_product->price,0,',','.') }}</p>
             </div>
             @if(Auth::check())
-                  <div class="other-btn">
-                    <div class="btn-detail">
-                      <button class="modal__button" type="button" id="open-modal" onClick="Open_click('{{ $related_product->gallery->first()->getUrl() }}', '{{ $related_product->major }}', '{{ $related_product->name }}', '{{ $related_product->price }}', '{{ url('/cart/modal', $related_product->id) }}')"><i class="fa-solid fa-cart-shopping"></i></button>
-                      <button class="modal__button" id="open-modal" onClick="Open_click('{{ $related_product->gallery->first()->getUrl() }}', '{{ $related_product->major }}', '{{ $related_product->name }}', '{{ $related_product->price }}', '{{ url('/favorite/add', $related_product->id) }}')">
-                        @if(in_array($related_product->id, $favorites))
-                        <i class="fa-solid fa-heart"></i>
-                        @else
-                        <i class="fa-regular fa-heart"></i>
-                    @endif
-                      </button>
-                    </div>
-                  </div>
-            @endif
+            <div class="other-btn">
+              <div class="btn-detail">
+                  <button class="modal__button" type='button' id="open-modal" onClick="Open_click('{{ $product->gallery->first()->getUrl() }}', '{{ $product->major }}', '{{ $product->name }}', '{{ $product->price }}', '{{ url('/cart/modal', $product->id) }}')"><i class="fa-solid fa-cart-shopping"></i></button>
+                  <button class="modal__button" type='button' id="open-modal" onClick="Open_click2('{{ $product->gallery->first()->getUrl() }}', '{{ $product->major }}', '{{ $product->name }}', '{{ $product->price }}', '{{ url('/favorite/add', $product->id) }}', 'fav{{ $loop->iteration }}')">
+                      @if(in_array($product->id, $favorites))
+                      <i class="fa-solid fa-heart" id="fav{{ $loop->iteration }}"></i>
+                      @else
+                      <i class="fa-regular fa-heart" id="fav{{ $loop->iteration }}"></i>
+                  @endif
+                    </button>
+              </div>
+            </div>
+      @endif
           </div>
         </div>
       </div>

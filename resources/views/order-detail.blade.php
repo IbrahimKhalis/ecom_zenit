@@ -82,7 +82,7 @@
         @if($order->status != 'Not Paid')
         <p>Payment</p>
         @else
-        <p>Payment<span><a href="">How to Pay?</a></span></p>
+        <p>Payment<span><a href="{{ route('transaction.detail', $order->transData->reference) }}">How to Pay?</a></span></p>
         @endif
 
         <p>{{ $order->payment_type }}</p>

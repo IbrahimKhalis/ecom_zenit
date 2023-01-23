@@ -8,7 +8,7 @@
 
 <div class="container" id="container">
   <div class="your-fav">
-    <iconify-icon icon="akar-icons:heart" class="heart"></iconify-icon>
+    <iconify-icon icon="mdi:cards-heart" class="heart"></iconify-icon>
     <h3>Your Favorite</h3>
     <p>({{ $favorCount }})</p>
   </div>
@@ -35,7 +35,7 @@
           </div>
         
           <div class="right-row">
-            <p>RP. {{ $favorite->product->price }}</p>
+            <p>RP. {{ number_format($favorite->product->price,0,',','.') }}</p>
             <div class="last-row">
               <button>Buy Now</button>
               <button onclick="trash('{{ url('favorite/del', $favorite->id) }}')"><iconify-icon class="trash" icon="fe:trash"></iconify-icon></button>

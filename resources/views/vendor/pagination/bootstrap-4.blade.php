@@ -44,6 +44,8 @@
         </ul>
     </nav>
 @endif
+
+
 {{-- 
 <style>
     .pagination{

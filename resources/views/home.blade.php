@@ -231,22 +231,22 @@
       <p>Contact Us</p>
       <ul>
         <li>
-          <a href="https://www.instagram.com/smktarunabhakti.depok/">
+          <a target="_blank" href="https://www.instagram.com/smktarunabhakti.depok/">
             <img src="{{ asset('assets/img/instagram.png')}}" alt="">
           </a>
         </li>
         <li>
-          <a href="https://www.youtube.com/c/SMKTarunaBhaktiDepok">
+          <a target="_blank" href="https://www.youtube.com/c/SMKTarunaBhaktiDepok">
             <img src="{{ asset('assets/img/youtube.png')}}" alt="">
           </a>
         </li>
         <li>
-          <a href="https://www.facebook.com/smktarunabhaktidepok">
+          <a target="_blank" href="https://www.facebook.com/smktarunabhaktidepok">
             <img src="{{ asset('assets/img/facebook.png')}}" alt="">
           </a></li>
 
         <li>
-          <a href="https://mail.google.com/mail/u/0/?hl=en#inbox">
+          <a target="_blank" href="https://mail.google.com/mail/u/0/?hl=en#inbox">
             <img src="{{ asset('assets/img/email.png')}}" alt="">
           </a>
         </li>

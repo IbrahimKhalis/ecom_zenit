@@ -48,10 +48,11 @@
     </div>
     <div class="linkedin-toko">
       <h1 class="judul-linkedin">Portofolio</h1>
-      <input type="file" accept="application/pdf" name="portofolio" id="link" value="" class="form-control">
+      <input type="file" accept="application/pdf" name="portofolio" id="link" value="" class="form" style="border: none">
     </div>
-      <button type="submit"
-          class="next-button">Save</button>
+    <div class="btn-next">
+      <button type="submit" class="next-button">Save</button>
+    </div>
   </form>
 
 </div>

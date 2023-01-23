@@ -12,13 +12,6 @@
             <h1>My Order</h1>
             <p style="font-size: 15px;">Review and Manage Your Orders</p>
         </div>
-        <p class="breadcrumbs">Setting > My Order</p>
-    </div>
-    <div class="search">
-        <input type="text" class="search__input" placeholder="Search...">
-        <div class="search__icon">
-            <ion-icon name="search"></ion-icon>
-        </div>
     </div>
     <div class="menus">
         <p style="font-size: 20px; font-weight: 600;">Total : {{ $orders->count() }} Orders</p>
@@ -38,6 +31,10 @@
         <div class="filter-dropdown">
             <select name="sort" id='sort' class="option-filter" >
                 <option id="1" value="" selected="" >All</option>
+                <option id="1" value="" selected="" >Harga</option>
+                <option id="1" value="" selected="" >Quantity</option>
+                <option id="1" value="" selected="" >latest</option>
+                <option id="1" value="" selected="" >Newest</option>
             </select>
         </div>
     </div>

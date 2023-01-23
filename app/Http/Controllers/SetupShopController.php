@@ -69,7 +69,7 @@ class SetupShopController extends Controller
             ]);
         }
 
-        return redirect('/seller/setting/schedule');
+        return redirect('/seller/setting-info');
     }
     public function create()
     {

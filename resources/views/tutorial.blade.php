@@ -39,11 +39,6 @@
           <div class="rekening d-flex">
               <h1 class="norek-account">{!! $data !!}</h1>
 
-
-              <div class="copy d-flex">
-                  <h2 class="text-copy">Copy</h2>
-                  <iconify-icon icon="ic:round-content-copy"></iconify-icon>
-              </div>
           </div>
 
           <h1 class="title-total-payment">Total Payment</h1>

@@ -28,9 +28,9 @@
                     <div class="navbar " id="navbarSupportedContent">
                         <div class="menu">
                             <ul class="nav d-flex align-items-center">
-                                <li class="nav-item">
+                                {{-- <li class="nav-item">
                                     <a class="nav-link" href="{{ url('/notif') }}"><i class="fa-solid fa-bell"></i></a>
-                                </li>
+                                </li> --}}
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ url('/cart') }}"><i class="fa-solid fa-cart-shopping"></i></a>
                                 </li>
