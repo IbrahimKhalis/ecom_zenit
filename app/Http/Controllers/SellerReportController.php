@@ -43,7 +43,6 @@ class SellerReportController extends Controller
         $products = $total_terjual;
 
         $sellproducts = OrderItem::where('seller_id', Auth()->id())->whereYear('created_at', date('Y'))->get();
-        $apa = OrderItem::where('subtotal')->first();
         $income = OrderItem::where('seller_id', auth()->id())->where('status', 'COMPLETE')->sum('subtotal');
 
         $dataSet = [];
@@ -57,12 +56,12 @@ class SellerReportController extends Controller
             }
         }
 
-        foreach($sellproducts as $sheyla){
-            if($sheyla->status == 'COMPLETE'){
+        foreach($sellproducts as $selled){
+            if($selled->status == 'COMPLETE'){
                 $data = [
-                    'month' => $sheyla->created_at->format('F'),
-                    'subtotal' => $sheyla->subtotal,
-                    'qty'=> $sheyla->product_qty
+                    'month' => $selled->created_at->format('F'),
+                    'subtotal' => $selled->subtotal,
+                    'qty'=> $selled->product_qty
                 ];
                 array_push($dataLol, $data);
             }
@@ -96,6 +95,7 @@ class SellerReportController extends Controller
                 $ibe[$key] = $datasy;
             }
         }
+
         $labels = [];
         $values = [];
 
@@ -105,13 +105,8 @@ class SellerReportController extends Controller
             $values = array_values($sum);
         }
 
-        $chart = new reportProduct;
-        // $chart->labels(array_keys($sum)); 
-        // $chart->dataset('data Penjualan','bar',array_values($sum));
 
-
-        // dd($labels);
-        return view('seller.report', compact('chart', 'labels', 'values','terjualData','products', 'ibe','income'));   
+        return view('seller.report', compact('labels', 'values','terjualData','products', 'ibe','income'));   
     }
 }
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ShopProfile;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Traits\ImageUploadingTrait;
+use App\Models\Schedule;
 
 class SetupShopController extends Controller
 {
@@ -33,6 +34,10 @@ class SetupShopController extends Controller
         foreach ($request->input('gallery', []) as $file) {
             $shopProfile->addMedia(storage_path('tmp/uploads/' . $file))->toMediaCollection('gallery');
         }
+
+        Schedule::insert([
+            'shops_id'=> $shopProfile->id
+        ]);
 
         return redirect()->route('seller.setup.personal');
     }

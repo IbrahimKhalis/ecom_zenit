@@ -49,7 +49,7 @@
         {!! $chart->script() !!}
     </div> --}}
     <div class="chart">
-       <canvas id="myChart" width="1150px" height="300px"></canvas>
+        <canvas id="myChart" width="1150px" height="300px"></canvas>
     </div>
     @if ($values == [])
 
@@ -86,22 +86,22 @@
     </table>
 </div>
 
-  
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" ></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  
-<script type="text/javascript">
-  
-      var labels =  {{ Js::from($labels) }};
-  
-      var values =  {{ Js::from($values) }};
 
-      const data = {
+<script type="text/javascript">
+
+    var labels =  {{ Js::from($labels) }};
+
+    var values =  {{ Js::from($values) }};
+
+    const data = {
         labels: labels,
         datasets: [{
-          label: 'My Sales data',
-          data: values,
-          backgroundColor: [
+            label: 'My Sales data',
+            data: values,
+            backgroundColor: [
                     'rgba(54, 162, 235, 0.2)',
                     'rgba(255, 17, 0, 0.2)',
                     'rgba(255, 242, 0, 0.2)',
