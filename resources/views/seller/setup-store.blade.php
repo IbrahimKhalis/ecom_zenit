@@ -39,7 +39,13 @@
       </div>
       <div class="store-name">
         <h1 class="judul-store">Major</h1>
-        <input type="text" class="input-name" id="major" name="major">
+        <select name="major" id="major"  class="input-name" style="height: 50px;">
+          <option value="PPLG">PPLG</option>
+          <option value="ANIMASI">ANIMASI</option>
+          <option value="BRF">BRF</option>
+          <option value="TEI">TEI</option>
+          <option value="TJKT">TJKT</option>
+        </select>
       </div>
       <div class="store-desc">
         <h1 class="judul-store">Description</h1>

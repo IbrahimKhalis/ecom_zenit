@@ -74,7 +74,7 @@ class SetupShopController extends Controller
             ]);
         }
 
-        return redirect('/seller/setting/schedule');
+        return redirect()->route('seller.setting-scedhule');
     }
     public function create()
     {
