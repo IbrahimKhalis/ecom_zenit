@@ -260,3 +260,9 @@ Route::get('/setup-store/personal', function () {
     return view('seller.setup-three');
 });
 
+Route::get('/our-team', function () {
+    return view('ourTeam');
+});
+
+
+
