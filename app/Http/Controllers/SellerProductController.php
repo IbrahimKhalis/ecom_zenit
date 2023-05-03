@@ -74,8 +74,6 @@ class SellerProductController extends Controller
         foreach ($request->input('gallery', []) as $file) {
             $product->addMedia(storage_path('tmp/uploads/' . $file))->toMediaCollection('gallery');
         }
-
-
         return redirect()->route('seller.products')->with([
             'message' => 'Success Created !',
             'type' => 'success'

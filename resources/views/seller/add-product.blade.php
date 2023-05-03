@@ -10,7 +10,7 @@
 
 <div class="konten">
 
-    <h1>Add New Product</h1>
+    <h1>Add New Products</h1>
     <form action="{{ route('seller.product.store') }}" method="POST">
         @csrf
     <div class="containerr">
@@ -18,15 +18,15 @@
         <div class="left-row">
             <div class="product-name">
                 <p>Product Name</p>
-                <input type="text" name="name" placeholder="Fill with your product name">
+                <input type="text" name="name" placeholder="Fill with your product name" autocomplete="off">
                 <p>Maximum name for your product name contain 20 letter *</p>
             </div>
             <div class="type">
                 <p>Type</p>
                 <select name="type" id="">
-                    <option value="" selected>Choose Your Product Type</option>
+                    <option value="" selected hidden>Choose Your Product Type</option>
                     @foreach($category as $cate)
-                    <option value="{{ $cate->name }}">{{ $cate->name }}</option>
+                        <option value="{{ $cate->name }}">{{ $cate->name }}</option>
                     @endforeach
                 </select>
             </div>
@@ -77,9 +77,11 @@
                 </select>
             </div>
             <div class="btns">
-                <button>
-                    <a href="{{ url('seller/products') }}">Cancle</a>
+                <a href="{{ url('seller/products') }}">               
+                    <button>
+                        Cancel
                     </button>
+                </a>
                     <button class="upload" type="submit">Add Product</button>
             </div>
         </div>
@@ -165,6 +167,7 @@
             btnl.setAttribute('onclick', new1)
         }   
     </script>
+
     @endsection
 
 </div>    

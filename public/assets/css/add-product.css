@@ -59,20 +59,65 @@ h1{
   display: flex;
   gap: 20px;
 }
-.btns button:first-child{
+/* .btns button:first-child{
   width: 200px;
   padding: 12px 20px;
   background-color: transparent;
   border: 1px solid #233874;
   color: #233874;
   border-radius: 5px;
+} */
+.btns a{
+  color: #212121;
+  transition: .4s;
 }
-.btns button:last-child{
+.btns button:first-child {
+  width: 150px;
+ padding: 12px 20px;
+ border: unset;
+ border-radius: 5px;
+ color: #212121;
+ z-index: 1;
+ background: #e8e8e8;
+ position: relative;
+ font-weight: 600;
+ font-size: 17px;
+ -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+ box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+ transition: all 250ms;
+ overflow: hidden;
+}
+
+.btns button:first-child::before {
+ content: "";
+ position: absolute;
+ top: 0;
+ left: 0;
+ height: 100%;
+ width: 0;
+ border-radius: 5px;
+ background-color: #da0000;
+ z-index: -1;
+ -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+ box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+ transition: all 250ms
+}
+
+.btns a:hover button {
+ color: #e8e8e8;
+}
+
+.btns button:first-child:hover::before {
+ width: 100%;
+}
+.btns .upload{
   width: 200px;
   padding: 12px 20px;
   background-color: #233874;
   color: white;
   border-radius: 5px;
+  font-weight: 600;
+  box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
 }
 
 .related-tags{

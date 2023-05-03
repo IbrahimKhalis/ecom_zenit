@@ -10,8 +10,11 @@ use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\FromView;
+use Maatwebsite\Excel\Concerns\FromQuery;
 
-class DatasaleExport implements FromView
+use Maatwebsite\Excel\Concerns\WithHeadingRow;
+
+class DatasaleExport implements WithHeadings, FromView
 {
     use Exportable;
     /**
@@ -25,5 +28,13 @@ class DatasaleExport implements FromView
         return view('exports.datasale',[
             'income' => OrderItem::where('seller_id', auth()->id())->where('status', 'COMPLETE')->get()
         ]);
+    }
+    // public function query()
+    // {
+    //     return OrderItem::query()->where('seller_id', auth()->id())->where('status', 'COMPLETE');
+    // }
+    public function headings(): array
+    {
+        return ['ID'];
     }
 }

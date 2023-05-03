@@ -28,8 +28,8 @@
                     <span class="glider"></span>
             </form>
         </div>
-        <div class="filter-dropdown">
-            <select name="sort" id='sort' class="option-filter" >
+        <div class="filter-dropdown" style="opacity: 0">
+            <select name="sort" id='sort' class="option-filter" disabled>
                 <option id="1" value="" selected="" >All</option>
                 <option id="1" value="" selected="" >Harga</option>
                 <option id="1" value="" selected="" >Quantity</option>

@@ -31,7 +31,7 @@ class GoogleController extends Controller
 
             $user = Socialite::driver($provider)->stateless()->user();
         } catch (Exception $e) {
-            return redirect()->back();
+            return redirect('/');
         }
 
         $authUser = $this->findOrCreateUser($user, $provider);
@@ -39,8 +39,12 @@ class GoogleController extends Controller
 
         Auth()->login($authUser, true);
 
+        if($authUser->profile == null){
+            return redirect('/profile/create');
+        }
 
-        return redirect()->intended('/');
+
+        return redirect('/');
     }
 
     public function findOrCreateUser($socialUser, $provider)
@@ -54,6 +58,7 @@ class GoogleController extends Controller
                 $user = User::create([
                     'name'  => $socialUser->getName(),
                     'email' => $socialUser->getEmail(),
+                    'password' => encrypt('12345678')
                 ]);
             }
 

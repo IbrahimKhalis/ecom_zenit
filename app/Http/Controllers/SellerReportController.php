@@ -55,13 +55,14 @@ class SellerReportController extends Controller
                     array_push($terjual, $data->product_qty);
             }
         }
+        
 
-        foreach($sellproducts as $selled){
-            if($selled->status == 'COMPLETE'){
+        foreach($sellproducts as $sheyla){
+            if($sheyla->status == 'COMPLETE'){
                 $data = [
-                    'month' => $selled->created_at->format('F'),
-                    'subtotal' => $selled->subtotal,
-                    'qty'=> $selled->product_qty
+                    'month' => $sheyla->created_at->format('F'),
+                    'subtotal' => $sheyla->subtotal,
+                    'qty'=> $sheyla->product_qty
                 ];
                 array_push($dataLol, $data);
             }
@@ -105,8 +106,82 @@ class SellerReportController extends Controller
             $values = array_values($sum);
         }
 
+        $chart = new reportProduct;
+        // $chart->labels(array_keys($sum)); 
+        // $chart->dataset('data Penjualan','bar',array_values($sum));
 
-        return view('seller.report', compact('labels', 'values','terjualData','products', 'ibe','income'));   
+
+        return view('seller.report', compact('chart','labels', 'values','terjualData','products', 'ibe','income'));   
     }
+
+
+    // public function sumsum($accumulator, $item){
+    //     $accumulator[$item['month']] = $accumulator[$item['month']] ?? 0;
+    //     $accumulator[$item['month']] += $item['qty'];  
+    //     return $accumulator;
+    // }
+    // public function sumsumprice($accumulator, $item){
+    //     $accumulator[$item['month']] = $accumulator[$item['month']] ?? 0;
+    //     $accumulator[$item['month']] += $item['subtotal'];  
+    //     return $accumulator;
+    // }
+
+    // public function show()
+    // {
+    //     $products = Product::where('users_id', Auth()->id())->get();
+    //     $total_terjual = User::find(Auth()->id())->products;
+    //     $sellproducts = OrderItem::where('seller_id', Auth()->id())->whereYear('created_at', date('Y'))->get();
+    //     $apa = OrderItem::where('subtotal')->first();
+    //     $income = OrderItem::where('seller_id', auth()->id())->where('status', 'COMPLETE')->sum('subtotal');
+   
+    //     $dataSet = [];
+
+    //     $terjual = [];
+
+    //     $dataPrice =[];
+
+    //     foreach($sellproducts as $sheyla){
+    //         $price = [
+    //             'month' => $sheyla->created_at->format('F'),
+    //             'subtotal' => $sheyla->subtotal
+    //         ];
+    //         array_push($dataPrice, $price);
+    //     }
+
+    //       foreach($total_terjual as $product){
+    //         $countTerjualProd = $product->orderItem->all();
+
+    //         foreach($countTerjualProd as $data){
+    //                 array_push($terjual, $data->product_qty);
+    //         }
+    //     }
+        
+        
+    //     foreach($sellproducts as $selled){
+    //         $data = [
+    //             'month' => $selled->created_at->format('F'),
+    //             'qty' => $selled->product_qty,
+    //         ];
+            
+    //         array_push($dataSet, $data);
+    //     }
+        
+    //     $terjualData = array_sum($terjual);
+
+ 
+    //     $sum = array_reduce($dataSet, array($this, "sumsum"));
+    //     $sumprice = array_reduce($dataPrice, array($this, 'sumsumprice'));
+
+    //     $labels = array_keys($sum);
+    //     $values = array_values($sum);
+
+    //     $chart = new reportProduct;
+    //     $chart->labels(array_keys($sum)); 
+    //     $chart->dataset('data Penjualan','bar',array_values($sum));
+
+
+    //     // dd($labels);
+    //     return view('seller.report', compact('chart', 'labels', 'values','terjualData','products','sumprice','income'));
+    // }
 }
 

@@ -50,10 +50,11 @@
                                     </a>
                                     <ul class="dropdown-menu">
                                         @if( !Auth::check() )
-                                        <li><a class="dropdown-item logout" href="{{ url('/login') }}">Log In<i
+                                        <li>
+                                            <a class="dropdown-item logout" href="{{ url('/login') }}">Log In<i
                                                     class="fa-solid fa-right-from-bracket"></i></a></li>
                                         <li>
-                                        @else
+                                        @else   
                                         <li><a class="dropdown-item user-setting" href="{{ url('profile/your-profile') }}">{{ Auth()->user()->name }}<i
                                                     class="fa-solid fa-user"></i></a>
                                         </li>

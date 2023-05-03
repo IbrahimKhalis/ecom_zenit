@@ -88,7 +88,7 @@
         var uploadedGalleryMap = {}
             Dropzone.options.galleryDropzone = {
                     url: "{{ url('product/image') }}",
-                         maxFilesize: 5, // MB
+                         maxFilesize: 10, // MB
                          maxFiles: 4,
                          acceptedFiles: '.jpeg,.jpg,.png,.gif',
                          addRemoveLinks: true,

@@ -27,7 +27,7 @@
               <p>Order date : <span>{{ $order->created_at->format('d F Y') }}</span></p>
             </div>
             <div class="status">
-              <p><iconify-icon icon="fluent:payment-16-regular"></iconify-icon> {{ $order->transData->status }}</p>
+              <p><iconify-icon icon="fluent:payment-16-regular"></iconify-icon> {{ $order->status }}</p>
             </div>
           </div>
           <div class="inv">

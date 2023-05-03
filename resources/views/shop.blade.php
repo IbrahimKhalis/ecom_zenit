@@ -69,25 +69,29 @@
   </div>
   <div class="content-product">
     <div class="header-product">
-      <div class="filter-dropdown">
+      {{-- <div class="filter-dropdown">
         <label for="filter"><i class="fa fa-bars" aria-hidden="true"></i></label>
         <select name="filter" id="filter" class="option-filter">
           <option value="popular">Popular</option>
         </select>
-      </div>
+      </div> --}}
     </div>
     <div class="product-product">
       @foreach($products as $product)
       <div class="card-product">
         <div class="img-card">
-          <img src="{{ $product->gallery->first()->getUrl() }}" alt="" id="img-prod">
+          <a href="{{ route('product.show', $product->slug) }}">
+            <img src="{{ $product->gallery->first()->getUrl() }}" alt="" id="img-prod">
+          </a>
         </div>
         <div class="desc-product">
           <div class="category-product">
             <p id="ctgry">{{ $product->major }}</p>
           </div>
           <div class="name-product">
-            <p id="name-prod">{{ $product->name }}</p>
+            <a href="{{ route('product.show', $product->slug) }}">           
+              <p id="name-prod">{{ $product->name }}</p>
+            </a>
           </div>
           <div class="row-price">
             <div class="price">

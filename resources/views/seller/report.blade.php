@@ -40,7 +40,7 @@
             <iconify-icon icon="mdi:dollar" style="color: #ffd233; font-size: 60px; margin-left: 5px;"></iconify-icon>
             <div class="text" style="display: flex; flex-direction: column; gap: -20px;">
                 <p>Your Total Income</p>
-                <h5 style="margin-top: -10px;">Rp.{{ $income }}</h5>
+                <h5 style="margin-top: -10px;">Rp.{{ number_format($income) }}</h5>
             </div>
         </div>
     </div>
@@ -77,8 +77,8 @@
         <tr style="background-color: white;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
             <td style="width: 30px;">{{$loop->iteration}}</td>
             <td style="width: 220px;">{{$key}}</td>
-            <td style="width: 300px;">{{ $value['qty'] }} Product</td>
-            <td style="width: 300px;">Rp.{{$value['subtotal']}}</td>
+            <td style="width: 300px;">{{$value['qty']}}</td>
+            <td style="width: 300px;">Rp.{{number_format($value['subtotal'])}}</td>
         </tr>
         @endforeach
 

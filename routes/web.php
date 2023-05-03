@@ -22,6 +22,7 @@ use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\SellerReportController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\CustomerOrderController;
 use App\Http\Controllers\SellerProductController;
 use App\Http\Controllers\SellerScheduleController;
 use App\Http\Controllers\SellerdashboardController;
@@ -135,18 +136,20 @@ Route::group(['middleware' => ['auth','CheckLevel:admin,seller'],  'prefix' => '
     Route::get('/orders/upcoming', [SellerOrderController::class, 'showUp'])->name('upcoming');
     Route::get('/orders/processed', [SellerOrderController::class, 'showPro'])->name('process');
 
-    Route::get('/completed', function () {
-        return view('seller.complete-order');
-    })->name('completed');
+    // Route::get('/completed', function () {
+    //     return view('seller.complete-order');
+    // })->name('completed');
     
-    Route::get('/canceled', function () {
-        return view('seller.canceled-order');
-    })->name('canceled');
+    // Route::get('/canceled', function () {
+    //     return view('seller.canceled-order');
+    // })->name('canceled');
     
     Route::post('/orders/accept/{id}', [SellerOrderController::class, 'accept'])->name('accept');
     Route::post('/orders/reject/{id}', [SellerOrderController::class, 'reject'])->name('reject');
     Route::post('/orders/resi/up/{id}', [SellerOrderController::class, 'upResi'])->name('resiUp');
-
+    Route::get('/order/detail/{id}', [SellerOrderController::class, 'detailTrans'])->name('order.detail');
+    Route::get('/orders/completed', [SellerOrderController::class, 'showCome'])->name('completed');
+    Route::get('/canceled', [SellerOrderController::class, 'showCancel'])->name('canceled');
     //Report
     Route::get('/report',[SellerReportController::class, 'show'])->name('report');
     Route::get('/monthlyreport', function () {
@@ -201,7 +204,8 @@ Route::controller(GoogleController::class)->group(function(){
 // })->name('add-product');
 
 
-Route::get('add-rating', [RatingController::class, 'add']);
+Route::post('add-rating', [RatingController::class, 'add']);
+Route::get('/product/detail/review/{product:slug?}', [RatingController::class, 'create'])->name('product.review');
 
 Route::get('/setting', function () {
     return view('setting-cust');
@@ -219,7 +223,7 @@ Route::get('/report-invoice', function () {
 
 Route::put('/user/edit/{id}', [UserProfileController::class, 'update']);
 
-Route::get('/product/detail/review/{product:slug?}', [ReviewController::class, 'show'])->name('product.review');
+// Route::get('/product/detail/review/{product:slug?}', [ReviewController::class, 'show'])->name('product.review');
 
 // Route::get('/seller/editstore', function () {
 //     return view('seller.setting-store');
@@ -234,9 +238,10 @@ Route::get('/otpverification', function () {
     return view('otp-verif');
 })->name('otp');
 
-Route::get('/customer/order', function () {
-    return view('myorder');
-})->name('order');
+Route::get('/order/detail/{id}', [CustomerOrderController::class, 'detail'])->name('cust.order.detail');
+Route::get('/order', [CustomerOrderController::class, 'show'])->name('cust.order');
+Route::post('/order', [CustomerOrderController::class, 'getTable']);
+Route::post('/order/complete/{id}', [CustomerOrderController::class, 'Completed'])->name('cust.complete');
 
 
 Route::get('export/sale/data', [PController::class, 'export']);

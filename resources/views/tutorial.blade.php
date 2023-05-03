@@ -3,9 +3,8 @@
 @section('css')
 <link rel="stylesheet" href="{{ asset('assets/css/tutorial.css')}}">
 @endsection
-
+ 
 @section('content')
-
 {!! $data = preg_replace('/[^0-9]/' ,' ', $pay->steps[2]) !!}
 
 
@@ -65,29 +64,29 @@
                             <h1>Detail Payment</h1>
                             <div class="totaal">
                                 <div class="total-row1">
-                                    <p> Total Price ( 1 product )</p>
-                                    <p>Rp.brp</p>
+                                    <p> Total Price ( {{  sizeof($detail->order_items) }} product )</p>
+                                    <p>Rp.{{ number_format($detail->amount) }}</p>
                                 </div>
                                 <div class="total-row2">
                                     <p>Total Delivery Fee</p>
-                                    <p>Rp. 20.000</p>
+                                    <p>Rp. TBD</p>
                                 </div>
                                 <div class="total-row3">
                                     <p>Total Payment</p>
-                                    <p>Rp. {{ number_format( $detail->amount ) }}</p>
+                                    <p>Rp. TBD</p>
                                 </div>
                             </div>
                             <div class="payment-m">
                                 <h5>Payment Method</h5>
                                 <div class="payMRow1">
                                     <p>{{ $detail->payment_name }}</p>
-                                    <p>Rp. {{ number_format( $detail->amount ) }}</p>
+                                    <p>Rp. TBD</p>
                                 </div>
                             </div>
                             <div class="p-item">
                                 <h5>Purchased Items</h5>
                                 <div class="product-det">
-                                    <p>Ibe Sejahtera</p>
+                                    <p></p>
                                     <p>Web Design Paling kece di dunia</p>
                                     <p>2 X 25.000</p>
                                 </div>
